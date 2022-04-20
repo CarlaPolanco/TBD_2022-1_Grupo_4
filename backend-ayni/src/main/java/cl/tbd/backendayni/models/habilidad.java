@@ -1,4 +1,4 @@
-package cl.tbd.backendayni.model;
+package cl.tbd.backendayni.models;
 
 public class habilidad {
     

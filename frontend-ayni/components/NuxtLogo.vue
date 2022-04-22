@@ -1,5 +1,5 @@
 <template>
-  <img src="frontend-ayni/store/ayni-logo.png" width="610" height="384">
+  <img src="../store/ayni-logo.png" height="610" wwight="480">
 </template>
 
 <style>

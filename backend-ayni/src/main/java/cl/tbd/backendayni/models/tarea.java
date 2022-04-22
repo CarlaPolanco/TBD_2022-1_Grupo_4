@@ -1,5 +1,8 @@
 package cl.tbd.backendayni.models;
 
-public class tarea {
-    
+public class Tarea{
+
+    public Tarea() {
+    }
+
 }

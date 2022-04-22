@@ -1,26 +1,26 @@
 package cl.tbd.backendayni.models;
 
-public class voluntario {
+public class Voluntario {
     //ATRIBUTOS DE LA ENTIDAD VOLUNTARIO
     // id, correo, nombre usuario, contraseña, ranking al cual pertenece,
     // habilidades, atributos
 
     private long id;
     private String correo;
-    private String nombreusuario;
+    private String nombreUsuario;
     private String contrasena;
-    private ranking rankinguser;
-    private habilidad habilidades;
+    private Ranking rankingUser;
+    private Habilidad habilidades;
     private String atributos;
 
-    public voluntario(long id, String correo, String nombreusuario, String contrasena, ranking rankinguser,
-            habilidad habilidades, String atributos) {
+    public Voluntario(long id, String correo, String nombreUsuario, String contrasena, Ranking rankingUser,
+            Habilidad habilidades, String atributos) {
 
         this.id = id;
         this.correo = correo;
-        this.nombreusuario = nombreusuario;
+        this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.rankinguser = rankinguser;
+        this.rankingUser = rankingUser;
         this.habilidades = habilidades;
         this.atributos = atributos;
     }
@@ -47,12 +47,12 @@ public class voluntario {
 
     // GET NOMBRE
     public String getNombreusuario() {
-        return nombreusuario;
+        return nombreUsuario;
     }
 
     // SET NOMBRE
     public void setNombreusuario(String nombreusuario) {
-        this.nombreusuario = nombreusuario;
+        this.nombreUsuario = nombreusuario;
     }
 
     // GET CONTRASENA
@@ -66,21 +66,21 @@ public class voluntario {
     }
 
     // GET RANKINGUSER
-    public ranking getRankinguser() {
-        return rankinguser;
+    public Ranking getRankinguser() {
+        return rankingUser;
     }
 
     // SET RANKINGUSER
-    public void setRankinguser(ranking rankinguser) {
-        this.rankinguser = rankinguser;
+    public void setRankinguser(Ranking rankingUser) {
+        this.rankingUser = rankingUser;
     }
 
     // GET HABILIDADES   
-    public habilidad getHabilidades() {
+    public Habilidad getHabilidades() {
         return habilidades;
     }
     // SET HABILIDADES
-    public void setHabilidades(habilidad habilidades) {
+    public void setHabilidades(Habilidad habilidades) {
         this.habilidades = habilidades;
     }
 

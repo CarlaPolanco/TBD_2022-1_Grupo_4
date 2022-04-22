@@ -1,5 +1,5 @@
 package cl.tbd.backendayni.models;
 
-public class emergencia {
+public class Emergencia {
     
 }

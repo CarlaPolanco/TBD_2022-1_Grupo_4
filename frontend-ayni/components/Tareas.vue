@@ -1,5 +1,4 @@
 <template>
-  <div class="wrapper fadeInDown scrollDiv" style="background-color: #4F3185">
   
    <div class="contenedor">  
 
@@ -26,8 +25,6 @@
     
   </div>
 
-
-  </div>
   </div>
 
 </template>

@@ -15,16 +15,16 @@ public class Institucion {
     AGREGAR Clase Emergencia y tipo usuario contribuidor 
     */
     private long id;
-    private String nombreInstitucion;
-    private String correoInstitucion;
-    private String numeroInstitucion;
+    private String nombre;
+    private String correo;
+    private String numero;
 
     //CONSTRUCTOR institucion
-    public Institucion(long id, String nombreInstitucion,String correoInstitucion,String numeroInstitucion){
+    public Institucion(long id, String nombre,String correo,String numero){
         this.id = id;
-        this.nombreInstitucion = nombreInstitucion;
-        this.correoInstitucion = correoInstitucion;
-        this.numeroInstitucion = numeroInstitucion;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.numero = numero;
     }
     //GETTERS
 
@@ -41,7 +41,7 @@ public class Institucion {
 	*/
     public String getInstitucionNombre()
     {
-        return nombreInstitucion;
+        return nombre;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Institucion {
 	*/
     public String getInstitucionCorreo()
     {
-        return correoInstitucion;
+        return correo;
     }
 
     /**
@@ -57,32 +57,32 @@ public class Institucion {
 	*/
     public String getInstitucionNumero()
     {
-        return correoInstitucion;
+        return numero;
     }
 
     //SETTERS
 
     /**
-	 * @param nombreInstitucion the nombre to set
+	 * @param nombre the nombre to set
 	 */
-    public void setInstitucionNombre(String nombreInstitucion)
+    public void setInstitucionNombre(String nombre)
     {
-        this.nombreInstitucion = nombreInstitucion;
+        this.nombre = nombre;
     }
     
     /**
-	 * @param correoInstitucion the correo to set
+	 * @param correo the correo to set
 	 */
-    public void setInstitucionCorreo(String correoInstitucion)
+    public void setInstitucionCorreo(String correo)
     {
-        this.correoInstitucion = correoInstitucion;
+        this.correo = correo;
     } 
 
     /**
-	 * @param numeroInstitucion the numero to set
+	 * @param numero the numero to set
 	 */
-    public void setInstitucionNumero(String numeroInstitucion)
+    public void setInstitucionNumero(String numero)
     {
-        this.numeroInstitucion = numeroInstitucion;
+        this.numero = numero;
     } 
 }

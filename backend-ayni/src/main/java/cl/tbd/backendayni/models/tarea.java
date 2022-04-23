@@ -1,8 +1,21 @@
 package cl.tbd.backendayni.models;
 
 import java.util.Date;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+@EntityScan
 public class Tarea{
+    /**
+	 * @param id de la tarea 
+	 * @param nombre de la tarea 
+	 * @param descripcion de la tarea 
+	 * @param fecha de la tarea 
+	 * @param longitud de la tarea 
+	 * @param latitud de la tarea 
+	 * @param tareaHabilidad de la tarea 
+	 * @param estadoTarea de la tarea 
+	 */
+
     private long id;
 	private String nombre;
     private String descripcion;
@@ -12,16 +25,7 @@ public class Tarea{
     private TareaHabilidad tareaHabilidad;
     private EstadoTarea estadoTarea;
 
-    /**
-	 * @param id
-	 * @param nombre
-	 * @param descripcion
-	 * @param fecha
-	 * @param longitud
-	 * @param latitud
-	 * @param tareaHabilidad
-	 * @param estadoTarea
-	 */
+    
 	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud,
 			TareaHabilidad tareaHabilidad, EstadoTarea estadoTarea) {
 		this.id = id;

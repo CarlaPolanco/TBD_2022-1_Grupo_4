@@ -1,9 +1,17 @@
 package cl.tbd.backendayni.models;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@EntityScan
 public class Voluntario {
-    //ATRIBUTOS DE LA ENTIDAD VOLUNTARIO
-    // id, correo, nombre usuario, contraseña, ranking al cual pertenece,
-    // habilidades, atributos
+    /** 
+    * @param  id
+    * @param correo 
+    * @param nombre
+    * @param usuario
+    * @param contraseña
+    * @param ranking 
+    */
 
     private long id;
     private String correo;
@@ -94,7 +102,4 @@ public class Voluntario {
         this.atributos = atributos;
     }
 
-    
-
-    
 }

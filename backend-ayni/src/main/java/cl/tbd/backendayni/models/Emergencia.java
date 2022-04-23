@@ -1,8 +1,20 @@
 package cl.tbd.backendayni.models;
 
 import java.util.*;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+@EntityScan
 public class Emergencia {
+    /**
+	ATRIBUTOS DE Emergencia
+	@param id de la emergencia
+	@param nombre de la emergencia
+    @param descripcion de la emergencia
+    @param fecha de la emergencia
+    @param longitud de la emergencia
+    @param latitud de la emergencia
+	*/
+    private long id;
     private String nombre;
     private String descripcion;
     private Date fecha;
@@ -12,11 +24,8 @@ public class Emergencia {
     private ArrayList<String> requisitosGrupales;
     private ArrayList<String> requisitosIndividuales;
 
-
-    public Emergencia(){
-    }
-
-    public Emergencia(String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<String> requisitosGrupales, ArrayList<String> requisitosIndividuales) {
+    public Emergencia(long id,String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<String> requisitosGrupales, ArrayList<String> requisitosIndividuales) {
+        this.id = id; 
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
@@ -25,59 +34,112 @@ public class Emergencia {
         this.requisitosGrupales = requisitosGrupales;
         this.requisitosIndividuales = requisitosIndividuales;
     }
+    //GETTERS
+    
+    /**
+	 * @return id
+	*/
+    public long getId()
+    {
+        return id; 
+    }
 
+    /**
+	 * @return nombre
+	*/
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
+    /**
+	 * @return descripcion
+	*/
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
+    /**
+	 * @return fecha
+	*/
     public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
+    /**
+	 * @return longitud
+	*/
     public long getLongitud() {
         return longitud;
     }
-
-    public void setLongitud(long longitud) {
-        this.longitud = longitud;
-    }
-
+    
+    /**
+	 * @return latitud
+	*/
     public long getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(long latitud) {
-        this.latitud = latitud;
-    }
-
+    /**
+	 * @return array requisitos grupales
+	*/
     public ArrayList<String> getRequisitosGrupales() {
         return requisitosGrupales;
     }
 
-    public void setRequisitosGrupales(ArrayList<String> requisitosGrupales) {
-        this.requisitosGrupales = requisitosGrupales;
-    }
-
+    /**
+	 * @return array requisitos individuales
+	*/
     public ArrayList<String> getRequisitosIndividuales() {
         return requisitosIndividuales;
     }
 
+    //SETTERS
+
+    /**
+	 * @param nombre the nombre to set
+	 */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+	 * @param descripcion the descripcion to set
+	 */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    /**
+	 * @param fecha the fecha to set
+	 */
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    /**
+	 * @param longitud the longitud to set
+	 */
+    public void setLongitud(long longitud) {
+        this.longitud = longitud;
+    }
+
+    /**
+	 * @param latitud the latitud to set
+	 */
+    public void setLatitud(long latitud) {
+        this.latitud = latitud;
+    }
+
+    /**
+	 * @param requisitosGrupales the requisitosGrupales to set
+	 */
+    public void setRequisitosGrupales(ArrayList<String> requisitosGrupales) {
+        this.requisitosGrupales = requisitosGrupales;
+    }    
+
+    /**
+	 * @param requisitosIndividuales the requisitosIndividuales to set
+	 */
     public void setRequisitosIndividuales(ArrayList<String> requisitosIndividuales) {
         this.requisitosIndividuales = requisitosIndividuales;
     }

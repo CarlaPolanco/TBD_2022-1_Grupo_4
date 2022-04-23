@@ -8,9 +8,10 @@ public class Voluntario {
     * @param  id
     * @param correo 
     * @param nombre
-    * @param usuario
-    * @param contraseña
-    * @param ranking 
+    * @param contrasena
+    * @param ranking
+    * @param habilidades
+    * @param atributos 
     */
 
     private long id;
@@ -32,74 +33,97 @@ public class Voluntario {
         this.habilidades = habilidades;
         this.atributos = atributos;
     }
+    //SETTERS
 
-    // GET ID
+    /**
+	 * @return the id
+	 */
     public long getId() {
         return id;
     }
     
-    // SET ID
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    // GET CORREO
+    /**
+	 * @return the descripcion
+	 */
     public String getCorreo() {
         return correo;
     }
 
-    // SET CORREO
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    // GET NOMBRE
+    /**
+	 * @return the descripcion
+	 */
     public String getNombreusuario() {
         return nombreUsuario;
     }
 
-    // SET NOMBRE
-    public void setNombreusuario(String nombreusuario) {
-        this.nombreUsuario = nombreusuario;
-    }
-
-    // GET CONTRASENA
+    /**
+	 * @return the descripcion
+	 */
     public String getContrasena() {
         return contrasena;
     }
 
-    // SET CONTRASENA
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    // GET RANKINGUSER
+    /**
+	 * @return the descripcion
+	 */
     public Ranking getRankinguser() {
         return rankingUser;
     }
 
-    // SET RANKINGUSER
-    public void setRankinguser(Ranking rankingUser) {
-        this.rankingUser = rankingUser;
-    }
-
-    // GET HABILIDADES   
+    /**
+	 * @return the descripcion
+	 */  
     public Habilidad getHabilidades() {
         return habilidades;
     }
-    // SET HABILIDADES
-    public void setHabilidades(Habilidad habilidades) {
-        this.habilidades = habilidades;
-    }
-
-    // GET ATRIBUTOS
+    
+    /**
+	 * @return the descripcion
+	 */
     public String getAtributos() {
         return atributos;
     }
+    //SETTERS 
 
-    // SET ATRIBUTOS
+    /**
+	 * @param correo the correo to set
+	 */
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+	 * @param atributos the atributos to set
+	 */
     public void setAtributos(String atributos) {
         this.atributos = atributos;
     }
 
+    /**
+	 * @param nombre the nombre to set
+	 */
+    public void setNombreusuario(String nombreusuario) {
+        this.nombreUsuario = nombreusuario;
+    }
+    
+    /**
+	 * @param contrasena the contrasena to set
+	 */
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+    
+    /**
+	 * @param makinguser the makinguser to set
+	 */
+    public void setRankinguser(Ranking rankingUser) {
+        this.rankingUser = rankingUser;
+    }
+    
+    /**
+	 * @param habilidad the habilidad to set
+	 */
+    public void setHabilidades(Habilidad habilidades) {
+        this.habilidades = habilidades;
+    }
 }

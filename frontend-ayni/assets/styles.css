@@ -18,7 +18,6 @@
 
 }
 
-
 .boton::after {
   content: "";
   width: 100%;
@@ -60,6 +59,27 @@
   width: 400px;
 }
 
+.contenedorDos {
+  display: inline-flex;
+
+}
+.contenedorDos div {
+  padding: 50px;
+}
+
+.botonDos {
+  background-color: rgb(0, 161, 5);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: #0d0d0d;
+  padding: 25px 35px;
+}
+
+.botonTres {
+  background-color: rgb(245, 0, 0);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: #0d0d0d;
+  padding: 25px 50px;
+}
 
 /* STRUCTURE */
 

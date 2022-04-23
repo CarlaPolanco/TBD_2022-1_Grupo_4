@@ -3,7 +3,7 @@ package cl.tbd.backendayni.models;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
-public class institucion {
+public class Institucion {
     /** 
     ATRIBUTOS DE INSTITUCION
     @param id de la institucion
@@ -20,7 +20,7 @@ public class institucion {
     private String numeroInstitucion;
 
     //CONSTRUCTOR institucion
-    public institucion(long id, String nombreInstitucion,String correoInstitucion,String numeroInstitucion){
+    public Institucion(long id, String nombreInstitucion,String correoInstitucion,String numeroInstitucion){
         this.id = id;
         this.nombreInstitucion = nombreInstitucion;
         this.correoInstitucion = correoInstitucion;

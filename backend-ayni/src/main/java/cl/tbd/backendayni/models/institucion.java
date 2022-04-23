@@ -36,6 +36,11 @@ public class Institucion {
         return id;
     }
 
+    public void setInstitucionId(long id)
+    {
+        this.id = id;
+    }
+
     /**
 	 * @return nombre institucion
 	*/

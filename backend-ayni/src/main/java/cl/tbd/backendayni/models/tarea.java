@@ -4,7 +4,7 @@ import java.util.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
-public class Tarea{
+public class Tarea {
     /**
 	 * @param id de la tarea 
 	 * @param nombre de la tarea 

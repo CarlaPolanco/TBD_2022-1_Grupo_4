@@ -1,5 +1,5 @@
 package cl.tbd.backendayni.services;
 
-public class AyniService {
+public class EstadoService {
     
 }

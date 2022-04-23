@@ -26,6 +26,12 @@ public class Emergencia {
 
     public Emergencia(long id,String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<String> requisitosGrupales, ArrayList<String> requisitosIndividuales) {
         this.id = id; 
+
+    public Emergencia(){
+    }
+
+    public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<String> requisitosGrupales, ArrayList<String> requisitosIndividuales) {
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
@@ -44,9 +50,14 @@ public class Emergencia {
         return id; 
     }
 
-    /**
-	 * @return nombre
-	*/
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNombre() {
         return nombre;
     }

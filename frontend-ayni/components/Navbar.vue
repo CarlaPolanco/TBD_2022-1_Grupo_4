@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse col-sm-2" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
+        <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="./Tareas">Tareas</a>
@@ -23,7 +23,7 @@
       <a class="nav-link to-right" href="./Login" role="button">
         Iniciar Sesión
       </a>
-      <a class="nav-link to-right" href="#" role="button">
+      <a class="nav-link to-right" href="./Signup" role="button">
         Registrarse
       </a>
     </ul>

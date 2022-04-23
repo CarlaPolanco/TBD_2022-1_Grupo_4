@@ -51,6 +51,7 @@
 .contenedor div {
   padding: 10px;
   text-align: center;
+  display: flexbox;
 }
 
 .contenedor div h1 {

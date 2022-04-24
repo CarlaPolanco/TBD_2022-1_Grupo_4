@@ -1,5 +1,6 @@
 package cl.tbd.backendayni.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
@@ -24,7 +25,7 @@ public class Tarea {
     private long latitud;
     private TareaHabilidad tareaHabilidad;
     private EstadoTarea estadoTarea;
-
+	private ArrayList<Habilidad> requerimientos;
     
 	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud,
 			TareaHabilidad tareaHabilidad, EstadoTarea estadoTarea) {
@@ -122,6 +123,8 @@ public class Tarea {
 	public void setEstadoTarea(EstadoTarea estadoTarea) {
 		this.estadoTarea = estadoTarea;
 	}
-
+	public ArrayList<Habilidad> getRequisitos() {
+		return requerimientos;
+	}
 
 }

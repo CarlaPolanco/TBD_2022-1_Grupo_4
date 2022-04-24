@@ -1,5 +1,7 @@
 package cl.tbd.backendayni.models;
 
+import java.util.ArrayList;
+
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
@@ -19,11 +21,11 @@ public class Voluntario {
     private String nombreUsuario;
     private String contrasena;
     private Ranking rankingUser;
-    private Habilidad habilidades;
+    private ArrayList<Habilidad> habilidades;
     private String atributos;
 
     public Voluntario(long id, String correo, String nombreUsuario, String contrasena, Ranking rankingUser,
-            Habilidad habilidades, String atributos) {
+    ArrayList<Habilidad> habilidades, String atributos) {
 
         this.id = id;
         this.correo = correo;
@@ -73,7 +75,7 @@ public class Voluntario {
     /**
 	 * @return the descripcion
 	 */  
-    public Habilidad getHabilidades() {
+    public ArrayList<Habilidad> getHabilidades() {
         return habilidades;
     }
     
@@ -123,7 +125,7 @@ public class Voluntario {
     /**
 	 * @param habilidad the habilidad to set
 	 */
-    public void setHabilidades(Habilidad habilidades) {
+    public void setHabilidades(ArrayList<Habilidad> habilidades) {
         this.habilidades = habilidades;
     }
 }

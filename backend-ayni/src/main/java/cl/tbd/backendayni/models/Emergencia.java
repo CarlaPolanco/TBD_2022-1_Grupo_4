@@ -24,8 +24,6 @@ public class Emergencia {
     private ArrayList<String> requisitosGrupales;
     private ArrayList<String> requisitosIndividuales;
 
-    public Emergencia(long id,String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<String> requisitosGrupales, ArrayList<String> requisitosIndividuales) {
-        this.id = id; 
 
     public Emergencia(){
     }

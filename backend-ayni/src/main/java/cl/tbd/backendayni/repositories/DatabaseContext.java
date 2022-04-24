@@ -24,6 +24,7 @@ public class DatabaseContext {
             try{
                 Sql2o base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
                 Connection con = base.open();
+                con.createQuery("create table estado" + "(id serial primary key, nombre text) ").executeUpdate();
                 return con;
 
             }
@@ -40,6 +41,10 @@ public class DatabaseContext {
             Connection con = base.open();
             con.createQuery(sql).executeUpdate();
             System.out.println("Se esta creando la base de datos");
+            base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
+            con = base.open();
+            TablesContext tablas = new TablesContext(con);
+            tablas.crearTablas();
             }catch(Sql2oException e){
                 System.out.println("Se esta creando la base de datos");
             }

@@ -16,7 +16,7 @@ public class BackendAyniApplication {
 
 		Connection con = DatabaseContext.sql2o();
 		try{
-			con.close();
+			con.getSql2o();
 			System.out.println("si funciona");
 
         }

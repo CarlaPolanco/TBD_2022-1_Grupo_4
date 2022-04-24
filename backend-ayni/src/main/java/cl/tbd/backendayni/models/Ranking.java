@@ -44,6 +44,9 @@ public class Ranking {
         return id;
     }
 
+    public void setId(long id){
+        this.id = id;
+    }
 
     /*Calculamos el ranking de la relacion Voluntario - Tarea haciendo un paso por los requisitos de la tarea y con las habildades que el voluntario
     tiene, calculamos el porcentaje de "acierto" y luego lo colocamos dentro del ranking */

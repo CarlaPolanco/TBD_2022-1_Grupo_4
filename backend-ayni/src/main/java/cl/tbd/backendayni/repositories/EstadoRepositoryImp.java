@@ -13,7 +13,7 @@ import org.sql2o.Query;
 @Repository
 public class EstadoRepositoryImp implements EstadoRepository {
     
-    @Autowired
+    @Autowired(required = false)
     private Sql2o sql2o;
 
     @Override

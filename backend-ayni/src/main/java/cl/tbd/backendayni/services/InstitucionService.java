@@ -37,8 +37,8 @@ public class InstitucionService {
     }
 
 
-    @GetMapping("/estado/count")
-    public String countEstado(){
+    @GetMapping("/institucion/count")
+    public String countInstitucion(){
         int total = institucionRepository.countInstituciones();
         return String.format("Se tienen %s instituciones.", total);
     }

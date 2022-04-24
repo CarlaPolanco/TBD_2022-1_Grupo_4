@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Repository
 public class InstitucionRepositoryImp implements InstitucionRepository {
 
-    @Autowired
+    @Autowired(required = false)
     private Sql2o sql2o;
 
     @Override

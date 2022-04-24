@@ -16,7 +16,7 @@ import org.sql2o.Sql2o;
 @Repository
 public class RankingRepositoryImp implements RankingRepository{
     
-    @Autowired
+    @Autowired(required = false)
     private Sql2o sql2o;
 
     @Override

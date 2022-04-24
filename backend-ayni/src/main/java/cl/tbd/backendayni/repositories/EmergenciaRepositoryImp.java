@@ -8,12 +8,12 @@ import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
-
+import org.springframework.context.annotation.Bean;
 
 @Repository
 public class EmergenciaRepositoryImp implements EmergenciaRepository {
     
-    @Autowired
+    @Autowired(required = false)
     private Sql2o sql2o;
 
     @Override

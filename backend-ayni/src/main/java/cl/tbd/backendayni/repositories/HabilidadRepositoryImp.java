@@ -14,7 +14,7 @@ import org.sql2o.Sql2o;
 @Repository
 public class HabilidadRepositoryImp implements HabilidadRepository {
 
-    @Autowired
+    @Autowired(required = false)
     private Sql2o sql2o;
 
     @Override

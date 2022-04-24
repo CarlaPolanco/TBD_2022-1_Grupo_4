@@ -1,15 +1,16 @@
 package cl.tbd.backendayni.repositories;
 
+
+import java.util.*;
 import cl.tbd.backendayni.models.Institucion;
 
 public interface InstitucionRepository {
 
-    public void save(Institucion institucion);
-    public void delete(Institucion institucion);
-    public void update(Institucion institucion);
-    public Institucion findById(long id);
-    public Institucion findByNombre(String nombre);
-    public Institucion findByCorreo(String correo);
-    public Institucion findByNumero(String numero);
-    
+    public int countInstituciones();
+    public int newId();
+    public List<Institucion> getAll();
+    public List<Institucion> showInstitucionById(long id);
+    public Institucion createInstitucion(Institucion institucion);
+    public void deleteInstitucionById(long id);
+    public void updateInstitucionById(Institucion institucion);
 }

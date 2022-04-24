@@ -2,6 +2,11 @@ package cl.tbd.backendayni;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
+import org.sql2o.Sql2oException;
+
+import cl.tbd.backendayni.repositories.DatabaseContext;
 
 @SpringBootApplication
 public class BackendAyniApplication {
@@ -9,9 +14,9 @@ public class BackendAyniApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackendAyniApplication.class, args);
 
-		Sql2o base = DatabaseContext.sql2o();
+		Connection con = DatabaseContext.sql2o();
 		try{
-			Connection conn = base.open();
+			con.close();
 			System.out.println("si funciona");
 
         }

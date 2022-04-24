@@ -129,5 +129,4 @@ public class TareaRepositoryImp implements TareaRepository {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la tarea\n");
         }
     }
-
 }

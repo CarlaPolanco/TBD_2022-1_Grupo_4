@@ -1,6 +1,5 @@
 package cl.tbd.backendayni.models;
 
-import java.util.ArrayList;
 
 public class EstadoTarea {
 	private long idTabla;

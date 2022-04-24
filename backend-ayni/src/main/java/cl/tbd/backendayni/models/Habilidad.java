@@ -1,5 +1,6 @@
 package cl.tbd.backendayni.models;
 
+@EntityScan
 public class Habilidad {
     private long id;
     private String habilidad;

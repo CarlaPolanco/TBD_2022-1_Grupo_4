@@ -8,12 +8,16 @@ import cl.tbd.backendayni.models.Voluntario;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
+import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
-
+@Repository
 public class RankingRepositoryImp implements RankingRepository{
+    
+    @Autowired
+    private Sql2o sql2o;
 
     @Override
     public Ranking createRanking(Ranking ranking){
@@ -25,10 +29,10 @@ public class RankingRepositoryImp implements RankingRepository{
         try{
             conn.createQuery(SQL_INSERT)
                 .addParameter("idTarea2", ranking.getIdTarea())
-                .addParameter("idVoluntario2", ranking.getIdVoluntario)
+                .addParameter("idVoluntario2", ranking.getIdVoluntario())
                 .executeUpdate();
             ranking.setRanking(0);
-            ranking.setId(newId());
+            ranking.setId(newID());
 
             return ranking;
 

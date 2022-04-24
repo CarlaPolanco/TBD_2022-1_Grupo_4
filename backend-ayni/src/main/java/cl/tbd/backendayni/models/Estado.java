@@ -35,6 +35,13 @@ public class Estado {
 	}
 	//SETTERS
 	/**
+	 * @param id id to set
+	 */
+	public void setId(long id){
+		this.id = id;
+	}
+	
+	/**
 	 * @param nombre nombre to set
 	 */
 	public void setNombre(String nombre){

@@ -17,7 +17,7 @@ public class EstadoRepositoryImp implements EstadoRepository {
     private Sql2o sql2o;
 
     @Override
-    public int countEstado(){
+    public int countEstados(){
         int total = 0;
         String sql = "SELECT COUNT(*) FROM estado";
         try (Connection conn = sql2o.open()) {

@@ -11,7 +11,7 @@ import org.sql2o.Sql2o;
 
 public interface RankingRepository {
 
-    public Ranking createRanking(Ranking ranking)
+    public Ranking createRanking(Ranking ranking);
     public int countAllRanks();
     public int newID();
     public List<Ranking> getAll();

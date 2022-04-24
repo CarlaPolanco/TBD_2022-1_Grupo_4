@@ -81,6 +81,11 @@ public class Tarea {
 	public EstadoTarea getEstadoTarea() {
 		return estadoTarea;
 	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	/**
 	 * @param nombre the nombre to set
 	 */

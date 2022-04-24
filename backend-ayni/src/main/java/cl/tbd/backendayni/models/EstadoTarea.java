@@ -1,5 +1,7 @@
 package cl.tbd.backendayni.models;
 
+import java.util.ArrayList;
+
 public class EstadoTarea {
     private Estado estado;
     private Tarea tarea;
@@ -19,5 +21,5 @@ public class EstadoTarea {
 	public void setTarea(Tarea tarea) {
 		this.tarea = tarea;
 	}
-    
+
 }

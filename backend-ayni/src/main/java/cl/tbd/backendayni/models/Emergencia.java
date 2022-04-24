@@ -39,14 +39,6 @@ public class Emergencia {
         this.requisitosIndividuales = requisitosIndividuales;
     }
     //GETTERS
-    
-    /**
-	 * @return id
-	*/
-    public long getId()
-    {
-        return id; 
-    }
 
     public long getId() {
         return id;

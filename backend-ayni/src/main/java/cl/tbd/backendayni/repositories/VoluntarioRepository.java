@@ -10,8 +10,8 @@ public interface VoluntarioRepository {
     public int newId();
     public List<Voluntario> getAll();
     public List<Voluntario> showVoluntarioById(long id);
-    public Voluntario createVoluntario(Voluntario voluntario);
-    public void deleteVoluntarioById(long id);
-    public void updateVoluntarioById(Voluntario voluntario);
+    //public Voluntario createVoluntario(Voluntario voluntario);
+    //public void deleteVoluntarioById(long id);
+    //public void updateVoluntarioById(Voluntario voluntario);
 }
 

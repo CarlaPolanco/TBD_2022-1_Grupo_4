@@ -77,8 +77,8 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("fecha2", tarea.getFecha())
                 .addParameter("longitud2", tarea.getLongitud())
                 .addParameter("latitud2", tarea.getLatitud())
-                .addParameter("tareaHabilidad2", tarea.getTareaHabilidad())
-                .addParameter("estadoTarea2", tarea.getEstadoTarea())
+                .addParameter("tareaHabilidad2", tarea.getIdTareaHabilidad())
+                .addParameter("estadoTarea2", tarea.getIdEstadoTarea())
                 .addParameter("requerimientos2", tarea.getRequisitos())
                 .executeUpdate();
 
@@ -120,8 +120,8 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("fecha2", tarea.getFecha())
                 .addParameter("longitud2", tarea.getLongitud())
                 .addParameter("latitud2", tarea.getLatitud())
-                .addParameter("tareaHabilidad2", tarea.getTareaHabilidad())
-                .addParameter("estadoTarea2", tarea.getEstadoTarea())
+                .addParameter("tareaHabilidad2", tarea.getIdTareaHabilidad())
+                .addParameter("estadoTarea2", tarea.getIdEstadoTarea())
                 .addParameter("id2", tarea.getId())
                 .executeUpdate();
 

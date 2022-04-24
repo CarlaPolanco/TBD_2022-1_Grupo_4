@@ -1,5 +1,59 @@
 package cl.tbd.backendayni.services;
 
+import java.util.List;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import cl.tbd.backendayni.models.Ranking;
+import cl.tbd.backendayni.repositories.RankingRepository;
+
+
+@RestController
 public class RankingService {
-    
+    private final RankingRepository rankingRepository;
+
+    RankingService(RankingRepository rankingRepository) {
+        this.rankingRepository = rankingRepository;
+    }
+
+    @GetMapping("/ranking")
+    public List<Ranking> getAll() {
+        return rankingRepository.getAll();
+    }
+
+    @PostMapping("/ranking/create")
+    @ResponseBody
+    public Ranking createRanking(@RequestBody Ranking ranking){
+        Ranking newRanking = rankingRepository.createRanking(ranking);
+        return newRanking;
+    }
+
+    @GetMapping("/ranking/count")
+    public String countRanking(){
+        int total = rankingRepository.countAllRanks();
+        return String.format("Se tienen %s rankings.", total);
+    }
+
+    @RequestMapping(value = "/ranking/deleteById/{id}", method = RequestMethod.DELETE)
+    public void deleteRanking(@PathVariable long id) {
+        rankingRepository.deleteRankingById(id);
+    }
+
+    @RequestMapping(value = "/ranking/updateById/{id}", method = RequestMethod.PUT)
+    public void updateTarea(@RequestBody Ranking ranking) {
+        rankingRepository.updateRankingById(ranking);
+    }
+
+    @RequestMapping(value = "/ranking/getById/{id}", method = RequestMethod.GET)
+    public List<Ranking> getRankingById(@PathVariable long id) {
+        return rankingRepository.showRankingById(id);
+    }  
 }

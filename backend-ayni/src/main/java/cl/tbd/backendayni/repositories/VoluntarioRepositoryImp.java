@@ -37,7 +37,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
-    /*
+    
     @Override
     public List<Voluntario> getAll() {
         try(Connection conn = sql2o.open()){
@@ -62,7 +62,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     } 
     
-
+    /*
     @Override
     public Voluntario createVoluntario(Voluntario voluntario){
         Connection conn = sql2o.open();

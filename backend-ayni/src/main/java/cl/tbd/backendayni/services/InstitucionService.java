@@ -37,8 +37,8 @@ public class InstitucionService {
     }
 
 
-    @GetMapping("/manga/count")
-    public String countManga(){
+    @GetMapping("/estado/count")
+    public String countEstado(){
         int total = institucionRepository.countInstituciones();
         return String.format("Se tienen %s instituciones.", total);
     }
@@ -53,7 +53,7 @@ public class InstitucionService {
     
 
     @RequestMapping(value = "/institucion/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
-    public void deleteManga(@PathVariable long id){
+    public void deleteInstitucion(@PathVariable long id){
         institucionRepository.deleteInstitucionById(id);
     }
 

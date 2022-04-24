@@ -37,8 +37,8 @@ public class EstadoService {
     }
 
 
-    @GetMapping("/manga/count")
-    public String countManga(){
+    @GetMapping("/estado/count")
+    public String countEstado(){
         int total = estadoRepository.countEstados();
         return String.format("Se tienen %s estados.", total);
     }
@@ -53,7 +53,7 @@ public class EstadoService {
     
 
     @RequestMapping(value = "/estado/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
-    public void deleteManga(@PathVariable long id){
+    public void deleteEstado(@PathVariable long id){
         estadoRepository.deleteEstadoById(id);
     }
 

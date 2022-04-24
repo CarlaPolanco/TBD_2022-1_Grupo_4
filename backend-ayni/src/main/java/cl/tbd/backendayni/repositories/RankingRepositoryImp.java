@@ -16,6 +16,28 @@ import org.sql2o.Sql2o;
 public class RankingRepositoryImp implements RankingRepository{
 
     @Override
+    public Ranking createRanking(Ranking ranking){
+        Connection conn = sql2o.open();
+
+        String SQL_INSERT = "INSERT INTO ranking(idTarea, idVoluntario)" + 
+        "VALUES (:idTarea2, :idVoluntario2)";
+
+        try{
+            conn.createQuery(SQL_INSERT)
+                .addParameter("idTarea2", ranking.getIdTarea())
+                .addParameter("idVoluntario2", ranking.getIdVoluntario)
+                .executeUpdate();
+            ranking.setRanking(0);
+            ranking.setId(newId());
+
+            return ranking;
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo crear el ranking\n");
+            return null;
+        }
+    }
+    @Override
     public int countAllRanks() {
         int total = 0;
         String sql = "SELECT COUNT(*) FROM ranking";

@@ -36,7 +36,9 @@ public class Ranking {
     public float getRanking(){
         return porcentajeRanking;
     }
-
+    public void setRanking(float rank){
+        this.porcentajeRanking = rank;
+    }
 
     public long getId(){
         return id;

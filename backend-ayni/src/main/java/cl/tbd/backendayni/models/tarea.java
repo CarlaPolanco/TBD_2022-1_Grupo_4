@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
 public class Tarea{
+	//ATRIBUTOS
     /**
 	 * @param id de la tarea 
 	 * @param nombre de la tarea 

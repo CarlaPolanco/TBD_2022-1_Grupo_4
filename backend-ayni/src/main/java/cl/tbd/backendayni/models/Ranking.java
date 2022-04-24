@@ -12,9 +12,9 @@ public class Ranking {
     public Ranking(){
 
     }
-    public Ranking(int idVoluntario, int idTarea){
-        this.idTarea = idTarea;
-        this.idVoluntario = idVoluntario;
+    public Ranking(Voluntario vol, Tarea tar){
+        this.idTarea = vol.getId();
+        this.idVoluntario = tar.getId();
     }
 
     public long getIdVoluntario(){

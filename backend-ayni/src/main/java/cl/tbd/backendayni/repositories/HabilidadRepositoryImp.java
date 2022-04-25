@@ -9,6 +9,7 @@ import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.sql2o.Connection;
 import org.sql2o.Query;
 import org.sql2o.Sql2o;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Repository

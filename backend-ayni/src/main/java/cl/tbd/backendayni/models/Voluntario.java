@@ -20,8 +20,6 @@ public class Voluntario {
     private String correo;
     private String nombreUsuario;
     private String contrasena;
-    private Ranking rankingUser;
-    private ArrayList<Habilidad> habilidades;
     private String atributos;
 
     public Voluntario(long id, String correo, String nombreUsuario, String contrasena, Ranking rankingUser,
@@ -31,8 +29,6 @@ public class Voluntario {
         this.correo = correo;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
-        this.rankingUser = rankingUser;
-        this.habilidades = habilidades;
         this.atributos = atributos;
     }
     //SETTERS
@@ -65,19 +61,7 @@ public class Voluntario {
         return contrasena;
     }
 
-    /**
-	 * @return the descripcion
-	 */
-    public Ranking getRankinguser() {
-        return rankingUser;
-    }
 
-    /**
-	 * @return the descripcion
-	 */  
-    public ArrayList<Habilidad> getHabilidades() {
-        return habilidades;
-    }
     
     /**
 	 * @return the descripcion
@@ -115,17 +99,4 @@ public class Voluntario {
         this.contrasena = contrasena;
     }
     
-    /**
-	 * @param makinguser the makinguser to set
-	 */
-    public void setRankinguser(Ranking rankingUser) {
-        this.rankingUser = rankingUser;
-    }
-    
-    /**
-	 * @param habilidad the habilidad to set
-	 */
-    public void setHabilidades(ArrayList<Habilidad> habilidades) {
-        this.habilidades = habilidades;
-    }
 }

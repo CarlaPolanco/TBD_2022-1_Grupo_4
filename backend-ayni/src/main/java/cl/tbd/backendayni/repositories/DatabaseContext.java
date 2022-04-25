@@ -10,9 +10,9 @@ import org.sql2o.Sql2oException;
 
 @Configuration
 public class DatabaseContext {
-    static Connection con;
+    static Sql2o base;
     @Bean
-    public static Connection sql2o(){
+    public static Sql2o sql2o(){
         //Carlos,Bastian,Felipe,Carla,Estefania,Sora
         String[] usuarios = new String[] {"postgres", "postgres", "postgres","postgres","postgres","postgress","postgres"};
         String[] contraseñas = new String[] {"default", "2701", "Fcii01000110","contra4","3144","contra6","abcdef1234"};
@@ -24,8 +24,7 @@ public class DatabaseContext {
             try{
                 Sql2o base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
                 Connection con = base.open();
-                con.createQuery("create table estado" + "(id serial primary key, nombre text) ").executeUpdate();
-                return con;
+                return base;
 
             }
             catch(Sql2oException e){
@@ -49,6 +48,6 @@ public class DatabaseContext {
                 System.out.println("Se esta creando la base de datos");
             }
         }
-        return con;
+        return base;
     }
 }

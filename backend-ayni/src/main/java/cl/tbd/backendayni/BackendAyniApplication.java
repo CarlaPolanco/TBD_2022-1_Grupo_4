@@ -14,9 +14,9 @@ public class BackendAyniApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackendAyniApplication.class, args);
 
-		Connection con = DatabaseContext.sql2o();
+		Sql2o sql2o = DatabaseContext.sql2o();
 		try{
-			con.getSql2o();
+			sql2o.open();
 			System.out.println("si funciona");
 
         }

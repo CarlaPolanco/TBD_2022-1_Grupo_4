@@ -22,8 +22,7 @@ public class Voluntario {
     private String contrasena;
     private String atributos;
 
-    public Voluntario(long id, String correo, String nombreUsuario, String contrasena, Ranking rankingUser,
-    ArrayList<Habilidad> habilidades, String atributos) {
+    public Voluntario(long id, String correo, String nombreUsuario, String contrasena, String atributos) {
 
         this.id = id;
         this.correo = correo;
@@ -61,8 +60,6 @@ public class Voluntario {
         return contrasena;
     }
 
-
-    
     /**
 	 * @return the descripcion
 	 */
@@ -70,6 +67,13 @@ public class Voluntario {
         return atributos;
     }
     //SETTERS 
+
+    /**
+	 * @param correo the correo to set
+	 */
+    public void setId(long id) {
+        this.id = id;
+    }
 
     /**
 	 * @param correo the correo to set

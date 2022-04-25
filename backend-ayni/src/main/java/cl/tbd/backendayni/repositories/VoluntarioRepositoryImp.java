@@ -62,72 +62,66 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     } 
     
-    /*
+    
     @Override
     public Voluntario createVoluntario(Voluntario voluntario){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO emergencia(nombre, correo, nombreUsuario, contrasena, atributos)" + 
-                            "VALUES(:nombre2, :descripcion2, :fecha2, :longitud2, :latitud2, :requisitosGrupales2, :requisitosIndividuales2)";
+        String SQL_INSERT = "INSERT INTO voluntario(correo, nombreUsuario, contrasena, atributos)" + 
+                            "VALUES(:correo2, :nombreUsuario2, :contrasena2, :atributos2)";
 
         try{
 
             conn.createQuery(SQL_INSERT)
-                .addParameter("nombre2", emergencia.getNombre())
-                .addParameter("descripcion2", emergencia.getDescripcion())
-                .addParameter("fecha2", emergencia.getFecha())
-                .addParameter("longitud2", emergencia.getLongitud())
-                .addParameter("latitud2", emergencia.getLatitud())
-                .addParameter("requisitosGrupales2", emergencia.getRequisitosGrupales())
-                .addParameter("requisitosIndividuales2", emergencia.getRequisitosIndividuales())
+                .addParameter("correo2", voluntario.getCorreo())
+                .addParameter("nombreUsuario2", voluntario.getNombreusuario())
+                .addParameter("contrasena2", voluntario.getContrasena())
+                .addParameter("atributos2", voluntario.getAtributos())
                 .executeUpdate();
 
-            emergencia.setId(newId());
+            voluntario.setId(newId());
 
-            return emergencia;
+            return voluntario;
 
         } catch(Exception e) {
-            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo crear la emergencia\n");
+            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo crear la voluntario\n");
             return null;
         }
     }
 
 
     @Override 
-    public void deleteEmergenciaById(long id){
+    public void deleteVoluntarioById(long id){
         Connection conn = sql2o.open();
-        String SQL_DELETE = "DELETE FROM emergencia WHERE emergencia.id = :id";
+        String SQL_DELETE = "DELETE FROM voluntario WHERE voluntario.id = :id";
 
         try{
             conn.createQuery(SQL_DELETE).addParameter("id", id).executeUpdate();
 
         } catch(Exception e) {
-            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo borrar la emergencia\n");
+            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo borrar el voluntario\n");
         }
     }
 
 
     @Override
-    public void updateEmergenciaById(Emergencia emergencia){
+    public void updateVoluntarioById(Voluntario voluntario){
 
-        String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, requisitosGrupales = :requisitosGrupales2, requisitosIndividuales = :requisitosIndividuales2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE voluntario SET correo = :correo2, nombreUsuario = :nombreUsuario2, contrasena = :contrasena2, atributos = :atributos2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
-                .addParameter("nombre2", emergencia.getNombre())
-                .addParameter("descripcion2", emergencia.getDescripcion())
-                .addParameter("fecha2", emergencia.getFecha())
-                .addParameter("longitud2", emergencia.getLongitud())
-                .addParameter("latitud2", emergencia.getLatitud())
-                .addParameter("requisitosGrupales2", emergencia.getRequisitosGrupales())
-                .addParameter("requisitosIndividuales2", emergencia.getRequisitosIndividuales())
-                .addParameter("id2", emergencia.getId())
+                .addParameter("correo2", voluntario.getCorreo())
+                .addParameter("nombreUsuario", voluntario.getNombreusuario())
+                .addParameter("contrasena2", voluntario.getContrasena())
+                .addParameter("atributos2", voluntario.getAtributos())
+                .addParameter("id2", voluntario.getId())
                 .executeUpdate();
 
         } catch(Exception e) {
-            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la emergencia\n");
+            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar el voluntario\n");
         }
-    }*/
+    }
 
 }
 

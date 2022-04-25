@@ -6,8 +6,6 @@ public class VoluntarioHabilidad {
     private long id_voluntario;
     private long id_habilidad;
 
-    public VoluntarioHabilidad() {
-    }
 
     public VoluntarioHabilidad(long id_voluntario_habilidad, long id_voluntario, long id_habilidad) {
         this.id_voluntario_habilidad = id_voluntario_habilidad;

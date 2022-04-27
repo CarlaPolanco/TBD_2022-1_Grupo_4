@@ -22,6 +22,13 @@
         <button class="boton"><span>Tarea3</span></button>
         </a>
     </div>
+
+    <div>
+        <h1> Agregar una nueva tarea</h1>
+        <a href="./NuevaTarea">
+        <button class="boton"><span>Tarea3</span></button>
+        </a>
+    </div>
     
   </div>
 

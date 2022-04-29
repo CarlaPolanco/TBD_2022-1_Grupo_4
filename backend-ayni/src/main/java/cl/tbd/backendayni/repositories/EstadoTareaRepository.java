@@ -5,7 +5,7 @@ import cl.tbd.backendayni.models.EstadoTarea;
 
 public interface EstadoTareaRepository {
 
-    public int countEstadoTarea();
+    public int countEstadosTarea();
     public int newId();
     public List<EstadoTarea> getAll();
     public List<EstadoTarea> showEstadoTareaById(long id);

@@ -5,7 +5,7 @@ import cl.tbd.backendayni.models.TareaHabilidad;
 
 public interface TareaHabilidadRepository {
     
-    public int countTareaHabilidad();
+    public int countTareasHabilidad();
     public int newId();
     public List<TareaHabilidad> getAll();
     public List<TareaHabilidad> showTareaHabilidadById(long id);

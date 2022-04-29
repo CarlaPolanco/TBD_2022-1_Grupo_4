@@ -61,18 +61,18 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository{
     @Override
     public EstadoTarea createEstadoTarea(EstadoTarea estadotarea){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO tareatarea(id, idhabilidad, idtarea)" + 
-                            "VALUES(:id2, :idhabilidad2, :idtarea2)";
+        String SQL_INSERT = "INSERT INTO estadotarea(id, idestado, idtarea)" + 
+                            "VALUES(:id2, :idestado2, :idtarea2)";
 
         try{
 
             conn.createQuery(SQL_INSERT)
-                .addParameter("id2", estadotarea.getId_tarea_tarea())
-                .addParameter("idhabilidad2", estadotarea.getId_habilidad())
-                .addParameter("idtarea2", estadotarea.getId_tarea())
+                .addParameter("id2", estadotarea.getIdTabla())
+                .addParameter("idestado2", estadotarea.getIdEstado())
+                .addParameter("idtarea2", estadotarea.getIdTarea())
                 .executeUpdate();
 
-            estadotarea.setId_tarea_tarea(newId());
+            estadotarea.setIdTabla(newId());
 
             return estadotarea;
 
@@ -99,14 +99,14 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository{
     @Override
     public void updateEstadoTareaById(EstadoTarea estadotarea){
 
-        String SQL_UPDATE = "UPDATE estadotarea SET id = :id2, idhabilidad = idhabilidad2, idtarea = idtarea2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE estadotarea SET id = :id2, idestado = idestado2, idtarea = idtarea2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
-                .addParameter("idhabilidad2", estadotarea.getId_habilidad())
-                .addParameter("idtarea2", estadotarea.getId_tarea())
-                .addParameter("id2", estadotarea.getId_tarea_tarea())
+                .addParameter("idestado2", estadotarea.getIdEstado())
+                .addParameter("idtarea2", estadotarea.getIdTarea())
+                .addParameter("id2", estadotarea.getIdTabla())
                 .executeUpdate();
 
         } catch(Exception e) {

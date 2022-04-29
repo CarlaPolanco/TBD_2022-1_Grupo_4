@@ -70,12 +70,12 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
         try{
 
             conn.createQuery(SQL_INSERT)
-                .addParameter("id2", tareahabilidad.getId_tarea_habilidad())
-                .addParameter("idtarea2", tareahabilidad.getId_tarea())
-                .addParameter("idhabilidad2", tareahabilidad.getId_habilidad())
+                .addParameter("id2", tareahabilidad.getIdTabla())
+                .addParameter("idtarea2", tareahabilidad.getIdTarea())
+                .addParameter("idhabilidad2", tareahabilidad.getIdHabilidad())
                 .executeUpdate();
 
-            tareahabilidad.setId_tarea_habilidad(newId());
+            tareahabilidad.setIdTabla(newId());
 
             return tareahabilidad;
 
@@ -107,9 +107,9 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
         try(Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
-                .addParameter("idtarea2", tareahabilidad.getId_tarea())
-                .addParameter("idhabilidad2", tareahabilidad.getId_habilidad())
-                .addParameter("id2", tareahabilidad.getId_tarea_habilidad())
+                .addParameter("idtarea2", tareahabilidad.getIdTarea())
+                .addParameter("idhabilidad2", tareahabilidad.getIdHabilidad())
+                .addParameter("id2", tareahabilidad.getIdTabla())
                 .executeUpdate();
 
         } catch(Exception e) {

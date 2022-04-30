@@ -31,7 +31,7 @@
 
       <div>
           <a href="#">
-            <button type="button" style="position: absolute; top: 60px; left: 650%; width : 150px ; padding: 10px" class="btn btn-success">Nueva tarea</button>
+            <button type="button" style="position: absolute; top: 60px; left: 650%; width : 150px ; padding: 10px" class="btn btn-success">Nueva Emergencia</button>
           </a>
       </div>
 

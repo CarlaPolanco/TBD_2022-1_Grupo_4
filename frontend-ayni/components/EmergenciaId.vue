@@ -46,14 +46,14 @@
 
       <div>
         <h1> </h1>
-        <a href="#">
+        <a href="./TareaId">
         <button class="botonDos" style="position: absolute; top: 10px; left: 200%; width : 200px ; padding: 10px"><span>Tarea 1</span></button>
         </a>
       </div>
 
       <div>
         <h1> </h1>
-        <a href="#">
+        <a href="./TareaId">
         <button class="botonDos" style="position: absolute; top: 100px; left: 200%; width : 200px ; padding: 10px"><span>Tarea 2</span></button>
         </a>
       </div>
@@ -61,7 +61,7 @@
       <div>
         <h1> </h1>
         <a href="#">
-        <button class="botonDos" style="position: absolute; top: 190px; left: 200%; width : 200px ; padding: 10px"><span>Mas Tareas</span></button>
+        <button class="botonDos" style="position: absolute; top: 200px; left: 200%; width : 200px ; padding: 10px"><span>Mas Tareas</span></button>
         </a>
       </div>
 

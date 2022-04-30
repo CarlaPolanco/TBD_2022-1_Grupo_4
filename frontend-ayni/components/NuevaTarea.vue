@@ -27,18 +27,12 @@
     <div class = "contenedorDos" >
         <div>
             <a href="#">
-            <button class="botonDos"><span>Asignar</span></button>
-            </a>
-        </div>
-
-        <div>
-            <a href="#">
-            <button class="botonTres"><span>No!</span></button>
+            <button type="button" class="btn btn-primary btn-lg">Registrar</button>
             </a>
         </div>
     </div>
-
   </div>
+
 </div>
 </template>
 

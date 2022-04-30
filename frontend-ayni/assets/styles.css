@@ -41,6 +41,46 @@ body { background-color: #4F3185 }
   top: 0;
 }
 
+.botonDos {
+  display: inline-flex;
+  width: 100%;
+  height: 80px;
+  background-color: #169691;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 16px 200px;
+  font-size: 20px;
+  font-weight: 400px;
+  border: #0d0d0d;
+  cursor: pointer;
+  transition: .3s ease all;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  bottom: 0cm;
+}
+
+.botonDos::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #dce8f1;
+  position: absolute;
+  z-index: 1;
+  top: -80px;
+  left: 0;
+  transition: .3s ease-in-out all;
+}
+.botonDos span {
+  position: relative;
+  z-index: 2;
+  transition: .3s ease all;
+}
+
+.botonDos:hover::after {
+  top: 0;
+}
+
+
 .contenedor {
   position: absolute;
   top: 120px;
@@ -65,24 +105,25 @@ body { background-color: #4F3185 }
 
 .contenedorDos {
   display: inline-flex;
-
 }
 .contenedorDos div {
-  padding: 50px;
+  padding: 10px;
 }
 
-.botonDos {
-  background-color: rgb(0, 161, 5);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border: #0d0d0d;
-  padding: 25px 35px;
+.contenedorTres {
+  position: absolute;
+  display: inline-flex;
+  top: 50px;
 }
 
-.botonTres {
-  background-color: rgb(245, 0, 0);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  border: #0d0d0d;
-  padding: 25px 50px;
+.contenedorTres div {
+  padding: 10px;
+}
+
+.contenedorTres div a{
+  padding: 10px;
+  text-decoration: none;
+  display: inline-flex;
 }
 
 /* STRUCTURE */
@@ -110,6 +151,24 @@ body { background-color: #4F3185 }
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;
   }
+
+  #formTareasID {
+
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    text-align: center;
+    top: 50px;
+    left: 100px;
+  }
+
   
   #formFooter {
     background-color: #f6f6f6;
@@ -120,8 +179,7 @@ body { background-color: #4F3185 }
     border-radius: 0 0 10px 10px;
   }
   
-  
-  
+
   /* TABS */
   
   h2.inactive {

@@ -1,6 +1,6 @@
 <template>
     <body>
         <Navbar/>
-        <TareaId/>
+        <Emergencia/>
     </body>
 </template>

@@ -5,7 +5,7 @@
     <!-- Tabs Titles -->
 
     <div>
-        <h1> Formulario de Tareas</h1> 
+        <h1> Creacion nueva tarea</h1> 
     </div>
 
     <!-- Icon -->

@@ -129,7 +129,7 @@ public class TablesContext {
         rankingRepositoryImp2.createRanking(ranking2);
 
         Tarea tarea1 = new Tarea(1, "Recoger escombros", "Recoger escombros y botarlos en un sitio seguro", fecha1, longitud1, latitud1);
-        Tarea tarea2 = new Tarea(2, "Recoger escombros", "Recoger escombros y botarlos en un sitio seguro", fecha2, longitud2, latitud2);
+        Tarea tarea2 = new Tarea(2, "Recoger basura", "Limpiar y recoger basura", fecha2, longitud2, latitud2);
 
         TareaRepositoryImp tareaRepositoryImp = new TareaRepositoryImp();
         TareaRepositoryImp tareaRepositoryImp2 = new TareaRepositoryImp();

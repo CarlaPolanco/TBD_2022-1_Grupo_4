@@ -29,7 +29,7 @@ public class TablesContext {
     private Connection con;
     private Sql2o sql2o;
 
-    public TablesContext(Connection con, Sql2o sql2o){
+    public TablesContext(Connection con){
         this.con = con;
     }
     public void crearTablas(){
@@ -53,6 +53,7 @@ public class TablesContext {
     }
     public void insertValores(){
         try{
+
         String fechastr="2022-04-21";  
         Date fecha1 = Date.valueOf(fechastr);
         fechastr="2022-03-21";
@@ -73,6 +74,7 @@ public class TablesContext {
         Emergencia emergencia3 = new Emergencia(3, "Terremoto", "Terremoto destruyo muchas casas", fecha3, longitud3, latitud3, requisitos3, requisitos2);
 
         EmergenciaRepositoryImp emergenciaimp = new EmergenciaRepositoryImp();
+        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         emergenciaimp.createEmergencia(emergencia1);
         emergenciaimp.createEmergencia(emergencia2);
         emergenciaimp.createEmergencia(emergencia3);
@@ -108,8 +110,8 @@ public class TablesContext {
         habilidadimp1.createHabilidad(habilidad1);
         habilidadimp2.createHabilidad(habilidad2);
 
-        Institucion institucion1 = new Institucion(1, "Fundacion caridad", "caridad@gmail.com", "942332112")
-        Institucion institucion2 = new Institucion(2, "Fundacion amigable", "amigable@gmail.com", "942332222")
+        Institucion institucion1 = new Institucion(1, "Fundacion caridad", "caridad@gmail.com", "942332112");
+        Institucion institucion2 = new Institucion(2, "Fundacion amigable", "amigable@gmail.com", "942332222");
         
         InstitucionRepositoryImp institucionimp1 = new InstitucionRepositoryImp();
         InstitucionRepositoryImp institucionimp2 = new InstitucionRepositoryImp();
@@ -162,6 +164,7 @@ public class TablesContext {
         }catch (Exception e) {
             System.out.println("No se pudieron insertar los valores");
             System.out.println(e.getMessage());
+            System.out.println("AAAAAAAAA");
         }
 
     }

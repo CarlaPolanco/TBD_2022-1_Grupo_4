@@ -17,8 +17,6 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     private Sql2o sql2o;
 
 
-
-
     @Override
     public int countEmergencias(){
         int total = 0;

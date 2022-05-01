@@ -42,7 +42,7 @@ public class DatabaseContext {
                 System.out.println("Se esta creando la base de datos");
                 base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
                 con = base.open();
-                TablesContext tablas = new TablesContext(con,base);
+                TablesContext tablas = new TablesContext(con);
                 tablas.crearTablas();
                 tablas.insertValores();
             }catch(Sql2oException e){

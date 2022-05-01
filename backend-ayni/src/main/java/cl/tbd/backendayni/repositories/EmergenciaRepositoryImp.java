@@ -16,6 +16,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Autowired(required = false)
     private Sql2o sql2o;
 
+
+
+
     @Override
     public int countEmergencias(){
         int total = 0;

@@ -22,7 +22,7 @@ public class DatabaseContext {
         for(i=0;i<7;i++){
             //Sql2o base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
             try{
-                Sql2o base = new Sql2o("jdbc:postgresql://localhost:5433/aynidatabase",usuarios[i],contraseñas[i]);
+                Sql2o base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
                 Connection con = base.open();
                 return base;
 
@@ -35,15 +35,16 @@ public class DatabaseContext {
         }
         for(i=0;i<7;i++){
             try{
-            Sql2o base = new Sql2o("jdbc:postgresql://localhost:5433/",usuarios[i],contraseñas[i]);
-            String sql = "CREATE DATABASE AYNIDATABASE";
-            Connection con = base.open();
-            con.createQuery(sql).executeUpdate();
-            System.out.println("Se esta creando la base de datos");
-            base = new Sql2o("jdbc:postgresql://localhost:5433/aynidatabase",usuarios[i],contraseñas[i]);
-            con = base.open();
-            TablesContext tablas = new TablesContext(con);
-            tablas.crearTablas();
+                Sql2o base = new Sql2o("jdbc:postgresql://localhost:5432/",usuarios[i],contraseñas[i]);
+                String sql = "CREATE DATABASE AYNIDATABASE";
+                Connection con = base.open();
+                con.createQuery(sql).executeUpdate();
+                System.out.println("Se esta creando la base de datos");
+                base = new Sql2o("jdbc:postgresql://localhost:5432/aynidatabase",usuarios[i],contraseñas[i]);
+                con = base.open();
+                TablesContext tablas = new TablesContext(con,base);
+                tablas.crearTablas();
+                tablas.insertValores();
             }catch(Sql2oException e){
                 System.out.println("Se esta creando la base de datos");
             }

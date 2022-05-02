@@ -50,14 +50,14 @@
         <div  v-for="(item, index) in items_tarea" :key="index">
             <div>
                 <h1> </h1>
-                <a v-bind:href="'TareaId/'+item.id">
+                <a v-bind:href="'../TareaId/'+item.id">
                 <button class="botonDos"><span>{{item.nombre}}</span></button>
                 </a>
             </div>
         </div>
         <div>
             <h1> </h1>
-            <a href="./Tareas">
+            <a href="../Tareas">
             <button class="botonDos"><span>Mas Tareas</span></button>
             </a>
         </div>

@@ -11,7 +11,7 @@
         <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./Emergencia">Emergencias</a>
+        <a class="nav-link" href="/Emergencia">Emergencias</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Quienes Somos</a>

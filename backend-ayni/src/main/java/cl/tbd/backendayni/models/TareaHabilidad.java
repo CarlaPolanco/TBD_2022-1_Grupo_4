@@ -1,18 +1,18 @@
 package cl.tbd.backendayni.models;
 
 public class TareaHabilidad {
-	private long idTabla;
+	private long id;
     private long idTarea;
     private long idHabilidad;
     
-	public TareaHabilidad(long idTabla, long idTarea, long idHabilidad) {
-		this.idTabla = idTabla;
+	public TareaHabilidad(long id, long idTarea, long idHabilidad) {
+		this.id = id;
 		this.idTarea = idTarea;
 		this.idHabilidad = idHabilidad;
 	}
 
 	public long getIdTabla() {
-		return idTabla;
+		return id;
 	}
 
 	public long getIdTarea() {
@@ -24,7 +24,7 @@ public class TareaHabilidad {
 	}
 
 	public void setIdTabla(long idTabla) {
-		this.idTabla = idTabla;
+		this.id = idTabla;
 	}
 
 	public void setIdTarea(long idTarea) {

@@ -33,13 +33,15 @@ public class Emergencia {
     public Emergencia(){
     }
 
-    public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud) {
+    public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud,String requisitosGrupales,String requisitosIndividuales) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.longitud = longitud;
         this.latitud = latitud;
+        this.requisitosGrupales = requisitosGrupales;
+        this.requisitosIndividuales = requisitosIndividuales;
     }
     /*
     public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, String[] requisitosGrupales, String[] requisitosIndividuales) {

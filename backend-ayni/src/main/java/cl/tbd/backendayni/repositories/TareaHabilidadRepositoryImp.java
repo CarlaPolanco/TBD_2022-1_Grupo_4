@@ -1,7 +1,6 @@
 package cl.tbd.backendayni.repositories;
 
-import cl.tbd.backendayni.models.Tarea;
-import cl.tbd.backendayni.models.Habilidad;
+
 import cl.tbd.backendayni.models.TareaHabilidad;
 import org.sql2o.Sql2o;
 import java.util.List;
@@ -64,16 +63,16 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
     @Override
     public TareaHabilidad createTareaHabilidad(TareaHabilidad tareahabilidad){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO tareahabiliad(id, idtarea, idhabilidad)" + 
-                            "VALUES(:id2, :idtarea2, :idhabilidad2)";
+        String SQL_INSERT = "INSERT INTO tareahabilidad(idtarea, idhabilidad)" + 
+                            "VALUES(:idtarea2, :idhabilidad2)";
 
         try{
 
-            conn.createQuery(SQL_INSERT)
-                .addParameter("id2", tareahabilidad.getIdTabla())
+            conn.createQuery(SQL_INSERT,true)
                 .addParameter("idtarea2", tareahabilidad.getIdTarea())
                 .addParameter("idhabilidad2", tareahabilidad.getIdHabilidad())
                 .executeUpdate();
+
 
             tareahabilidad.setIdTabla(newId());
 

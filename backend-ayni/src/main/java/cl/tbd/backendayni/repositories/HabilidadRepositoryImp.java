@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Repository
 public class HabilidadRepositoryImp implements HabilidadRepository {
 
-    @Autowired(required = false)
+    @Autowired
     private Sql2o sql2o;
 
     @Override

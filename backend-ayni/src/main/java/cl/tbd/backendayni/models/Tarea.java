@@ -21,21 +21,16 @@ public class Tarea{
 	private String nombre;
     private String descripcion;
     private Date fecha;
-    private long longitud;
-    private long latitud;
-	private ArrayList<Habilidad> requerimientos;
+	private String requerimientos;
 
     
     
-	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<Habilidad> requerimientos) {
+	public Tarea(long id, String nombre, String descripcion, Date fecha, String requerimientos) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
-		this.longitud = longitud;
-		this.latitud = latitud;
 		this.requerimientos = requerimientos;
-
 	}
 
 
@@ -59,13 +54,8 @@ public class Tarea{
 	}
 
 
-	public long getLongitud(){
-		return longitud;
-	}
-
-
-	public long getLatitud(){
-		return latitud;
+	public String getRequerimientos(){
+		return requerimientos;
 	}
 
 
@@ -89,22 +79,7 @@ public class Tarea{
 	}
 
 
-	public void setLongitud(long longitud) {
-		this.longitud = longitud;
-	}
-
-
-	public void setLatitud(long latitud) {
-		this.latitud = latitud;
-	}
-
-
-
-	public ArrayList<Habilidad> getRequerimientos() {
-		return requerimientos;
-	}
-
-	public void setRequerimientos(ArrayList<Habilidad> requerimientos) {
+	public void setRequerimientos(String requerimientos) {
 		this.requerimientos = requerimientos;
 	}
 

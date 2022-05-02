@@ -25,14 +25,13 @@ public class RankingRepositoryImp implements RankingRepository{
     public Ranking createRanking(Ranking ranking){
         Connection conn = sql2o.open();
 
-        String SQL_INSERT = "INSERT INTO ranking(idTarea, idVoluntario, porcentajeranking)" + 
-        "VALUES (:idTarea2, :idVoluntario2, :ranking2)";
+        String SQL_INSERT = "INSERT INTO ranking(idTarea, idVoluntario)" + 
+        "VALUES (:idTarea2, :idVoluntario2)";
 
         try{
             conn.createQuery(SQL_INSERT)
                 .addParameter("idTarea2", ranking.getIdTarea())
                 .addParameter("idVoluntario2", ranking.getIdVoluntario())
-                .addParameter("ranking2", ranking.getRanking())
                 .executeUpdate();
 
             ranking.setId(newID());
@@ -103,7 +102,7 @@ public class RankingRepositoryImp implements RankingRepository{
 
     @Override
     public void updateRanking(Ranking ranking) {
-        String SQL_UPDATE = "UPDATE ranking SET idVoluntario = :idVoluntario2, idTarea = :idTarea2, porcentajeranking = :ranking2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE ranking SET idVoluntario = :idVoluntario2, idTarea = :idTarea2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
 
@@ -111,7 +110,6 @@ public class RankingRepositoryImp implements RankingRepository{
                 .addParameter("idTarea2", ranking.getIdTarea())
                 .addParameter("idVoluntario2", ranking.getIdVoluntario())
                 .addParameter("id2", ranking.getId())
-                .addParameter("ranking2", ranking.getRanking())
                 .executeUpdate();
                 
         } catch(Exception e) {

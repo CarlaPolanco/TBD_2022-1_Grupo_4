@@ -59,8 +59,10 @@ public class Ranking {
                 }
             }
         }
+        if(porcentaje = nul)
+        system.out.println();
         float porcentaje;
-        porcentaje = (counter * 100)/(listTH.size());
+        porcentaje = 4.0;
         this.porcentajeRanking = porcentaje;
     }
 

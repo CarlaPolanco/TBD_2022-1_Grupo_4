@@ -63,18 +63,16 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     } 
     
     @Override
-    public void getVoluntarioLogin(String nombre,String password){
-        Connection conn = sql2o.open();
-        String SQL_GET = "SELECT * FROM voluntario" + 
-                            "WHERE nombreUsuario = :nombreUsuario2 AND contrasena = :contrasena2";
-        try
+    public List<Voluntario> getVoluntarioLogin(String nombre,String password){
+        try(Connection conn = sql2o.open())
         {
-            conn.createQuery(SQL_GET)
+            return conn.createQuery("SELECT * FROM voluntario WHERE nombreUsuario = :nombreUsuario2 AND contrasena = :contrasena2")
                 .addParameter("nombreUsuario2",nombre)
                 .addParameter("contrasena2",password)
-                .executeUpdate();
+                .executeAndFetch(Voluntario.class);
         } catch(Exception e) {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "Nombre de Usuario o Contrasena incorrectos\n");
+            return null;
         }
     }
     

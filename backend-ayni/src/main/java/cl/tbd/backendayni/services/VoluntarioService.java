@@ -31,8 +31,8 @@ public class VoluntarioService {
     }
 
     @GetMapping("/voluntario/{nombre}/{password}")
-    public void getVoluntarioLogin(@PathVariable String nombre,@PathVariable String password){
-        voluntarioRepository.getVoluntarioLogin(nombre, password);
+    public List<Voluntario> getVoluntarioLogin(@PathVariable String nombre,@PathVariable String password){
+       return voluntarioRepository.getVoluntarioLogin(nombre, password);
     }
     /*
     @PostMapping("/voluntario/create")

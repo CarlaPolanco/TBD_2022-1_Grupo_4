@@ -27,7 +27,7 @@ public class TablesContext {
             con.createQuery("create table ranking" + "(id serial primary key, porcentajeRanking real, idTarea serial, idVoluntario serial) ").executeUpdate();
             con.createQuery("create table tarea" + "(id serial primary key, nombre text, descripcion text, fecha date,requerimientos text) ").executeUpdate();
             con.createQuery("create table tareaHabilidad" + "(id serial primary key, idTarea serial, idHabilidad serial) ").executeUpdate();
-            con.createQuery("create table voluntario" + "(id serial primary key, correo text, nombreUsuario text, contrasena text, atributos text) ").executeUpdate();
+            con.createQuery("create table voluntario" + "(id serial primary key, correo text, nombreUsuario text, contrasena text, atributos text, UNIQUE(nombreUsuario)) ").executeUpdate();
             con.createQuery("create table voluntarioHabilidad" + "(id serial primary key, idVoluntario serial, idHabilidad serial) ").executeUpdate();
             
             //DUMP 

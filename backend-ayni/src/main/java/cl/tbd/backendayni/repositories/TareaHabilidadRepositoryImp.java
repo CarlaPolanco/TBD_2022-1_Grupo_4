@@ -116,4 +116,16 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar el tareahabilidad\n");
         }
     }
+
+    @Override
+    public List<TareaHabilidad> getTareaHabilidadByTareaId(long id){
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT * FROM tareahabilidad WHERE tareahabilidad.idtarea = :id")
+                    .addParameter("id", id)
+                    .executeAndFetch(TareaHabilidad.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    } 
 }

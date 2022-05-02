@@ -1,6 +1,7 @@
 package cl.tbd.backendayni.models;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import java.util.List;
 
 @EntityScan
 public class Ranking {
@@ -49,25 +50,18 @@ public class Ranking {
         this.id = id;
     }
 
-
-    /*Calculamos el ranking de la relacion Voluntario - Tarea haciendo un paso por los requisitos de la tarea y con las habildades que el voluntario
-    tiene, calculamos el porcentaje de "acierto" y luego lo colocamos dentro del ranking */
-    /* HAY QUE ARREGLAR ESTA FUNCION VOLUNTARIO YA NO TIENE GET HABILIDAD
-    public void generateRankingPercent(Tarea tarea, Voluntario vol, VoluntarioHabilidad volhab){
-        if (tarea.getId() == this.idTarea && vol.getId() == this.idVoluntario){
-            int contador = 0;
-            for (int i = 0; i <tarea.getRequisitos().size(); i++ ){
-                for(int j = 0; j < vol.getHabilidades().size(); j++){
-                    if (tarea.getRequisitos().get(i) == vol.getHabilidades().get(j)){
-                        contador = contador + 1;
-                    }
+    public float generateRankingPercent(List<TareaHabilidad> listTH, List<VoluntarioHabilidad> listVH){
+        int counter = 0;
+        for(int i = 0; i< listTH.size(); i++){
+            for(int j = 0; j< listTH.size(); j++){
+                if(listTH.get(i).getIdHabilidad() == listVH.get(i).getId_habilidad()){
+                    counter = counter + 1;
                 }
             }
-            float ranking = (contador * 100)/tarea.getRequisitos().size();
-
-            this.porcentajeRanking = ranking;
-        }  
+        }
+        float porcentaje;
+        porcentaje = (counter * 100)/(listTH.size());
+        return porcentaje;
     }
-    */
 
 }

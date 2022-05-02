@@ -29,7 +29,7 @@
                                 <th style="width: 100x;"></th>                
                                 <th style="width: 800px;">Nombre Voluntario</th>
                                 <th style="width: 100x;">Ranking</th>
-                                <th style="width: 100px;"><input type="checkbox" id="all" onclick="selects()"></th>
+                                <th style="width: 100px;"><input type="checkbox" id="one_checkbox" onclick="selects()"></th>
                             </tr>
                         </thead>
                         <tbody>

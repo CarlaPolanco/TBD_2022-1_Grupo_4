@@ -50,7 +50,7 @@ public class Ranking {
         this.id = id;
     }
 
-    public float generateRankingPercent(List<TareaHabilidad> listTH, List<VoluntarioHabilidad> listVH){
+    public void generateRankingPercent(List<TareaHabilidad> listTH, List<VoluntarioHabilidad> listVH){
         int counter = 0;
         for(int i = 0; i< listTH.size(); i++){
             for(int j = 0; j< listTH.size(); j++){
@@ -61,7 +61,7 @@ public class Ranking {
         }
         float porcentaje;
         porcentaje = (counter * 100)/(listTH.size());
-        return porcentaje;
+        this.porcentajeRanking = porcentaje;
     }
 
 }

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import cl.tbd.backendayni.models.Ranking;
 import cl.tbd.backendayni.models.Tarea;
+import cl.tbd.backendayni.models.TareaHabilidad;
+import cl.tbd.backendayni.models.VoluntarioHabilidad;
 import cl.tbd.backendayni.models.Voluntario;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -116,7 +118,28 @@ public class RankingRepositoryImp implements RankingRepository{
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar el Ranking\n");
         }
     }
+    @Override
+    public void addNumberToRanking(Ranking ranking){
+        List<TareaHabilidad> listaTH = new ArrayList<TareaHabilidad>();
+        List<VoluntarioHabilidad> listaVH = new ArrayList<VoluntarioHabilidad>();;
+        try(Connection conn = sql2o.open()){
+            listaTH = conn.createQuery("SELECT * FROM tareahabilidad WHERE tareahabilidad.idtarea = :id")
+                    .addParameter("id", ranking.getId())
+                    .executeAndFetch(TareaHabilidad.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        try(Connection conn = sql2o.open()){
+            listaVH = conn.createQuery("SELECT * FROM voluntariohabilidad WHERE voluntariohabilidad.idvoluntario = :id")
+                    .addParameter("id", ranking.getId())
+                    .executeAndFetch(VoluntarioHabilidad.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        ranking.generateRankingPercent(listaTH, listaVH);
 
+    }
     
 
     

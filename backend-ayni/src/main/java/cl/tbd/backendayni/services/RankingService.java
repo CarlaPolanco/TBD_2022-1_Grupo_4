@@ -33,6 +33,7 @@ public class RankingService {
     @ResponseBody
     public Ranking createRanking(@RequestBody Ranking ranking){
         Ranking newRanking = rankingRepository.createRanking(ranking);
+        rankingRepository.addNumberToRanking(newRanking);
         return newRanking;
     }
 
@@ -50,6 +51,7 @@ public class RankingService {
     @RequestMapping(value = "/ranking/updateById/{id}", method = RequestMethod.PUT)
     public void updateRanking(@RequestBody Ranking ranking) {
         rankingRepository.updateRanking(ranking);
+        rankingRepository.addNumberToRanking(ranking);
     }
 
     @RequestMapping(value = "/ranking/getById/{id}", method = RequestMethod.GET)

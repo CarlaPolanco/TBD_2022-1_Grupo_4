@@ -18,5 +18,5 @@ public interface RankingRepository {
     public List<Ranking> showRankingById(long id);
     public void deleteRankingById(long id);
     public void updateRanking(Ranking ranking);
-    
+    public void addNumberToRanking(Ranking ranking);
 }

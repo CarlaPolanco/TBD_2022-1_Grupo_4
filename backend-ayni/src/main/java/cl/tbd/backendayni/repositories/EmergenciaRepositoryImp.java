@@ -66,7 +66,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
 
 
-    @Override
+   /*  @Override
     public Emergencia createEmergencia(Emergencia emergencia){
         Connection conn = sql2o.open();
         String SQL_INSERT = "INSERT INTO emergencia(nombre, descripcion, fecha, longitud, latitud)" + 
@@ -90,10 +90,10 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo crear la emergencia\n");
             return null;
         }
-    }
+    } */
 
 
-    /*
+    
     @Override
     public Emergencia createEmergencia(Emergencia emergencia){
         Connection conn = sql2o.open();
@@ -121,7 +121,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             return null;
         }
     }
-    */
+   
 
     @Override 
     public void deleteEmergenciaById(long id){
@@ -137,7 +137,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     }
     
 
-    @Override
+    /*@Override
     public void updateEmergencia(Emergencia emergencia){
 
         String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, id = :id2 WHERE id = :id2";
@@ -156,9 +156,9 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         } catch(Exception e) {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la emergencia\n");
         }
-    }
+    }*/
 
-    /*
+    
     @Override
     public void updateEmergencia(Emergencia emergencia){
 
@@ -180,6 +180,6 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         } catch(Exception e) {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la emergencia\n");
         }
-    }*/
+    }
 
 }

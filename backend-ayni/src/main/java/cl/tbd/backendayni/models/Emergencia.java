@@ -26,8 +26,8 @@ public class Emergencia {
     //private String[] requisitosGrupales;
     //private String[] requisitosIndividuales;
 
-    //private ArrayList<String> requisitosGrupales;
-    //private ArrayList<String> requisitosIndividuales;
+    private String requisitosGrupales;
+    private String requisitosIndividuales;
 
 
     public Emergencia(){
@@ -98,16 +98,16 @@ public class Emergencia {
     /**
 	 * @return array requisitos grupales
 	*/
-    /*public String[] getRequisitosGrupales() {
+    public String getRequisitosGrupales() {
         return requisitosGrupales;
-    }*/
+    }
 
     /**
 	 * @return array requisitos individuales
 	*/
-    /*public String[] getRequisitosIndividuales() {
+    public String getRequisitosIndividuales() {
         return requisitosIndividuales;
-    }*/
+    }
 
     //SETTERS
 
@@ -149,14 +149,14 @@ public class Emergencia {
     /**
 	 * @param requisitosGrupales the requisitosGrupales to set
 	 */
-    /*public void setRequisitosGrupales(String[] requisitosGrupales) {
+    public void setRequisitosGrupales(String requisitosGrupales) {
         this.requisitosGrupales = requisitosGrupales;
-    }    */
+    }    
 
     /**
 	 * @param requisitosIndividuales the requisitosIndividuales to set
 	 */
-    /*public void setRequisitosIndividuales(String[] requisitosIndividuales) {
+    public void setRequisitosIndividuales(String requisitosIndividuales) {
         this.requisitosIndividuales = requisitosIndividuales;
-    }*/
+    }
 }

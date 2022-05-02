@@ -17,8 +17,8 @@ public class TablesContext {
         try{
             //CREACION DE TABLAS 
             System.out.println("Se crearon las tablas");
-            //con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8), requisitosgrupales text[], requisitosindividuales text[]) ").executeUpdate();
-            con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8)) ").executeUpdate();
+            con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8), requisitosgrupales text, requisitosindividuales text) ").executeUpdate();
+            //con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8)) ").executeUpdate();
             con.createQuery("create table estado" + "(id serial primary key, nombre text) ").executeUpdate();
             con.createQuery("create table emergenciaHabilidad" + "(id serial primary key, idEmergencia serial, idHabilidad serial) ").executeUpdate();
             con.createQuery("create table estadotarea" + "(id serial primary key, idEstado serial, idTarea serial) ").executeUpdate();
@@ -36,26 +36,27 @@ public class TablesContext {
 
             //VOLUNTARIO
 
-            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('juan@gmail.com', 'Juan', 'juancontrasena', 'Responsable y esforzado');").executeUpdate();
-            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('mario@gmail.com','Mario', 'mariocontrasena', 'Eficiente y acertivo');").executeUpdate();
-            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('admin@gmail.com','admin', 'admin', 'Omnisciente y Poderoso');").executeUpdate();
+            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('juan@gmail.com', 'Juan', 'juancontrasena', 'Responsable, esforzado');").executeUpdate();
+            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('mario@gmail.com','Mario', 'mariocontrasena', 'Eficiente, acertivo');").executeUpdate();
+            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('admin@gmail.com','admin', 'admin', 'Omnisciente, Poderoso');").executeUpdate();
 
             
             //EMERGENCIA
 
-            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['No tener problemas respiratorios', 'Extintor']);").executeUpdate();
-            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
-            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689,'Especialistas medicos, Material medico','No tener problemas respiratorios, Extintor');").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689,'Especialistas medicos, Material medico','Hablar ingles, Pala');").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689,'Especialistas medicos, Material medico','Hablar ingles, Pala');").executeUpdate();
             
-            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689);").executeUpdate();
-            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689);").executeUpdate();
-            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689);").executeUpdate();
+            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689);").executeUpdate();
+            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689);").executeUpdate();
+            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689);").executeUpdate();
             
             
             //HABILIDAD
 
             con.createQuery("insert into habilidad(habilidad) values('Correr rapido');").executeUpdate();
             con.createQuery("insert into habilidad(habilidad) values('Muy fuerte');").executeUpdate();
+            con.createQuery("insert into habilidad(habilidad) values('Hablar ingles');").executeUpdate();
             
             //ESTADO
 
@@ -76,21 +77,27 @@ public class TablesContext {
             
             //TAREA
             
-            con.createQuery("insert into tarea(nombre,descripcion,fecha,requerimientos) values('Recoger escombros', 'Recoger escombros y botarlos en un sitio seguro','2022-04-21', 'Rastrillo');").executeUpdate();
-            con.createQuery("insert into tarea(nombre,descripcion,fecha,requerimientos) values('Recoger basura', 'Limpiar y regocer basura','2022-05-18', 'Escoba y pala');").executeUpdate();
+            con.createQuery("insert into tarea(nombre,descripcion,fecha,requerimientos) values('Recoger escombros', 'Recoger escombros, botarlos en un sitio seguro','2022-04-21', 'Rastrillo');").executeUpdate();
+            con.createQuery("insert into tarea(nombre,descripcion,fecha,requerimientos) values('Recoger basura', 'Limpiar, regocer basura','2022-05-18', 'Escoba, pala');").executeUpdate();
 
             //TAREA-HABILIDAD
 
             con.createQuery("insert into tareahabilidad(idTarea,idHabilidad) values(1,1);").executeUpdate();
+            con.createQuery("insert into tareahabilidad(idTarea,idHabilidad) values(1,2);").executeUpdate();
             con.createQuery("insert into tareahabilidad(idTarea,idHabilidad) values(2,2);").executeUpdate();
-            
+            con.createQuery("insert into tareahabilidad(idTarea,idHabilidad) values(2,3);").executeUpdate();
+
+
             //VOLUNTARIO-HABILIDAD
 
             con.createQuery("insert into voluntariohabilidad(idVoluntario,idHabilidad) values(1,1);").executeUpdate();
+            con.createQuery("insert into voluntariohabilidad(idVoluntario,idHabilidad) values(1,3);").executeUpdate();
             con.createQuery("insert into voluntariohabilidad(idVoluntario,idHabilidad) values(2,2);").executeUpdate();
             
             //EMERGENCIA-HABILIDAD
             con.createQuery("insert into emergenciaHabilidad(idEmergencia, idHabilidad) values(1,1);").executeUpdate();
+            con.createQuery("insert into emergenciaHabilidad(idEmergencia, idHabilidad) values(1,3);").executeUpdate();
+            con.createQuery("insert into emergenciaHabilidad(idEmergencia, idHabilidad) values(2,3);").executeUpdate();
             con.createQuery("insert into emergenciaHabilidad(idEmergencia, idHabilidad) values(2,2);").executeUpdate();
 
             //RANKING

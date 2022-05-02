@@ -25,7 +25,7 @@
 
       <div class="contenedorDos">
         <div>
-          <a href="./SelectVolTarea">
+          <a href="#">
             <button type="button" class="btn btn-primary btn-lg">
               Aceptar
             </button>

@@ -102,7 +102,7 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
 
 
     @Override
-    public void updateHabilidadById(Habilidad habilidad){
+    public void updateHabilidad(Habilidad habilidad){
 
         String SQL_UPDATE = "UPDATE habilidad SET habilidad.habilidad = :habilidad2 WHERE habilidad.id = :id2";
 

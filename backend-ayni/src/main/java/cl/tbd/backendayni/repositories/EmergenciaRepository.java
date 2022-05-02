@@ -13,5 +13,5 @@ public interface EmergenciaRepository {
     public List<Emergencia> showEmergenciaById(long id);
     public Emergencia createEmergencia(Emergencia emergencia);
     public void deleteEmergenciaById(long id);
-    public void updateEmergenciaById(Emergencia emergencia);
+    public void updateEmergencia(Emergencia emergencia);
 }

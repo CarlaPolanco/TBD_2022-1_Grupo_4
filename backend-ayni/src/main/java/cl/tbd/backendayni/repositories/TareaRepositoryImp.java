@@ -77,7 +77,7 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("fecha2", tarea.getFecha())
                 .addParameter("longitud2", tarea.getLongitud())
                 .addParameter("latitud2", tarea.getLatitud())
-                .addParameter("requerimientos2", tarea.getRequisitos())
+                .addParameter("requerimientos2", tarea.getRequerimientos())
                 .executeUpdate();
 
             tarea.setId(newId());
@@ -106,7 +106,7 @@ public class TareaRepositoryImp implements TareaRepository {
 
 
     @Override
-    public void updateTareaById(Tarea tarea){
+    public void updateTarea(Tarea tarea){
 
         String SQL_UPDATE = "UPDATE tarea SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, id = :id2 WHERE id = :id2";
         

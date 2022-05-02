@@ -59,6 +59,6 @@ public class EstadoService {
 
     @RequestMapping(value = "/estado/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
     public void updateEstado(@RequestBody Estado estado){
-        estadoRepository.updateEstadoById(estado);
+        estadoRepository.updateEstado(estado);
     }
 }

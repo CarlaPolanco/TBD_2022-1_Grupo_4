@@ -26,7 +26,7 @@ import cl.tbd.backendayni.models.VoluntarioHabilidad;
 
 
 public class TablesContext {
-    private Connection con;
+    public Connection con;
     private Sql2o sql2o;
 
     public TablesContext(Connection con){
@@ -51,9 +51,8 @@ public class TablesContext {
             System.out.println(e.getMessage());
         }
     }
-    public void insertValores(){
+    public void insertValores(Connection con){
         try{
-
         String fechastr="2022-04-21";  
         Date fecha1 = Date.valueOf(fechastr);
         fechastr="2022-03-21";
@@ -75,9 +74,14 @@ public class TablesContext {
 
         EmergenciaRepositoryImp emergenciaimp = new EmergenciaRepositoryImp();
         System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+
+
         emergenciaimp.createEmergencia(emergencia1);
+        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE1");
         emergenciaimp.createEmergencia(emergencia2);
+        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE2");
         emergenciaimp.createEmergencia(emergencia3);
+        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE3");
 
         Estado estado1 = new Estado(1, "Sin empezar");
         Estado estado2 = new Estado(2, "En curso");
@@ -128,13 +132,13 @@ public class TablesContext {
         rankingRepositoryImp1.createRanking(ranking1);
         rankingRepositoryImp2.createRanking(ranking2);
 
-        Tarea tarea1 = new Tarea(1, "Recoger escombros", "Recoger escombros y botarlos en un sitio seguro", fecha1, longitud1, latitud1);
-        Tarea tarea2 = new Tarea(2, "Recoger basura", "Limpiar y recoger basura", fecha2, longitud2, latitud2);
+        //Tarea tarea1 = new Tarea(1, "Recoger escombros", "Recoger escombros y botarlos en un sitio seguro", fecha1, longitud1, latitud1);
+        //Tarea tarea2 = new Tarea(2, "Recoger basura", "Limpiar y recoger basura", fecha2, longitud2, latitud2);
 
         TareaRepositoryImp tareaRepositoryImp = new TareaRepositoryImp();
         TareaRepositoryImp tareaRepositoryImp2 = new TareaRepositoryImp();
-        tareaRepositoryImp.createTarea(tarea1);
-        tareaRepositoryImp2.createTarea(tarea2);
+        //tareaRepositoryImp.createTarea(tarea1);
+        //tareaRepositoryImp2.createTarea(tarea2);
 
         TareaHabilidad tareaHabilidad = new TareaHabilidad(1, 1, 1);
         TareaHabilidad tareaHabilidad2 = new TareaHabilidad(2, 2, 2);
@@ -144,7 +148,7 @@ public class TablesContext {
         tareaHabilidadRepositoryImp.createTareaHabilidad(tareaHabilidad);
         tareaHabilidadRepositoryImp2.createTareaHabilidad(tareaHabilidad2);
 
-        Voluntario voluntario = new Voluntario(1, "juan@gmail.com", "Juan", "juancontrasena", "Responsable y esforzado"); 
+        /*Voluntario voluntario = new Voluntario(1, "juan@gmail.com", "Juan", "juancontrasena", "Responsable y esforzado"); 
         Voluntario voluntario2 = new Voluntario(2, "mario@gmail.com", "Mario", "mariocontrasena", "Eficiente y acertivo"); 
 
         VoluntarioRepositoryImp voluntarioRepositoryImp = new VoluntarioRepositoryImp();
@@ -158,7 +162,7 @@ public class TablesContext {
         VoluntarioHabilidadRepositoryImp voluntarioHabilidadRepositoryImp = new VoluntarioHabilidadRepositoryImp();
         VoluntarioHabilidadRepositoryImp voluntarioHabilidadRepositoryImp2 = new VoluntarioHabilidadRepositoryImp();
         voluntarioHabilidadRepositoryImp.createVoluntarioHabilidad(voluntariohabilidad1);
-        voluntarioHabilidadRepositoryImp2.createVoluntarioHabilidad(voluntariohabilidad2);
+        voluntarioHabilidadRepositoryImp2.createVoluntarioHabilidad(voluntariohabilidad2); */
 
 
         }catch (Exception e) {

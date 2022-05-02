@@ -50,7 +50,7 @@ public class VoluntarioService {
 
     @RequestMapping(value = "/voluntario/updateById/{id}", method = RequestMethod.PUT)
     public void updateVoluntario(@RequestBody Voluntario voluntario) {
-        voluntarioRepository.updateVoluntarioById(voluntario);
+        voluntarioRepository.updateVoluntario(voluntario);
     }*/
 
     @RequestMapping(value = "/voluntario/getById/{id}", method = RequestMethod.GET)

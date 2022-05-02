@@ -17,7 +17,7 @@ public class VoluntarioHabilidad {
         return id_voluntario_habilidad;
     }
 
-    public void setId_voluntario_habilidad(int id_voluntario_habilidad) {
+    public void setId_voluntario_habilidad(long id_voluntario_habilidad) {
         this.id_voluntario_habilidad = id_voluntario_habilidad;
     }
 
@@ -25,7 +25,7 @@ public class VoluntarioHabilidad {
         return id_voluntario;
     }
 
-    public void setId_voluntario(int id_voluntario) {
+    public void setId_voluntario(long id_voluntario) {
         this.id_voluntario = id_voluntario;
     }
 
@@ -33,7 +33,7 @@ public class VoluntarioHabilidad {
         return id_habilidad;
     }
 
-    public void setId_habilidad(int id_habilidad) {
+    public void setId_habilidad(long id_habilidad) {
         this.id_habilidad = id_habilidad;
     }
 }

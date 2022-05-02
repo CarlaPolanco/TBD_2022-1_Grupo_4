@@ -11,6 +11,6 @@ public interface VoluntarioHabilidadRepository {
     public List<VoluntarioHabilidad> showVoluntarioHabilidadById(long id);
     public VoluntarioHabilidad createVoluntarioHabilidad(VoluntarioHabilidad voluntariohabilidad);
     public void deleteVoluntarioHabilidadById(long id);
-    public void updateVoluntarioHabilidadById(VoluntarioHabilidad voluntariohabilidad);
+    public void updateVoluntarioHabilidad(VoluntarioHabilidad voluntariohabilidad);
 
 }

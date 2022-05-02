@@ -101,7 +101,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
 
 
     @Override
-    public void updateInstitucionById(Institucion institucion){
+    public void updateInstitucion(Institucion institucion){
 
         String SQL_UPDATE = "UPDATE institucion SET institucion.nombre = :nombre2, institucion.correo = :correo2, institucion.numero = :numero2 WHERE institucion.id = :id2";
 

@@ -12,6 +12,6 @@ public interface TareaRepository {
     public List<Tarea> getAll();
     public List<Tarea> showTareaById(long id);
     public Tarea createTarea(Tarea tarea);
-    public void updateTareaById(Tarea tarea);
+    public void updateTarea(Tarea tarea);
     public void deleteTareaById(long id);
 }

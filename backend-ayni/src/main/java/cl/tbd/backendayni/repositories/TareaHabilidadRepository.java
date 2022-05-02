@@ -11,5 +11,5 @@ public interface TareaHabilidadRepository {
     public List<TareaHabilidad> showTareaHabilidadById(long id);
     public TareaHabilidad createTareaHabilidad(TareaHabilidad tareahabilidad);
     public void deleteTareaHabilidadById(long id);
-    public void updateTareaHabilidadById(TareaHabilidad tareahabilidad);
+    public void updateTareaHabilidad(TareaHabilidad tareahabilidad);
 }

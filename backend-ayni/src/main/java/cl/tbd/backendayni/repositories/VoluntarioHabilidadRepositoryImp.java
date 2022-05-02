@@ -101,7 +101,7 @@ public class VoluntarioHabilidadRepositoryImp implements VoluntarioHabilidadRepo
     }
 
     @Override
-    public void updateVoluntarioHabilidadById(VoluntarioHabilidad voluntariohabilidad){
+    public void updateVoluntarioHabilidad(VoluntarioHabilidad voluntariohabilidad){
 
         String SQL_UPDATE = "UPDATE voluntariohabilidad SET id = :id2, idvoluntario = idvoluntario2, idhabilidad = idhabiliadad2 WHERE id = :id2";
         

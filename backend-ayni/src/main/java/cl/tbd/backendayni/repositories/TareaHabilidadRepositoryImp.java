@@ -100,7 +100,7 @@ public class TareaHabilidadRepositoryImp implements TareaHabilidadRepository{
     }
 
     @Override
-    public void updateTareaHabilidadById(TareaHabilidad tareahabilidad){
+    public void updateTareaHabilidad(TareaHabilidad tareahabilidad){
 
         String SQL_UPDATE = "UPDATE tareahabilidad SET id = :id2, idtarea = idtarea2, idhabilidad = idhabiliadad2 WHERE id = :id2";
         

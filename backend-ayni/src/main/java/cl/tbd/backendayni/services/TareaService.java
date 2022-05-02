@@ -49,7 +49,7 @@ public class TareaService {
 
     @RequestMapping(value = "/tarea/updateById/{id}", method = RequestMethod.PUT)
     public void updateTarea(@RequestBody Tarea tarea) {
-        tareaRepository.updateTareaById(tarea);
+        tareaRepository.updateTarea(tarea);
     }
 
     @RequestMapping(value = "/tarea/getById/{id}", method = RequestMethod.GET)

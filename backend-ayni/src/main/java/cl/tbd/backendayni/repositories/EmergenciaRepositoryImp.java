@@ -108,7 +108,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
 
 
     @Override
-    public void updateEmergenciaById(Emergencia emergencia){
+    public void updateEmergencia(Emergencia emergencia){
 
         String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, requisitosGrupales = :requisitosGrupales2, requisitosIndividuales = :requisitosIndividuales2, id = :id2 WHERE id = :id2";
         

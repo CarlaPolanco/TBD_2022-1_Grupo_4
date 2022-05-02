@@ -14,8 +14,7 @@ public class Tarea{
 	 * @param fecha de la tarea 
 	 * @param longitud de la tarea 
 	 * @param latitud de la tarea 
-	 * @param tareaHabilidad de la tarea 
-	 * @param estadoTarea de la tarea 
+	 * @param requerimientos de la tarea
 	 */
 
     private long id;
@@ -28,13 +27,14 @@ public class Tarea{
 
     
     
-	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud) {
+	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<Habilidad> requerimientos) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.longitud = longitud;
 		this.latitud = latitud;
+		this.requerimientos = requerimientos;
 
 	}
 
@@ -100,8 +100,12 @@ public class Tarea{
 
 
 
-	public ArrayList<Habilidad> getRequisitos() {
+	public ArrayList<Habilidad> getRequerimientos() {
 		return requerimientos;
+	}
+
+	public void setRequerimientos(ArrayList<Habilidad> requerimientos) {
+		this.requerimientos = requerimientos;
 	}
 
 }

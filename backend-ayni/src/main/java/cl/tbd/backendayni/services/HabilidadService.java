@@ -50,7 +50,7 @@ public class HabilidadService {
 
     @RequestMapping(value = "/habilidad/updateById/{id}", method = RequestMethod.PUT)
     public void updateHabilidad(@RequestBody Habilidad habilidad) {
-        habilidadRepository.updateHabilidadById(habilidad);
+        habilidadRepository.updateHabilidad(habilidad);
     }
 
     @RequestMapping(value = "/habilidad/getById/{id}", method = RequestMethod.GET)

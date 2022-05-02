@@ -50,7 +50,7 @@ public class EmergenciaService {
 
     @RequestMapping(value = "/emergencia/updateById/{id}", method = RequestMethod.PUT)
     public void updateEmergencia(@RequestBody Emergencia emergencia) {
-        emergenciaRepository.updateEmergenciaById(emergencia);
+        emergenciaRepository.updateEmergencia(emergencia);
     }
 
     @RequestMapping(value = "/emergencia/getById/{id}", method = RequestMethod.GET)

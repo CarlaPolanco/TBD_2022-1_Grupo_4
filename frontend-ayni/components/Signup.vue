@@ -5,7 +5,7 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="../store/ayni-logo.png" id="icon" alt="User Icon" />
+      <img src="../store/ayni-logo.png" id="icon" alt="User Icon">
     </div>
 
     <!-- Login Form -->

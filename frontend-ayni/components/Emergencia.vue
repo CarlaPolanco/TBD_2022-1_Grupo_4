@@ -1,39 +1,19 @@
 <template>
+
   <div class ="contenedorTres">
-
-      <div>
+    <div class ="col-sm">
+      <div v-for="(item, index) in items" :key="index">
         <h1> </h1>
-        <a href="./EmergenciaId">
-        <button class="botonDos" style="position: absolute; top: 60px; left: 50%; width : 200px ; padding: 20px"><span>Emergencia 1</span></button>
+        <a v-bind:href="'EmergenciaId/'+item.id">
+        <button class="botonDos"><span>{{item.nombre}}</span></button>
         </a>
       </div>
-
-      <div>
-        <h1> </h1>
-        <a href="./EmergenciaId">
-        <button class="botonDos" style="position: absolute; top: 150px; left: 50%; width : 200px ; padding: 20px"><span>Emergencia 2</span></button>
+    </div>
+    <div class ="col-sm" style="padding-top:30px">
+        <a href="#">
+          <button type="button" class="btn btn-success">Nueva Emergencia</button>
         </a>
-      </div>
-
-      <div>
-        <h1> </h1>
-        <a href="./EmergenciaId">
-        <button class="botonDos" style="position: absolute; top: 240px; left: 50%; width : 200px ; padding: 20px"><span>Emergencia 3</span></button>
-        </a>
-      </div>
-
-      <div>
-        <h1> </h1>
-        <a href="./EmergenciaId">
-        <button class="botonDos" style="position: absolute; top: 330px; left: 50%; width : 200px ; padding: 20px"><span>Emergencia 4</span></button>
-        </a>
-      </div>
-
-      <div>
-          <a href="#">
-            <button type="button" style="position: absolute; top: 60px; left: 650%; width : 150px ; padding: 10px" class="btn btn-success">Nueva Emergencia</button>
-          </a>
-      </div>
+    </div>
 
     </div>
    
@@ -45,3 +25,32 @@
     max-height: 100vh;
 }
 </style>
+
+<script>
+export default {
+    //Función que contiene los datos del componente
+    data(){
+        return{
+            //Lista de ítems a mostrar
+            items:[]
+        }
+    },
+    methods:{
+        //Función asíncrona para consultar los datos
+        getData: async function(){
+            try {
+                let response = await this.$axios.get('/emergencia');
+                this.items  = response.data;
+                console.log(response);
+            } catch (error) {
+                console.log('error', error);
+            }
+        }
+    },
+    //Función que se ejecuta al cargar el componente
+    created:function(){
+        this.getData();
+    }
+
+}
+</script>

@@ -59,10 +59,13 @@ export default {
     baseURL: process.env.BACKEND_URL,
     proxy: true,
   },
-  /*
+  
   proxy: {
-    url: 'http://localhost:3000'
-  },*/
+    "/emergencia": 'http://localhost:8081',
+    "/tarea": 'http://localhost:8081',
+  },
+
+  
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

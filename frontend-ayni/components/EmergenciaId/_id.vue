@@ -41,8 +41,8 @@
       </div>
     </div>
 
-    <!-- Botones Emergencia -->
-    <div class ="contenedorTres">
+    <!-- Botones Tareas -->
+    <div class ="contenedorTres col-sm">
 
       <div>
         <h1> </h1>
@@ -81,3 +81,12 @@
     </div>
   </div>
 </template>
+
+<script>
+import Emergencia from "@/components/Emergencia.vue";
+export default{
+  name: "EmergenciaId",
+  props: ["item"]
+}
+
+</script>

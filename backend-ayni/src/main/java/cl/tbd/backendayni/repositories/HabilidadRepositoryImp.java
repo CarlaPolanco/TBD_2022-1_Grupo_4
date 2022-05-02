@@ -69,14 +69,13 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
     public Habilidad createHabilidad(Habilidad habilidad){
         Connection conn = sql2o.open();
 
-        String SQL_INSERT = "INSERT INTO habilidad(id, habilidad)" + "VALUES (:id2, :habilidad2)";
+        String SQL_INSERT = "INSERT INTO habilidad(habilidad)" + "VALUES (:habilidad2)";
 
         try{
-            conn.createQuery(SQL_INSERT)
-                .addParameter("id2", habilidad.getId())
+            conn.createQuery(SQL_INSERT,true)
                 .addParameter("habilidad2", habilidad.getHabilidad())
                 .executeUpdate();
-
+            habilidad.setId(newId());
             return habilidad;
 
         } catch(Exception e) {

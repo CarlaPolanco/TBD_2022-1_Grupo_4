@@ -68,7 +68,7 @@ public class TareaRepositoryImp implements TareaRepository {
         Connection conn = sql2o.open();
 
         String SQL_INSERT = "INSERT INTO tarea(nombre, descripcion, fecha, requerimientos)" + 
-        "VALUES (:nombre2, :descripcion2, :fecha2, :tareaHabilidad2, :estadoTarea2, :requerimientos2)";
+        "VALUES (:nombre2, :descripcion2, :fecha2, :requerimientos2)";
 
         try{
             conn.createQuery(SQL_INSERT)

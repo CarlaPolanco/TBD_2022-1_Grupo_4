@@ -68,15 +68,13 @@ public class EstadoRepositoryImp implements EstadoRepository {
         Connection conn = sql2o.open();
         String SQL_INSERT = "INSERT INTO estado(nombre)" + 
                             "VALUES(:nombre2)";
-
         try{
 
-            conn.createQuery(SQL_INSERT)
+            conn.createQuery(SQL_INSERT,true)
                 .addParameter("nombre2", estado.getNombre())
                 .executeUpdate();
 
             estado.setId(newId());
-
             return estado;
 
         } catch(Exception e) {

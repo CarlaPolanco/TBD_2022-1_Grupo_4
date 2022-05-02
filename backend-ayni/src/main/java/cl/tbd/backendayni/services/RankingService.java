@@ -58,4 +58,11 @@ public class RankingService {
     public List<Ranking> getRankingById(@PathVariable long id) {
         return rankingRepository.showRankingById(id);
     }  
+
+    @PostMapping("/ranking/create/{id1}/{id2}")
+    public Ranking createPercent(@PathVariable long id1,@PathVariable long id2){
+        Ranking newRanking = rankingRepository.createPercent(id1,id2);
+        return newRanking;
+    }
+
 }

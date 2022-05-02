@@ -13,9 +13,10 @@ public class Ranking {
     public Ranking(){
 
     }
-    public Ranking(long id2, long id_voluntario, long id_tarea){
+    public Ranking(long id2, float porcentajeRanking, long id_voluntario, long id_tarea){
         this.idTarea = id_tarea;
         this.idVoluntario = id_voluntario;
+        this.porcentajeRanking = porcentajeRanking;
         this.id = id2;
     }
 

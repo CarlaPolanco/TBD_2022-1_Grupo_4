@@ -19,4 +19,5 @@ public interface RankingRepository {
     public void deleteRankingById(long id);
     public void updateRanking(Ranking ranking);
     public void addNumberToRanking(Ranking ranking);
+    public Ranking createPercent(long id1,long id2);
 }

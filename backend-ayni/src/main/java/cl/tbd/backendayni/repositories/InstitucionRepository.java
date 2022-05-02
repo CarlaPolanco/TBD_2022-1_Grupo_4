@@ -12,5 +12,5 @@ public interface InstitucionRepository {
     public List<Institucion> showInstitucionById(long id);
     public Institucion createInstitucion(Institucion institucion);
     public void deleteInstitucionById(long id);
-    public void updateInstitucionById(Institucion institucion);
+    public void updateInstitucion(Institucion institucion);
 }

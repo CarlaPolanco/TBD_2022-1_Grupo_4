@@ -60,6 +60,6 @@ public class InstitucionService {
     
     @RequestMapping(value = "/institucion/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
     public void updateInstitucion(@RequestBody Institucion institucion){
-        institucionRepository.updateInstitucionById(institucion);
+        institucionRepository.updateInstitucion(institucion);
     }    
 }

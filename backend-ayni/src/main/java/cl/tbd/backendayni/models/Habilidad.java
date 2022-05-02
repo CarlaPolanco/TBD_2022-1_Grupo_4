@@ -9,7 +9,8 @@ public class Habilidad {
 
     public Habilidad(){
     }
-    public Habilidad(String hab){
+    public Habilidad(long id2, String hab){
+        this.id = id2;
         this.habilidad = hab;     
     }
 

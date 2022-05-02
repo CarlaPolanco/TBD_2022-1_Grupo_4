@@ -104,7 +104,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
 
 
     @Override
-    public void updateVoluntarioById(Voluntario voluntario){
+    public void updateVoluntario(Voluntario voluntario){
 
         String SQL_UPDATE = "UPDATE voluntario SET correo = :correo2, nombreUsuario = :nombreUsuario2, contrasena = :contrasena2, atributos = :atributos2, id = :id2 WHERE id = :id2";
         

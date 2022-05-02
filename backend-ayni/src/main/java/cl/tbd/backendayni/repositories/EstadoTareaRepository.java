@@ -11,5 +11,5 @@ public interface EstadoTareaRepository {
     public List<EstadoTarea> showEstadoTareaById(long id);
     public EstadoTarea createEstadoTarea(EstadoTarea estadotarea);
     public void deleteEstadoTareaById(long id);
-    public void updateEstadoTareaById(EstadoTarea estadotarea);
+    public void updateEstadoTarea(EstadoTarea estadotarea);
 }

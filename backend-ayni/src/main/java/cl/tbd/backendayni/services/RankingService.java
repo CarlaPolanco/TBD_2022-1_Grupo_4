@@ -48,8 +48,8 @@ public class RankingService {
     }
 
     @RequestMapping(value = "/ranking/updateById/{id}", method = RequestMethod.PUT)
-    public void updateTarea(@RequestBody Ranking ranking) {
-        rankingRepository.updateRankingById(ranking);
+    public void updateRanking(@RequestBody Ranking ranking) {
+        rankingRepository.updateRanking(ranking);
     }
 
     @RequestMapping(value = "/ranking/getById/{id}", method = RequestMethod.GET)

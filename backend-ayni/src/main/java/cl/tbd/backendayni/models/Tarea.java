@@ -1,7 +1,7 @@
 package cl.tbd.backendayni.models;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
@@ -14,8 +14,7 @@ public class Tarea{
 	 * @param fecha de la tarea 
 	 * @param longitud de la tarea 
 	 * @param latitud de la tarea 
-	 * @param tareaHabilidad de la tarea 
-	 * @param estadoTarea de la tarea 
+	 * @param requerimientos de la tarea
 	 */
 
     private long id;
@@ -25,20 +24,18 @@ public class Tarea{
     private long longitud;
     private long latitud;
 	private ArrayList<Habilidad> requerimientos;
-    private long idTareaHabilidad;
-    private long idEstadoTarea;
+
     
     
-	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud,
-			long idTareaHabilidad, long idEstadoTarea) {
+	public Tarea(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<Habilidad> requerimientos) {
 		this.id = id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.fecha = fecha;
 		this.longitud = longitud;
 		this.latitud = latitud;
-		this.idTareaHabilidad = idTareaHabilidad;
-		this.idEstadoTarea = idEstadoTarea;
+		this.requerimientos = requerimientos;
+
 	}
 
 
@@ -71,13 +68,7 @@ public class Tarea{
 		return latitud;
 	}
 
-	public long getIdTareaHabilidad(){
-		return idTareaHabilidad;
-	}
 
-	public long getIdEstadoTarea(){
-		return idEstadoTarea;
-	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -108,16 +99,13 @@ public class Tarea{
 	}
 
 
-	public void setIdTareaHabilidad(long idTareaHabilidad) {
-		this.idTareaHabilidad = idTareaHabilidad;
-	}
 
-
-	public void setIdEstadoTarea(long idEstadoTarea) {
-		this.idEstadoTarea = idEstadoTarea;
-	}
-	public ArrayList<Habilidad> getRequisitos() {
+	public ArrayList<Habilidad> getRequerimientos() {
 		return requerimientos;
+	}
+
+	public void setRequerimientos(ArrayList<Habilidad> requerimientos) {
+		this.requerimientos = requerimientos;
 	}
 
 }

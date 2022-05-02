@@ -102,7 +102,7 @@ public class EmergenciaHabilidadRepositoryImp implements EmergenciaHabilidadRepo
 
 
     @Override
-    public void updateEmergenciaHabilidadById(EmergenciaHabilidad emergenciaHabilidad){
+    public void updateEmergenciaHabilidad(EmergenciaHabilidad emergenciaHabilidad){
         String SQL_UPDATE = "UPDATE emergenciahabilidad SET id_emergencia_habilidad = :id_emergencia_habilidad2, id_emergencia = :id_emergencia2, id_habilidad = :id_habilidad2 WHERE emergenciahabilidad.id = :id";
 
         try(Connection conn = sql2o.open()) {

@@ -97,7 +97,7 @@ public class EstadoTareaRepositoryImp implements EstadoTareaRepository{
     }
 
     @Override
-    public void updateEstadoTareaById(EstadoTarea estadotarea){
+    public void updateEstadoTarea(EstadoTarea estadotarea){
 
         String SQL_UPDATE = "UPDATE estadotarea SET id = :id2, idestado = idestado2, idtarea = idtarea2 WHERE id = :id2";
         

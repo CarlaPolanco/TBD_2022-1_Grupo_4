@@ -67,7 +67,7 @@ public class TareaRepositoryImp implements TareaRepository {
     public Tarea createTarea(Tarea tarea){
         Connection conn = sql2o.open();
 
-        String SQL_INSERT = "INSERT INTO tarea(nombre, descripcion, fecha, longitud, latitud, tareaHabilidad, estadoTarea, requerimientos)" + 
+        String SQL_INSERT = "INSERT INTO tarea(nombre, descripcion, fecha, longitud, latitud, requerimientos)" + 
         "VALUES (:nombre2, :descripcion2, :fecha2, :longitud2, :latitud2, :tareaHabilidad2, :estadoTarea2, :requerimientos2)";
 
         try{
@@ -77,9 +77,7 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("fecha2", tarea.getFecha())
                 .addParameter("longitud2", tarea.getLongitud())
                 .addParameter("latitud2", tarea.getLatitud())
-                .addParameter("tareaHabilidad2", tarea.getIdTareaHabilidad())
-                .addParameter("estadoTarea2", tarea.getIdEstadoTarea())
-                .addParameter("requerimientos2", tarea.getRequisitos())
+                .addParameter("requerimientos2", tarea.getRequerimientos())
                 .executeUpdate();
 
             tarea.setId(newId());
@@ -108,9 +106,9 @@ public class TareaRepositoryImp implements TareaRepository {
 
 
     @Override
-    public void updateTareaById(Tarea tarea){
+    public void updateTarea(Tarea tarea){
 
-        String SQL_UPDATE = "UPDATE tarea SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, tareaHabilidad = :tareaHabilidad2, estadoTarea = :estadoTarea2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE tarea SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
 
@@ -120,8 +118,6 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("fecha2", tarea.getFecha())
                 .addParameter("longitud2", tarea.getLongitud())
                 .addParameter("latitud2", tarea.getLatitud())
-                .addParameter("tareaHabilidad2", tarea.getIdTareaHabilidad())
-                .addParameter("estadoTarea2", tarea.getIdEstadoTarea())
                 .addParameter("id2", tarea.getId())
                 .executeUpdate();
 

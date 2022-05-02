@@ -11,8 +11,6 @@ public class Voluntario {
     * @param correo 
     * @param nombre
     * @param contrasena
-    * @param ranking
-    * @param habilidades
     * @param atributos 
     */
 
@@ -30,7 +28,7 @@ public class Voluntario {
         this.contrasena = contrasena;
         this.atributos = atributos;
     }
-    //SETTERS
+ 
 
     /**
 	 * @return the id

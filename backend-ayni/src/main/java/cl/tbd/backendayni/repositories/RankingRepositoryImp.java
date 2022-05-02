@@ -99,7 +99,7 @@ public class RankingRepositoryImp implements RankingRepository{
     }
 
     @Override
-    public void updateRankingById(Ranking ranking) {
+    public void updateRanking(Ranking ranking) {
         String SQL_UPDATE = "UPDATE ranking SET idVoluntario = :idVoluntario2, idTarea = :idTarea2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {

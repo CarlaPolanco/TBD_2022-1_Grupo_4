@@ -1,28 +1,9 @@
 package cl.tbd.backendayni.repositories;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Arrays;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
-import org.sql2o.Sql2oException;
 
-import cl.tbd.backendayni.models.Emergencia;
-import cl.tbd.backendayni.models.EmergenciaHabilidad;
-import cl.tbd.backendayni.models.Estado;
-import cl.tbd.backendayni.models.EstadoTarea;
-import cl.tbd.backendayni.models.Habilidad;
-import cl.tbd.backendayni.models.Institucion;
-import cl.tbd.backendayni.models.Ranking;
-import cl.tbd.backendayni.models.Tarea;
-import cl.tbd.backendayni.models.TareaHabilidad;
-import cl.tbd.backendayni.models.Voluntario;
-import cl.tbd.backendayni.models.VoluntarioHabilidad;
 
 
 public class TablesContext {
@@ -34,6 +15,7 @@ public class TablesContext {
     }
     public void crearTablas(){
         try{
+            //CREACION DE TABLAS 
             System.out.println("Se crearon las tablas");
             con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8), requisitosgrupales text[], requisitosindividuales text[]) ").executeUpdate();
             con.createQuery("create table estado" + "(id serial primary key, nombre text) ").executeUpdate();
@@ -42,134 +24,78 @@ public class TablesContext {
             con.createQuery("create table habilidad" + "(id serial primary key, habilidad text) ").executeUpdate();
             con.createQuery("create table institucion" + "(id serial primary key, nombre text, correo text, numero text) ").executeUpdate();
             con.createQuery("create table ranking" + "(id serial primary key, porcentajeRanking real, idTarea serial, idVoluntario serial) ").executeUpdate();
-            con.createQuery("create table tarea" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8)) ").executeUpdate();
+            con.createQuery("create table tarea" + "(id serial primary key, nombre text, descripcion text, fecha date,requerimientos text) ").executeUpdate();
             con.createQuery("create table tareaHabilidad" + "(id serial primary key, idTarea serial, idHabilidad serial) ").executeUpdate();
             con.createQuery("create table voluntario" + "(id serial primary key, correo text, nombreUsuario text, contrasena text, atributos text) ").executeUpdate();
             con.createQuery("create table voluntarioHabilidad" + "(id serial primary key, idVoluntario serial, idHabilidad serial) ").executeUpdate();
+            
+            //DUMP 
+
+            //con.createQuery("").executeUpdate();
+
+            //VOLUNTARIO
+
+            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('juan@gmail.com', 'Juan', 'juancontrasena', 'Responsable y esforzado');").executeUpdate();
+            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('mario@gmail.com','Mario', 'mariocontrasena', 'Eficiente y acertivo');").executeUpdate();
+            con.createQuery("insert into voluntario(correo,nombreUsuario,contrasena,atributos) values('admin@gmail.com','admin', 'admin', 'Omnisciente y Poderoso');").executeUpdate();
+
+            
+            //EMERGENCIA
+
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['No tener problemas respiratorios', 'Extintor']);").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
+            
+            
+            //HABILIDAD
+
+            con.createQuery("insert into habilidad(habilidad) values('Correr rapido');").executeUpdate();
+            con.createQuery("insert into habilidad(habilidad) values('Muy fuerte');").executeUpdate();
+            
+            //ESTADO
+
+            con.createQuery("insert into estado(nombre) values('Sin empezar');").executeUpdate();
+            con.createQuery("insert into estado(nombre) values('En Curso');").executeUpdate();
+            con.createQuery("insert into estado(nombre) values('Terminada');").executeUpdate();
+            
+
+            //ESTADO-TAREA
+
+            con.createQuery("insert into estadotarea(idEstado, idTarea) values(1,2);").executeUpdate();
+            con.createQuery("insert into estadotarea(idEstado, idTarea) values(2,2);").executeUpdate();
+            
+            //INSTITUCION
+
+            con.createQuery("insert into institucion(nombre,correo,numero) values('Fundacion caridad','caridad@gmail.com','942332112');").executeUpdate();
+            con.createQuery("insert into institucion(nombre,correo,numero) values('Fundacion amigable','amigable@gmail.com','942332222');").executeUpdate();
+            
+            //TAREA
+            
+            con.createQuery("insert into tarea(nombre,descripcion,fecha,requerimientos) values('Recoger escombros', 'Recoger escombros y botarlos en un sitio seguro','2022-04-21', 'Rastrillo');").executeUpdate();
+            con.createQuery("insert into tarea(nombre,descripcion,fecha,requerimientos) values('Recoger basura', 'Limpiar y regocer basura','2022-05-18', 'Escoba y pala');").executeUpdate();
+
+            //TAREA-HABILIDAD
+
+            con.createQuery("insert into tareahabilidad(idTarea,idHabilidad) values(1,1);").executeUpdate();
+            con.createQuery("insert into tareahabilidad(idTarea,idHabilidad) values(2,2);").executeUpdate();
+            
+            //VOLUNTARIO-HABILIDAD
+
+            con.createQuery("insert into voluntariohabilidad(idVoluntario,idHabilidad) values(1,1);").executeUpdate();
+            con.createQuery("insert into voluntariohabilidad(idVoluntario,idHabilidad) values(2,2);").executeUpdate();
+            
+            //EMERGENCIA-HABILIDAD
+            con.createQuery("insert into emergenciaHabilidad(idEmergencia, idHabilidad) values(1,1);").executeUpdate();
+            con.createQuery("insert into emergenciaHabilidad(idEmergencia, idHabilidad) values(2,2);").executeUpdate();
+
+            //RANKING
+            con.createQuery("insert into ranking(porcentajeRanking, idTarea, idVoluntario) values(67,1,1);").executeUpdate();
+            con.createQuery("insert into ranking(porcentajeRanking, idTarea, idVoluntario) values(85,2,2);").executeUpdate();
+            
         } catch (Exception e) {
             System.out.println("No se crearon las tablas");
             System.out.println(e.getMessage());
         }
     }
-    public void insertValores(Connection con){
-        try{
-        String fechastr="2022-04-21";  
-        Date fecha1 = Date.valueOf(fechastr);
-        fechastr="2022-03-21";
-        Date fecha2 = Date.valueOf(fechastr);
-        fechastr="2021-12-25";
-        Date fecha3 = Date.valueOf(fechastr);
-        long latitud1 = 9012_3456L;
-        long latitud2 = 8012_3458L;
-        long latitud3 = 5010_3450L;
-        long longitud1 = 3456_3456L;
-        long longitud2 = 8012_8012L;
-        long longitud3 = 510_5010L;
-        ArrayList<String> requisitos1 = new ArrayList<>(Arrays.asList("No tener problemas respiratorios", "Extintor"));
-        ArrayList<String> requisitos2 = new ArrayList<>(Arrays.asList("Hablar ingles", "Pala"));
-        ArrayList<String> requisitos3 = new ArrayList<>(Arrays.asList("Especialistas medicos", "Material medico"));
-        Emergencia emergencia1 = new Emergencia(1, "Incendio", "Incendio forestal cerca de Valparaiso", fecha1, longitud1, latitud1, requisitos3, requisitos1);
-        Emergencia emergencia2 = new Emergencia(2, "Derrumbe", "Derrumbe de una montaña en una carretera", fecha2, longitud2, latitud2, requisitos3, requisitos2);
-        Emergencia emergencia3 = new Emergencia(3, "Terremoto", "Terremoto destruyo muchas casas", fecha3, longitud3, latitud3, requisitos3, requisitos2);
 
-        EmergenciaRepositoryImp emergenciaimp = new EmergenciaRepositoryImp();
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-
-
-        emergenciaimp.createEmergencia(emergencia1);
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE1");
-        emergenciaimp.createEmergencia(emergencia2);
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE2");
-        emergenciaimp.createEmergencia(emergencia3);
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEE3");
-
-        Estado estado1 = new Estado(1, "Sin empezar");
-        Estado estado2 = new Estado(2, "En curso");
-        Estado estado3 = new Estado(3 , "Terminada");
-
-        EstadoRepositoryImp estadoimp = new EstadoRepositoryImp();
-        estadoimp.createEstado(estado1);
-        estadoimp.createEstado(estado2);
-        estadoimp.createEstado(estado3);
-
-        EmergenciaHabilidad emergenciaHabilidad1 = new EmergenciaHabilidad(1, 1, 1);
-        EmergenciaHabilidad emergenciaHabilidad2 = new EmergenciaHabilidad(2, 2, 2);
-        EmergenciaHabilidadRepositoryImp emeHabimp = new EmergenciaHabilidadRepositoryImp();
-        emeHabimp.createEmergenciaHabilidad(emergenciaHabilidad1);
-        emeHabimp.createEmergenciaHabilidad(emergenciaHabilidad2);
-
-        EstadoTarea estadoTarea1 = new EstadoTarea(1, 1, 1);
-        EstadoTarea estadoTarea2 = new EstadoTarea(2, 2, 2);
-
-        EstadoTareaRepositoryImp estadoTareaimp1 = new EstadoTareaRepositoryImp();
-        EstadoTareaRepositoryImp estadoTareaimp2 = new EstadoTareaRepositoryImp();
-        estadoTareaimp1.createEstadoTarea(estadoTarea1);
-        estadoTareaimp2.createEstadoTarea(estadoTarea2);
-        
-        Habilidad habilidad1 = new Habilidad(1,"Correr rapido");
-        Habilidad habilidad2 = new Habilidad(2,"Muy fuerte");
-
-        HabilidadRepositoryImp habilidadimp1 = new HabilidadRepositoryImp();
-        HabilidadRepositoryImp habilidadimp2 = new HabilidadRepositoryImp();
-        habilidadimp1.createHabilidad(habilidad1);
-        habilidadimp2.createHabilidad(habilidad2);
-
-        Institucion institucion1 = new Institucion(1, "Fundacion caridad", "caridad@gmail.com", "942332112");
-        Institucion institucion2 = new Institucion(2, "Fundacion amigable", "amigable@gmail.com", "942332222");
-        
-        InstitucionRepositoryImp institucionimp1 = new InstitucionRepositoryImp();
-        InstitucionRepositoryImp institucionimp2 = new InstitucionRepositoryImp();
-
-        institucionimp1.createInstitucion(institucion1);
-        institucionimp2.createInstitucion(institucion2);
-
-        Ranking ranking1 = new Ranking(1,1,1);
-        Ranking ranking2 = new Ranking(2,2,2);
-
-        RankingRepositoryImp rankingRepositoryImp1 = new RankingRepositoryImp();
-        RankingRepositoryImp rankingRepositoryImp2 = new RankingRepositoryImp();
-
-        rankingRepositoryImp1.createRanking(ranking1);
-        rankingRepositoryImp2.createRanking(ranking2);
-
-        //Tarea tarea1 = new Tarea(1, "Recoger escombros", "Recoger escombros y botarlos en un sitio seguro", fecha1, longitud1, latitud1);
-        //Tarea tarea2 = new Tarea(2, "Recoger basura", "Limpiar y recoger basura", fecha2, longitud2, latitud2);
-
-        TareaRepositoryImp tareaRepositoryImp = new TareaRepositoryImp();
-        TareaRepositoryImp tareaRepositoryImp2 = new TareaRepositoryImp();
-        //tareaRepositoryImp.createTarea(tarea1);
-        //tareaRepositoryImp2.createTarea(tarea2);
-
-        TareaHabilidad tareaHabilidad = new TareaHabilidad(1, 1, 1);
-        TareaHabilidad tareaHabilidad2 = new TareaHabilidad(2, 2, 2);
-
-        TareaHabilidadRepositoryImp tareaHabilidadRepositoryImp = new TareaHabilidadRepositoryImp();
-        TareaHabilidadRepositoryImp tareaHabilidadRepositoryImp2 = new TareaHabilidadRepositoryImp();
-        tareaHabilidadRepositoryImp.createTareaHabilidad(tareaHabilidad);
-        tareaHabilidadRepositoryImp2.createTareaHabilidad(tareaHabilidad2);
-
-        /*Voluntario voluntario = new Voluntario(1, "juan@gmail.com", "Juan", "juancontrasena", "Responsable y esforzado"); 
-        Voluntario voluntario2 = new Voluntario(2, "mario@gmail.com", "Mario", "mariocontrasena", "Eficiente y acertivo"); 
-
-        VoluntarioRepositoryImp voluntarioRepositoryImp = new VoluntarioRepositoryImp();
-        VoluntarioRepositoryImp voluntarioRepositoryImp2 = new VoluntarioRepositoryImp();
-        voluntarioRepositoryImp.createVoluntario(voluntario);
-        voluntarioRepositoryImp2.createVoluntario(voluntario2);
-
-        VoluntarioHabilidad voluntariohabilidad1 = new VoluntarioHabilidad(1, 1, 1);
-        VoluntarioHabilidad voluntariohabilidad2 = new VoluntarioHabilidad(2, 2, 2);
-
-        VoluntarioHabilidadRepositoryImp voluntarioHabilidadRepositoryImp = new VoluntarioHabilidadRepositoryImp();
-        VoluntarioHabilidadRepositoryImp voluntarioHabilidadRepositoryImp2 = new VoluntarioHabilidadRepositoryImp();
-        voluntarioHabilidadRepositoryImp.createVoluntarioHabilidad(voluntariohabilidad1);
-        voluntarioHabilidadRepositoryImp2.createVoluntarioHabilidad(voluntariohabilidad2); */
-
-
-        }catch (Exception e) {
-            System.out.println("No se pudieron insertar los valores");
-            System.out.println(e.getMessage());
-            System.out.println("AAAAAAAAA");
-        }
-
-    }
 }

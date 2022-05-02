@@ -29,6 +29,11 @@ public class VoluntarioService {
     public List<Voluntario> getAll() {
         return voluntarioRepository.getAll();
     }
+
+    @GetMapping("/voluntario/{nombre}/{password}")
+    public void getVoluntarioLogin(@PathVariable String nombre,@PathVariable String password){
+        voluntarioRepository.getVoluntarioLogin(nombre, password);
+    }
     /*
     @PostMapping("/voluntario/create")
     @ResponseBody
@@ -36,7 +41,6 @@ public class VoluntarioService {
         Voluntario newVoluntario = voluntarioRepository.createVoluntario(voluntario);
         return newVoluntario;
     }*/
-
     @GetMapping("/voluntario/count")
     public String countVoluntario(){
         int total = voluntarioRepository.countVoluntarios();

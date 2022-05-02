@@ -17,7 +17,8 @@ public class TablesContext {
         try{
             //CREACION DE TABLAS 
             System.out.println("Se crearon las tablas");
-            con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8), requisitosgrupales text[], requisitosindividuales text[]) ").executeUpdate();
+            //con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8), requisitosgrupales text[], requisitosindividuales text[]) ").executeUpdate();
+            con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8)) ").executeUpdate();
             con.createQuery("create table estado" + "(id serial primary key, nombre text) ").executeUpdate();
             con.createQuery("create table emergenciaHabilidad" + "(id serial primary key, idEmergencia serial, idHabilidad serial) ").executeUpdate();
             con.createQuery("create table estadotarea" + "(id serial primary key, idEstado serial, idTarea serial) ").executeUpdate();
@@ -42,9 +43,13 @@ public class TablesContext {
             
             //EMERGENCIA
 
-            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['No tener problemas respiratorios', 'Extintor']);").executeUpdate();
-            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
-            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
+            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['No tener problemas respiratorios', 'Extintor']);").executeUpdate();
+            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
+            //con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud,requisitosgrupales,requisitosindividuales) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689,ARRAY ['Especialistas medicos', 'Material medico'],ARRAY ['Hablar ingles', 'Pala']);").executeUpdate();
+            
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Incendio','Incendio forestal cerca de Valparaiso','2022-04-21',90.12345654,34.56345689);").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Derrumbe','Derrumbe de una montaña en una carretera','2022-04-21',90.12345654,34.56345689);").executeUpdate();
+            con.createQuery("insert into emergencia(nombre,descripcion,fecha,longitud,latitud) values('Terremoto','Terremoto destruyo muchas casas','2022-04-21',90.12345654,34.56345689);").executeUpdate();
             
             
             //HABILIDAD

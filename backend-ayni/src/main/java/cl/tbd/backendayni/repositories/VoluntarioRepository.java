@@ -9,6 +9,7 @@ public interface VoluntarioRepository {
     public int countVoluntarios();
     public int newId();
     public List<Voluntario> getAll();
+    public void getVoluntarioLogin(String nombre, String password);
     public List<Voluntario> showVoluntarioById(long id);
     public Voluntario createVoluntario(Voluntario voluntario);
     public void deleteVoluntarioById(long id);

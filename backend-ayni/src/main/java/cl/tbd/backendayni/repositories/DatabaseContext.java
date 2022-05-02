@@ -44,8 +44,6 @@ public class DatabaseContext {
                 con = base.open();
                 TablesContext tablas = new TablesContext(con);
                 tablas.crearTablas();
-                //tablas.insertValores();
-                //tablas.createDump();
             }catch(Sql2oException e){
                 System.out.println("Se esta creando la base de datos");
             }

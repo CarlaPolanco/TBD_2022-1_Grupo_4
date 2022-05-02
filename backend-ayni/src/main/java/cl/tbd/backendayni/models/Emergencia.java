@@ -4,6 +4,7 @@ import java.util.*;
 import java.sql.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+
 @EntityScan
 public class Emergencia {
     /**
@@ -22,14 +23,26 @@ public class Emergencia {
     private long longitud;
     private long latitud;
 
-    private ArrayList<String> requisitosGrupales;
-    private ArrayList<String> requisitosIndividuales;
+    //private String[] requisitosGrupales;
+    //private String[] requisitosIndividuales;
+
+    //private ArrayList<String> requisitosGrupales;
+    //private ArrayList<String> requisitosIndividuales;
 
 
     public Emergencia(){
     }
 
-    public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, ArrayList<String> requisitosGrupales, ArrayList<String> requisitosIndividuales) {
+    public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.longitud = longitud;
+        this.latitud = latitud;
+    }
+    /*
+    public Emergencia(long id, String nombre, String descripcion, Date fecha, long longitud, long latitud, String[] requisitosGrupales, String[] requisitosIndividuales) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -38,7 +51,7 @@ public class Emergencia {
         this.latitud = latitud;
         this.requisitosGrupales = requisitosGrupales;
         this.requisitosIndividuales = requisitosIndividuales;
-    }
+    }*/
     //GETTERS
 
     public long getId() {
@@ -81,19 +94,20 @@ public class Emergencia {
         return latitud;
     }
 
+    
     /**
 	 * @return array requisitos grupales
 	*/
-    public ArrayList<String> getRequisitosGrupales() {
+    /*public String[] getRequisitosGrupales() {
         return requisitosGrupales;
-    }
+    }*/
 
     /**
 	 * @return array requisitos individuales
 	*/
-    public ArrayList<String> getRequisitosIndividuales() {
+    /*public String[] getRequisitosIndividuales() {
         return requisitosIndividuales;
-    }
+    }*/
 
     //SETTERS
 
@@ -135,14 +149,14 @@ public class Emergencia {
     /**
 	 * @param requisitosGrupales the requisitosGrupales to set
 	 */
-    public void setRequisitosGrupales(ArrayList<String> requisitosGrupales) {
+    /*public void setRequisitosGrupales(String[] requisitosGrupales) {
         this.requisitosGrupales = requisitosGrupales;
-    }    
+    }    */
 
     /**
 	 * @param requisitosIndividuales the requisitosIndividuales to set
 	 */
-    public void setRequisitosIndividuales(ArrayList<String> requisitosIndividuales) {
+    /*public void setRequisitosIndividuales(String[] requisitosIndividuales) {
         this.requisitosIndividuales = requisitosIndividuales;
-    }
+    }*/
 }

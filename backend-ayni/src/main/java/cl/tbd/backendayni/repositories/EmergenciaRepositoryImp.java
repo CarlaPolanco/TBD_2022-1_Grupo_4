@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 @Repository
 public class EmergenciaRepositoryImp implements EmergenciaRepository {
     
-    @Autowired(required = false)
+    @Autowired
     private Sql2o sql2o;
 
 
@@ -42,7 +42,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     @Override
     public List<Emergencia> getAll() {
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("SELECT * FROM emergencia ORDER BY emergencia.id ASC")
+            return conn.createQuery("SELECT * FROM emergencia ORDER BY Emergencia.id ASC")
                     .executeAndFetch(Emergencia.class);
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -64,6 +64,36 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
     } 
     
 
+
+
+    @Override
+    public Emergencia createEmergencia(Emergencia emergencia){
+        Connection conn = sql2o.open();
+        String SQL_INSERT = "INSERT INTO emergencia(nombre, descripcion, fecha, longitud, latitud)" + 
+                            "VALUES(:nombre2, :descripcion2, :fecha2, :longitud2, :latitud2)";
+
+        try{
+
+            conn.createQuery(SQL_INSERT)
+                .addParameter("nombre2", emergencia.getNombre())
+                .addParameter("descripcion2", emergencia.getDescripcion())
+                .addParameter("fecha2", emergencia.getFecha())
+                .addParameter("longitud2", emergencia.getLongitud())
+                .addParameter("latitud2", emergencia.getLatitud())
+                .executeUpdate();
+
+            emergencia.setId(newId());
+
+            return emergencia;
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo crear la emergencia\n");
+            return null;
+        }
+    }
+
+
+    /*
     @Override
     public Emergencia createEmergencia(Emergencia emergencia){
         Connection conn = sql2o.open();
@@ -91,7 +121,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             return null;
         }
     }
-
+    */
 
     @Override 
     public void deleteEmergenciaById(long id){
@@ -105,8 +135,30 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo borrar la emergencia\n");
         }
     }
+    
 
+    @Override
+    public void updateEmergencia(Emergencia emergencia){
 
+        String SQL_UPDATE = "UPDATE emergencia SET nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, longitud = :longitud2, latitud = :latitud2, id = :id2 WHERE id = :id2";
+        
+        try(Connection conn = sql2o.open()) {
+
+            conn.createQuery(SQL_UPDATE)
+                .addParameter("nombre2", emergencia.getNombre())
+                .addParameter("descripcion2", emergencia.getDescripcion())
+                .addParameter("fecha2", emergencia.getFecha())
+                .addParameter("longitud2", emergencia.getLongitud())
+                .addParameter("latitud2", emergencia.getLatitud())
+                .addParameter("id2", emergencia.getId())
+                .executeUpdate();
+
+        } catch(Exception e) {
+            System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la emergencia\n");
+        }
+    }
+
+    /*
     @Override
     public void updateEmergencia(Emergencia emergencia){
 
@@ -128,6 +180,6 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         } catch(Exception e) {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la emergencia\n");
         }
-    }
+    }*/
 
 }

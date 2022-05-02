@@ -125,7 +125,7 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
 
             conn.createQuery(SQL_UPDATE)
                 .addParameter("correo2", voluntario.getCorreo())
-                .addParameter("nombreUsuario", voluntario.getNombreusuario())
+                .addParameter("nombreUsuario2", voluntario.getNombreusuario())
                 .addParameter("contrasena2", voluntario.getContrasena())
                 .addParameter("atributos2", voluntario.getAtributos())
                 .addParameter("id2", voluntario.getId())

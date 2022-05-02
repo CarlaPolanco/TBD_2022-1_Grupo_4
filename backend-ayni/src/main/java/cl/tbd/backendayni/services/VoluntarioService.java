@@ -34,19 +34,20 @@ public class VoluntarioService {
     public List<Voluntario> getVoluntarioLogin(@PathVariable String nombre,@PathVariable String password){
        return voluntarioRepository.getVoluntarioLogin(nombre, password);
     }
-    /*
+    
     @PostMapping("/voluntario/create")
     @ResponseBody
     public Voluntario createVoluntario(@RequestBody Voluntario voluntario){
         Voluntario newVoluntario = voluntarioRepository.createVoluntario(voluntario);
         return newVoluntario;
-    }*/
+    }
+
     @GetMapping("/voluntario/count")
     public String countVoluntario(){
         int total = voluntarioRepository.countVoluntarios();
         return String.format("Se tienen %s voluntarios.", total);
     }
-    /*
+    
     @RequestMapping(value = "/voluntario/deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteVoluntario(@PathVariable long id) {
         voluntarioRepository.deleteVoluntarioById(id);
@@ -55,7 +56,7 @@ public class VoluntarioService {
     @RequestMapping(value = "/voluntario/updateById/{id}", method = RequestMethod.PUT)
     public void updateVoluntario(@RequestBody Voluntario voluntario) {
         voluntarioRepository.updateVoluntario(voluntario);
-    }*/
+    }
 
     @RequestMapping(value = "/voluntario/getById/{id}", method = RequestMethod.GET)
     public List<Voluntario> getVoluntarioById(@PathVariable long id) {

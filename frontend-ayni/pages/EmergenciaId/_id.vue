@@ -19,8 +19,7 @@
 
         <!-- Descripcion -->
         <p>
-            Aca va una descripcion de la tarea que se realizara
-            blablablablablablalba
+            {{item.descripcion}}
         </p>
 
         <!-- Botones -->
@@ -71,7 +70,7 @@
         </div>
 
         <div>
-            <a href="./NuevaTarea">
+            <a href="/NuevaTarea">
                 <button type="button" class="btn btn-success">Nueva tarea</button>
             </a>
         </div>

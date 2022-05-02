@@ -53,7 +53,7 @@ public class Ranking {
     /*Calculamos el ranking de la relacion Voluntario - Tarea haciendo un paso por los requisitos de la tarea y con las habildades que el voluntario
     tiene, calculamos el porcentaje de "acierto" y luego lo colocamos dentro del ranking */
     /* HAY QUE ARREGLAR ESTA FUNCION VOLUNTARIO YA NO TIENE GET HABILIDAD
-    public void generateRankingPercent(Tarea tarea, Voluntario vol){
+    public void generateRankingPercent(Tarea tarea, Voluntario vol, VoluntarioHabilidad volhab){
         if (tarea.getId() == this.idTarea && vol.getId() == this.idVoluntario){
             int contador = 0;
             for (int i = 0; i <tarea.getRequisitos().size(); i++ ){

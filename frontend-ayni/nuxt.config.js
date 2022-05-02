@@ -51,6 +51,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -59,6 +60,31 @@ export default {
     baseURL: process.env.BACKEND_URL,
     proxy: true,
   },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/auth/login',
+            method: 'post',
+            propertyName: false
+          },
+          logout: { 
+            url: '/auth/logout', 
+            method: 'post' 
+          },
+          user: { 
+            url: '/auth/profile', 
+            method: 'get', 
+            propertyName: false 
+          }
+        },
+        tokenRequired: false,
+        tokenType: false
+      }
+    }
+  },  
   
   proxy: {
     "/emergencia": 'http://localhost:8081',

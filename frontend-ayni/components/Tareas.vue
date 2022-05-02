@@ -11,7 +11,7 @@
   </div>
 
   <div>
-      <a href="./NuevaTarea">
+      <a href="/NuevaTarea">
         <button type="button" style="position: absolute; top: 60px; left: 650%; width : 150px ; padding: 10px" class="btn btn-success">Nueva Tarea</button>
       </a>
   </div>

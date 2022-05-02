@@ -20,10 +20,10 @@
   </div>
   <div>
     <ul class="navbar-nav mr-auto my-2 my-lg-0">
-      <a class="nav-link to-right" href="./Login" role="button">
+      <a class="nav-link to-right" href="/Login" role="button">
         Iniciar Sesión
       </a>
-      <a class="nav-link to-right" href="./Signup" role="button">
+      <a class="nav-link to-right" href="/Signup" role="button">
         Registrarse
       </a>
     </ul>

@@ -25,12 +25,11 @@
                     <h1>Voluntarios</h1>
                     <table id="example" class="table table-striped table-bordered" style="background-color: #169691">
                         <thead>
-                            
                             <tr>
                                 <th style="width: 100x;"></th>                
                                 <th style="width: 800px;">Nombre Voluntario</th>
                                 <th style="width: 100x;">Ranking</th>
-                                <th style="width: 100px;"><input type="checkbox" id="all" onclick="checkAll(this)"></th>
+                                <th style="width: 100px;"><input type="checkbox" id="all" onclick="selects()"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -94,3 +93,13 @@
     </div>
 
 </template>
+
+
+ <script type="text/javascript">  
+    function selects(){  
+        var ele=document.getElementsByName('one_checkbox');  
+        for (var checkbox of ele) {
+            checkbox.checked = this.checked;
+        }
+    } 
+</script> 

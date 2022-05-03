@@ -2,7 +2,7 @@ package cl.tbd.backendayni.repositories;
 
 import java.util.ArrayList;
 import cl.tbd.backendayni.models.Ranking;
-import cl.tbd.backendayni.models.Voluntario;
+import cl.tbd.backendayni.models.RankingVoluntario;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
@@ -21,6 +21,6 @@ public interface RankingRepository {
     public void updateRanking(Ranking ranking);
     public void addNumberToRanking(Ranking ranking);
     public List<Ranking> getAllByTarea(long id);
-    public List<Voluntario> getAllVoluntariosByRanking(long id);
+    public List<RankingVoluntario> getAllVoluntariosByRanking(long id);
     public Ranking createPercent(long id1,long id2);
 }

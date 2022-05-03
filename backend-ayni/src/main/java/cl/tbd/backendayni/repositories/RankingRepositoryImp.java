@@ -3,6 +3,7 @@ package cl.tbd.backendayni.repositories;
 import java.util.ArrayList;
 import java.util.List;
 import cl.tbd.backendayni.models.Ranking;
+import cl.tbd.backendayni.models.RankingVoluntario;
 import cl.tbd.backendayni.models.Tarea;
 import cl.tbd.backendayni.models.TareaHabilidad;
 import cl.tbd.backendayni.models.VoluntarioHabilidad;
@@ -210,11 +211,12 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
-    public List<Voluntario> getAllVoluntariosByRanking(long id){
+    @Override
+    public List<RankingVoluntario> getAllVoluntariosByRanking(long id){
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("SELECT t2.idvoluntario, t1.nombreusuario, t2.porcentajeranking  FROM voluntario t1, ranking t2 WHERE t1.id = t2.id AND t2.idtarea = :id;")
+            return conn.createQuery("SELECT voluntario.id, voluntario.nombreusuario, ranking.porcentajeranking FROM voluntario, ranking WHERE ranking.idTarea = :id AND ranking.idVoluntario = voluntario.id")
                     .addParameter("id", id)
-                    .executeAndFetch(Voluntario.class);
+                    .executeAndFetch(RankingVoluntario.class);
         }catch (Exception e) {
             System.out.println(e.getMessage());
             return null;

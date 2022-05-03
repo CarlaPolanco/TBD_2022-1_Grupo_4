@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import cl.tbd.backendayni.models.Ranking;
 import cl.tbd.backendayni.models.Voluntario;
+import cl.tbd.backendayni.models.RankingVoluntario;
 import cl.tbd.backendayni.repositories.RankingRepository;
 
 
@@ -66,8 +67,8 @@ public class RankingService {
     } 
 
     @RequestMapping(value = "/ranking/getVoluntarioById/{id}", method = RequestMethod.GET)
-    public List<Voluntario> getAllVoluntariosByRanking(long id1){
-        return rankingRepository.getAllVoluntariosByRanking(id1);
+    public List<RankingVoluntario> getAllVoluntariosByRanking(@PathVariable long id){
+        return rankingRepository.getAllVoluntariosByRanking(id);
     }
 
     @PostMapping("/ranking/create/{id1}/{id2}")

@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col-sm">
-                <div  v-for="(item, index) in items" :key="index" id="formContent" style="background-color: #169691">
+                <div  v-for="(item, index) in items_tarea" :key="index" id="formContent" style="background-color: #169691">
                     <h1>{{item.nombre}}</h1>
                     <!--Aqui va lo de Seleccionar varios o solo una cantidad y eso-->
                     <div class="input-group mb-3">
@@ -44,8 +44,8 @@
                                         </button>
                                     </a>
                                 </td>
-                                <td name="NombreVoluntario"> NombreVoluntario </td>
-                                <td name="Ranking">Ranking va aqui</td>
+                                <td name="NombreVoluntario"> {{item.nombreusuario}} </td>
+                                <td name="Ranking">{{item.ranking}}</td>
                                 <td>
                                     <input type="checkbox" id="one_checkbox" name="one_checkbox">
                                 </td>
@@ -75,7 +75,7 @@ export default {
     data(){
         return{
             //Lista de ítems a mostrar
-            items:[],
+            items_tarea:[],
             param:[],
             items_ranking:[],
         }
@@ -88,9 +88,15 @@ export default {
         getData: async function(){
             try {
                 let response = await this.$axios.get("/tarea/getById/"+this.$route.params.id);
-                this.items  = response.data;
+                this.items_tarea  = response.data;
                 console.log(response);
-                let response2 = await this.$axios.get("/raking/"+this.$route.params.id);
+            } catch (error) {
+                console.log('error', error);
+            }
+        },
+        getData2: async function(){
+            try {
+                let response2 = await this.$axios.get("/ranking/getVoluntarioById/"+this.$route.params.id);
                 this.items_ranking = response2.data;
                 console.log(response2);
             } catch (error) {
@@ -101,6 +107,7 @@ export default {
     //Función que se ejecuta al cargar el componente
     created:function(){
         this.getData();
+        this.getData2();
     }
 }
 </script> 

@@ -49,6 +49,31 @@ public class TareaRepositoryImp implements TareaRepository {
         }
     }
 
+    @Override
+    public List<Tarea> getAllTareasEmergency(long id)
+    {
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT tHT.id_tarea as id, tHT.nombre, tHT.descripcion, tHT.fecha, tHT.requerimientos FROM (SELECT t1.id as id_tarea, t1.nombre, t1.descripcion, t1.fecha, t1.requerimientos, t3.id FROM tarea t1, tareahabilidad t2, habilidad t3 WHERE t1.id = t2.idtarea AND t3.id = t2.idhabilidad) tHT INNER JOIN(SELECT t6.id as id_habilidad FROM emergencia t4, emergenciahabilidad t5, habilidad t6 WHERE t4.id = t5.idemergencia AND t6.id = t5.idhabilidad) tHE ON  tHT.id_tarea =tHE.id_habilidad AND tHT.id_tarea = :id;")
+                .addParameter("id", id)
+                .executeAndFetch(Tarea.class);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    /*@Override
+    public List<RankingVoluntario> getAllVoluntariosByRanking(long id){
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT voluntario.id, voluntario.nombreusuario, ranking.porcentajeranking FROM voluntario, ranking WHERE ranking.idTarea = :id AND ranking.idVoluntario = voluntario.id")
+                    .addParameter("id", id)
+                    .executeAndFetch(RankingVoluntario.class);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+    */
 
     @Override
     public List<Tarea> showTareaById(long id){

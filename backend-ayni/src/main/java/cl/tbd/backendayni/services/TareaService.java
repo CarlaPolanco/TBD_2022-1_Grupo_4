@@ -56,4 +56,10 @@ public class TareaService {
     public List<Tarea> getTareaById(@PathVariable long id) {
         return tareaRepository.showTareaById(id);
     }  
+
+    @RequestMapping(value = "/tarea/getAlltareasId/{id}",method = RequestMethod.GET)
+    public List<Tarea> getAllTareasEmergency(@PathVariable long id){
+        return tareaRepository.getAllTareasEmergency(id);
+
+    }
 }

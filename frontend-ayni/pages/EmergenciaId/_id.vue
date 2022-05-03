@@ -63,13 +63,6 @@
     </div>
     <div class ="col-sm" style="padding-top:30px">
         <div>
-            <h1> </h1>
-            <a href="#">
-            <button class="botonDos"><span>Voluntarios</span></button>
-            </a>
-        </div>
-
-        <div>
             <a href="/NuevaTarea">
                 <button type="button" class="btn btn-success">Nueva tarea</button>
             </a>

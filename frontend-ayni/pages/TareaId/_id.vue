@@ -1,7 +1,7 @@
 <template>
 <body>
-    <Navbar/>
-    <div class="wrapper fadeInDown scrollDiv" style="background-color: #4f3185">
+  <Navbar/>
+  <div class="wrapper fadeInDown scrollDiv col-sm" style="background-color: #4f3185">
 
     <div v-for="(item, index) in items" :key="index" id="formContent" style="background-color: #169691">
       <h1>{{item.nombre}}</h1>
@@ -43,9 +43,15 @@
         </div>
 
       </div>
-
     </div>
+    <div>
+    <h1> </h1>
+    <a v-bind:href="'../SelectVolTarea/'+param">
+    <button class="botonDos"><span>Voluntarios</span></button>
+    </a>
   </div>
+  </div>
+  
 </body>
 </template>
 

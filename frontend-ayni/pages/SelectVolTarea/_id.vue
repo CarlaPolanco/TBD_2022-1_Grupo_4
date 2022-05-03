@@ -1,12 +1,14 @@
 <template>
+<body>
+    <Navbar />
     <div class="container" style="background-color: #4f3185">
         <div class="row">
             <tr height="100px"></tr>
         </div>
         <div class="row">
             <div class="col-sm">
-                <div id="formContent" style="background-color: #169691">
-                    <h1>Tarea</h1>
+                <div  v-for="(item, index) in items" :key="index" id="formContent" style="background-color: #169691">
+                    <h1>{{item.nombre}}</h1>
                     <!--Aqui va lo de Seleccionar varios o solo una cantidad y eso-->
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Cantidad de Voluntarios" aria-label="Voluntario username" aria-describedby="basic-addon2">
@@ -34,35 +36,7 @@
                         </thead>
                         <tbody>
                             <!-- {% for para la lista de voluntarios ordenados por Ranking %} -->
-                            <tr>                
-                                <td name="Ver Perfil">
-                                    <a href="#">
-                                        <button type="button" class="btn btn-primary btn-lg">
-                                        Ver Perfil
-                                        </button>
-                                    </a>
-                                </td>
-                                <td name="NombreVoluntario"> NombreVoluntario </td>
-                                <td name="Ranking">Ranking va aqui</td>
-                                <td>
-                                    <input type="checkbox" id="one_checkbox" name="one_checkbox">
-                                </td>
-                            </tr>
-                            <tr>                
-                                <td name="Ver Perfil">
-                                    <a href="#">
-                                        <button type="button" class="btn btn-primary btn-lg">
-                                        Ver Perfil
-                                        </button>
-                                    </a>
-                                </td>
-                                <td name="NombreVoluntario"> NombreVoluntario </td>
-                                <td name="Ranking">Ranking va aqui</td>
-                                <td>
-                                    <input type="checkbox" id="one_checkbox" name="one_checkbox">
-                                </td>
-                            </tr>
-                            <tr>                
+                            <tr  v-for="(item, index) in items_ranking" :key="index">                
                                 <td name="Ver Perfil">
                                     <a href="#">
                                         <button type="button" class="btn btn-primary btn-lg">
@@ -91,15 +65,42 @@
             </div>
         </div>
     </div>
-
+</body>
 </template>
 
 
- <script type="text/javascript">  
-    function selects(){  
-        var ele=document.getElementsByName('one_checkbox');  
-        for (var checkbox of ele) {
-            checkbox.checked = this.checked;
+ <script>
+export default {
+    //Función que contiene los datos del componente
+    data(){
+        return{
+            //Lista de ítems a mostrar
+            items:[],
+            param:[],
+            items_ranking:[],
         }
-    } 
+    },
+    mounted() {
+        this.param = this.$route.params.id;
+      },
+    methods:{
+        //Función asíncrona para consultar los datos
+        getData: async function(){
+            try {
+                let response = await this.$axios.get("/tarea/getById/"+this.$route.params.id);
+                this.items  = response.data;
+                console.log(response);
+                let response2 = await this.$axios.get("/raking/"+this.$route.params.id);
+                this.items_ranking = response2.data;
+                console.log(response2);
+            } catch (error) {
+                console.log('error', error);
+            }
+        }
+    },
+    //Función que se ejecuta al cargar el componente
+    created:function(){
+        this.getData();
+    }
+}
 </script> 

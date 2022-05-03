@@ -89,6 +89,7 @@ export default {
   proxy: {
     "/emergencia": 'http://localhost:8081',
     "/tarea": 'http://localhost:8081',
+    "/ranking": 'http://localhost:8081',
   },
 
   

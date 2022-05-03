@@ -119,7 +119,7 @@ public class RankingRepositoryImp implements RankingRepository{
     @Override
     public void addNumberToRanking(Ranking ranking){
         List<TareaHabilidad> listaTH = new ArrayList<TareaHabilidad>();
-        List<VoluntarioHabilidad> listaVH = new ArrayList<VoluntarioHabilidad>();;
+        List<VoluntarioHabilidad> listaVH = new ArrayList<VoluntarioHabilidad>();
         try(Connection conn = sql2o.open()){
             listaTH = conn.createQuery("SELECT * FROM tareahabilidad WHERE tareahabilidad.idtarea = :id")
                     .addParameter("id", ranking.getId())
@@ -196,5 +196,28 @@ public class RankingRepositoryImp implements RankingRepository{
             return null;
         }
 
+    }
+
+    @Override
+    public List<Ranking> getAllByTarea(long id){
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT * FROM ranking WHERE ranking.idTarea = :id")
+                    .addParameter("id", id)
+                    .executeAndFetch(Ranking.class);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Voluntario> getAllVoluntariosByRanking(long id){
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery("SELECT t2.idvoluntario, t1.nombreusuario, t2.porcentajeranking  FROM voluntario t1, ranking t2 WHERE t1.id = t2.id AND t2.idtarea = :id;")
+                    .addParameter("id", id)
+                    .executeAndFetch(Voluntario.class);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 }

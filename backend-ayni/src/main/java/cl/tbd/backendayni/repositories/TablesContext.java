@@ -1,22 +1,20 @@
 package cl.tbd.backendayni.repositories;
 
-
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-
-
 public class TablesContext {
     public Connection con;
-    private Sql2o sql2o;
 
     public TablesContext(Connection con){
         this.con = con;
     }
+
     public void crearTablas(){
-        try{
-            //CREACION DE TABLAS 
-            System.out.println("Se crearon las tablas");
+        
+        //CREACION DE TABLAS 
+        System.out.println("Se crearon las tablas");
+            /*
             con.createQuery("create table emergencia" + "(id serial primary key, nombre text, descripcion text, fecha date, longitud NUMERIC(10,8), latitud NUMERIC(10,8), requisitosgrupales text, requisitosindividuales text) ").executeUpdate();
             con.createQuery("create table estado" + "(id serial primary key, nombre text) ").executeUpdate();
             con.createQuery("create table emergenciaHabilidad" + "(id serial primary key, idEmergencia serial, idHabilidad serial) ").executeUpdate();
@@ -112,11 +110,8 @@ public class TablesContext {
             //RANKING
             con.createQuery("insert into ranking(porcentajeRanking, idTarea, idVoluntario) values(67,1,1);").executeUpdate();
             con.createQuery("insert into ranking(porcentajeRanking, idTarea, idVoluntario) values(85,2,2);").executeUpdate();
-            
-        } catch (Exception e) {
-            System.out.println("No se crearon las tablas");
-            System.out.println(e.getMessage());
-        }
+            */
+        
     }
 
 }

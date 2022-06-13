@@ -1,104 +1,126 @@
 package cl.tbd.backendayni.models;
 
-import java.util.ArrayList;
-
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
 public class Voluntario {
     /** 
+    * ATRIBUTOS DE Voluntario
     * @param  id
     * @param correo 
-    * @param nombre
-    * @param contrasena
+    * @param usuario
+    * @param password
     * @param atributos 
     */
 
     private long id;
     private String correo;
-    private String nombreUsuario;
-    private String contrasena;
+    private String usuario;
+    private String password;
     private String atributos;
 
-    public Voluntario(long id, String correo, String nombreUsuario, String contrasena, String atributos) {
+    //CONSTRUCTOR Voluntario
+    public Voluntario(){
+    }
 
+    //CONSTRUCTOR Voluntario
+    public Voluntario(long id, String correo, String usuario, String password, String atributos){
         this.id = id;
         this.correo = correo;
-        this.nombreUsuario = nombreUsuario;
-        this.contrasena = contrasena;
+        this.usuario = usuario;
+        this.password = password;
         this.atributos = atributos;
     }
- 
+
+    //GETTERS Voluntario
 
     /**
-	 * @return the id
-	 */
+     * @return id
+     */
     public long getId() {
         return id;
     }
-    
+
     /**
-	 * @return the descripcion
-	 */
+     * @return correo
+     */
     public String getCorreo() {
         return correo;
     }
 
     /**
-	 * @return the descripcion
-	 */
-    public String getNombreusuario() {
-        return nombreUsuario;
+     * @return usuario
+     */
+    public String getUsuario() {
+        return usuario;
     }
 
     /**
-	 * @return the descripcion
-	 */
-    public String getContrasena() {
-        return contrasena;
+     * @return password
+     */
+    public String getPassword() {
+        return password;
     }
 
     /**
-	 * @return the descripcion
-	 */
+     * @return atributos
+     */
     public String getAtributos() {
         return atributos;
     }
-    //SETTERS 
+
+    //SETTERS Voluntario
 
     /**
-	 * @param correo the correo to set
-	 */
+     * @param id id a setear
+     */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-	 * @param correo the correo to set
-	 */
+     * @param correo correo a setear
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
     /**
-	 * @param atributos the atributos to set
-	 */
+     * @param usuario usuario a setear
+     */
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
+     * @param password password a setear
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @param atributos atributos a setear
+     */
     public void setAtributos(String atributos) {
         this.atributos = atributos;
     }
 
+    //TOSTRING Voluntario
+
     /**
-	 * @param nombre the nombre to set
-	 */
-    public void setNombreusuario(String nombreusuario) {
-        this.nombreUsuario = nombreusuario;
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "Voluntario{" +
+                "id=" + id +
+                ", correo='" + correo + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", password='" + "******" + '\'' +
+                ", atributos='" + atributos + '\'' +
+                '}';
     }
-    
-    /**
-	 * @param contrasena the contrasena to set
-	 */
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-    
+
+
 }

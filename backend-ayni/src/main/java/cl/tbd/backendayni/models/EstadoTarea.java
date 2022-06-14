@@ -2,39 +2,83 @@ package cl.tbd.backendayni.models;
 
 
 public class EstadoTarea {
-	private long idTabla;
-    private long idEstado;
-    private long idTarea;
-    
-	public EstadoTarea(long idTabla, long idEstado, long idTarea) {
-		this.idTabla = idTabla;
-		this.idEstado = idEstado;
-		this.idTarea = idTarea;
+	
+	/**
+	 * ATRIBUTOS DE EstadoTarea
+	 * @param id del EstadoTarea
+	 * @param id_estado del EstadoTarea
+	 * @param id_tarea del EstadoTarea
+	 */
+
+	private long id;
+	private long id_estado;
+	private long id_tarea;
+
+	//CONSTRUCTOR EstadoTarea
+	public EstadoTarea(){
 	}
 
-	public long getIdTabla() {
-		return idTabla;
+	//CONSTRUCTOR EstadoTarea
+	public EstadoTarea(long id, long id_estado, long id_tarea){
+		this.id = id;
+		this.id_estado = id_estado;
+		this.id_tarea = id_tarea;
 	}
 
-	public long getIdEstado() {
-		return idEstado;
+	//GETTERS EstadoTarea
+
+	/**
+	 * @return id
+	 */
+	public long getId() {
+		return id;
 	}
 
-	public long getIdTarea() {
-		return idTarea;
+	/**
+	 * @return id_estado
+	 */
+	public long getId_estado() {
+		return id_estado;
 	}
 
-	public void setIdTabla(long idTabla) {
-		this.idTabla = idTabla;
+	/**
+	 * @return id_tarea
+	 */
+	public long getId_tarea() {
+		return id_tarea;
 	}
 
-	public void setIdEstado(long idEstado) {
-		this.idEstado = idEstado;
+	//SETTERS EstadoTarea
+
+	/**
+	 * @param id del EstadoTarea
+	 */
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public void setIdTarea(long idTarea) {
-		this.idTarea = idTarea;
+	/**
+	 * @param id_estado del EstadoTarea
+	 */
+	public void setId_estado(long id_estado) {
+		this.id_estado = id_estado;
 	}
 
-    
+	/**
+	 * @param id_tarea del EstadoTarea
+	 */
+	public void setId_tarea(long id_tarea) {
+		this.id_tarea = id_tarea;
+	}
+
+	//TOSTRING EstadoTarea
+
+	/**
+	 * @return String con los datos del EstadoTarea
+	 */
+	@Override
+	public String toString() {
+		return "EstadoTarea [id=" + id + ", id_estado=" + id_estado + ", id_tarea=" + id_tarea + "]";
+	}
+	
 }

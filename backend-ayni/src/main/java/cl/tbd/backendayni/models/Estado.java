@@ -55,6 +55,10 @@ public class Estado {
 	}
 
 	//TOSTRING Estado
+
+	/**
+	 * @return string con los datos del estado
+	 */
 	@Override
 	public String toString() {
 		return "Estado [id=" + id + ", nombre=" + nombre + "]";

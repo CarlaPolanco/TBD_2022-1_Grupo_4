@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
-
 @EntityScan
 public class Emergencia {
     /**
@@ -160,6 +159,10 @@ public class Emergencia {
     }
 
     //TOSTRING Emergencia
+
+    /**
+     * @return toString de la emergencia
+     */
     @Override
     public String toString() {
         return "Emergencia{" +

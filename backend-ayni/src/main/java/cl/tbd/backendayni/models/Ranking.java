@@ -5,64 +5,104 @@ import java.util.List;
 
 @EntityScan
 public class Ranking {
+    /**
+    * ATRIBUTOS DE Ranking
+    * @param id del Ranking
+    * @param porcentaje del Ranking
+    * @param id_tarea del Ranking
+    * @param id_voluntario del Ranking
+    */
+
     private long id;
-    private float porcentajeRanking;
-    private long idTarea;
-    private long idVoluntario;
+    private long porcentaje;
+    private long id_tarea;
+    private long id_voluntario;
 
+    //CONSTRUCTOR Ranking
     public Ranking(){
-
-    }
-    public Ranking(long id2, float porcentajeRanking, long id_voluntario, long id_tarea){
-        this.idTarea = id_tarea;
-        this.idVoluntario = id_voluntario;
-        this.porcentajeRanking = porcentajeRanking;
-        this.id = id2;
-    }
-
-    public long getIdVoluntario(){
-        return idVoluntario;
     }
     
-    public void setIdVoluntario(int idVol){
-        this.idVoluntario = idVol;
+    //CONSTRUCTOR Ranking
+    public Ranking(long id, long porcentaje, long id_tarea, long id_voluntario){
+        this.id = id;
+        this.porcentaje = porcentaje;
+        this.id_tarea = id_tarea;
+        this.id_voluntario = id_voluntario;
     }
 
-    public long getIdTarea(){
-        return idTarea;
-    }
+    //GETTERS Ranking
 
-    public void setIdTarea(int idTarea){
-        this.idTarea = idTarea;
-    }  
-    
-    public float getRanking(){
-        return porcentajeRanking;
-    }
-    public void setRanking(float rank){
-        this.porcentajeRanking = rank;
-    }
-
-    public long getId(){
+    /**
+     * @return id
+     */
+    public long getId() {
         return id;
     }
 
-    public void setId(long id){
+    /**
+     * @return porcentaje
+     */
+    public long getPorcentaje() {
+        return porcentaje;
+    }
+
+    /**
+     * @return id_tarea
+     */
+    public long getId_tarea() {
+        return id_tarea;
+    }
+
+    /**
+     * @return id_voluntario
+     */
+    public long getId_voluntario() {
+        return id_voluntario;
+    }
+
+    //SETTERS Ranking
+
+    /**
+     * @param id del Ranking
+     */
+    public void setId(long id) {
         this.id = id;
     }
 
-    public void generateRankingPercent(List<TareaHabilidad> listTH, List<VoluntarioHabilidad> listVH){
-        int counter = 0;
-        for(int i = 0; i< listTH.size(); i++){
-            for(int j = 0; j< listTH.size(); j++){
-                if(listTH.get(i).getIdHabilidad() == listVH.get(i).getId_habilidad()){
-                    counter = counter + 1;
-                }
-            }
-        }
-        float porcentaje;
-        porcentaje = (float) 4.0;
-        this.porcentajeRanking = porcentaje;
+    /**
+     * @param porcentaje del Ranking
+     */
+    public void setPorcentaje(long porcentaje) {
+        this.porcentaje = porcentaje;
+    }
+
+    /**
+     * @param id_tarea del Ranking
+     */
+    public void setId_tarea(long id_tarea) {
+        this.id_tarea = id_tarea;
+    }
+
+    /**
+     * @param id_voluntario del Ranking
+     */
+    public void setId_voluntario(long id_voluntario) {
+        this.id_voluntario = id_voluntario;
+    }
+
+    //TOSTRING Ranking
+
+    /**
+     * @return String con los datos del Ranking
+     */
+    @Override
+    public String toString() {
+        return "Ranking{" +
+                "id=" + id +
+                ", porcentaje=" + porcentaje +
+                ", id_tarea=" + id_tarea +
+                ", id_voluntario=" + id_voluntario +
+                '}';
     }
 
 }

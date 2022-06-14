@@ -4,30 +4,68 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @EntityScan
 public class Habilidad {
-    private long id;
-    private String habilidad;
+    /**
+     * ATRIBUTOS DE Habilidad
+     * @param id de la habilidad
+     * @param nombre de la habilidad
+     */
 
+    private long id;
+    private String nombre;
+
+    //CONSTRUCTOR Habilidad
     public Habilidad(){
     }
-    public Habilidad(long id2, String hab){
-        this.id = id2;
-        this.habilidad = hab;     
+
+    //CONSTRUCTOR Habilidad
+    public Habilidad(long id, String nombre){
+        this.id = id;
+        this.nombre = nombre;
     }
 
-    public String getHabilidad(){
-        return habilidad;
-    }
+    //GETTERS Habilidad
 
-    public long getId(){
+    /**
+     * @return id
+     */
+    public long getId() {
         return id;
     }
+    
+    /**
+     * @return nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setHabilidad(String habilidad){
-        this.habilidad = habilidad;
+    //SETTERS Habilidad
+
+    /**
+     * @param id de la habilidad
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    /**
+     * @param nombre de la habilidad
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    //TOSTRING Habilidad
+
+    /**
+     * @return String
+     */
+    @Override
+    public String toString() {
+        return "Habilidad{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
     
-    public void setId(long id){
-        this.id = id;
-
-    }
 }

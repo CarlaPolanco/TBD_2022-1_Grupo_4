@@ -30,7 +30,7 @@ public class RankingService {
     public List<Ranking> getAll() {
         return rankingRepository.getAll();
     }
-
+    /* 
     @PostMapping("/ranking/create")
     @ResponseBody
     public Ranking createRanking(@RequestBody Ranking ranking){
@@ -76,7 +76,5 @@ public class RankingService {
         Ranking newRanking = rankingRepository.createPercent(id1,id2);
         return newRanking;
     }
-
-
-
+    */
 }

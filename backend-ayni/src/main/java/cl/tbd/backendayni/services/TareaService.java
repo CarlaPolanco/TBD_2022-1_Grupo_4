@@ -2,8 +2,6 @@ package cl.tbd.backendayni.services;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,10 +54,9 @@ public class TareaService {
     public List<Tarea> getTareaById(@PathVariable long id) {
         return tareaRepository.showTareaById(id);
     }  
-
+    /* 
     @RequestMapping(value = "/tarea/getAlltareasId/{id}",method = RequestMethod.GET)
     public List<Tarea> getAllTareasEmergency(@PathVariable long id){
         return tareaRepository.getAllTareasEmergency(id);
-
-    }
+    }*/
 }

@@ -1,19 +1,16 @@
 package cl.tbd.backendayni.repositories;
 
-import java.util.ArrayList;
-import java.util.List;
 import cl.tbd.backendayni.models.Ranking;
-import cl.tbd.backendayni.models.RankingVoluntario;
+/* import cl.tbd.backendayni.models.RankingVoluntario;
 import cl.tbd.backendayni.models.Tarea;
 import cl.tbd.backendayni.models.TareaHabilidad;
 import cl.tbd.backendayni.models.VoluntarioHabilidad;
 import cl.tbd.backendayni.models.Voluntario;
-import java.util.*;
+*/
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
-import org.sql2o.Query;
 import org.sql2o.Sql2o;
 
 @Repository
@@ -22,17 +19,24 @@ public class RankingRepositoryImp implements RankingRepository{
     @Autowired
     private Sql2o sql2o;
 
+    /**
+     * @param ranking {@value} Ranking ranking a crear
+     * @return {@value} Ranking ranking creado
+     * @throws Exception si no se puede crear el ranking
+     * @see cl.tbd.backendayni.repositories.RankingRepository#createRanking(cl.tbd.backendayni.models.Ranking)
+     */
     @Override
     public Ranking createRanking(Ranking ranking){
         Connection conn = sql2o.open();
 
-        String SQL_INSERT = "INSERT INTO ranking(idTarea, idVoluntario)" + 
-        "VALUES (:idTarea2, :idVoluntario2)";
+        String SQL_INSERT = "INSERT INTO ranking(porcentaje, id_tarea, id_voluntario)" + 
+        "VALUES (:porcentaje, :id_tarea2, :id_voluntario2)";
 
         try{
             conn.createQuery(SQL_INSERT)
-                .addParameter("idTarea2", ranking.getIdTarea())
-                .addParameter("idVoluntario2", ranking.getIdVoluntario())
+                .addParameter("porcentaje", ranking.getPorcentaje())
+                .addParameter("id_tarea2", ranking.getId_tarea())
+                .addParameter("id_voluntario2", ranking.getId_voluntario())
                 .executeUpdate();
 
             ranking.setId(newID());
@@ -44,6 +48,12 @@ public class RankingRepositoryImp implements RankingRepository{
             return null;
         }
     }
+
+    /**
+     * @return {@value} int cantidad de rankings
+     * @throws Exception si no se puede obtener la cantidad de rankings
+     * @see cl.tbd.backendayni.repositories.RankingRepository#countRankings()
+     */
     @Override
     public int countAllRanks() {
         int total = 0;
@@ -54,6 +64,11 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
+    /**
+     * @return {@value} int nuevo id
+     * @throws Exception si no se puede obtener el id
+     * @see cl.tbd.backendayni.repositories.RankingRepository#newId()
+     */
     @Override
     public int newID() {
         int id = 0;
@@ -64,6 +79,12 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
+    /**
+     * @return {@value} List<Ranking> todos los rankings
+     * @throws Exception si no se puede obtener los rankings
+     * @see cl.tbd.backendayni.repositories.RankingRepository#getAll()
+     * @see cl.tbd.backendayni.models.Ranking
+     */
     @Override
     public List<Ranking> getAll() {
         try(Connection conn = sql2o.open()){
@@ -75,6 +96,12 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
+    /**
+     * @param id {@value} long id del ranking a obtener
+     * @return {@value} List<Ranking> ranking obtenido
+     * @throws Exception si no se puede obtener el ranking
+     * @see cl.tbd.backendayni.repositories.RankingRepository#showRankingById(long)
+     */
     @Override
     public List<Ranking> showRankingById(long id) {
 
@@ -88,6 +115,11 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
+    /**
+     * @param ranking {@value} Ranking ranking a eliminar
+     * @throws Exception si no se puede eliminar el ranking
+     * @see cl.tbd.backendayni.repositories.RankingRepository#deleteRanking(cl.tbd.backendayni.models.Ranking)
+     */
     @Override
     public void deleteRankingById(long id) {
         Connection conn = sql2o.open();
@@ -101,15 +133,22 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
+    /**
+     * @param ranking {@value} Ranking ranking a actualizar
+     * @return {@value} Ranking ranking actualizado
+     * @throws Exception si no se puede actualizar el ranking
+     * @see cl.tbd.backendayni.repositories.RankingRepository#updateRanking(cl.tbd.backendayni.models.Ranking)
+     */
     @Override
     public void updateRanking(Ranking ranking) {
-        String SQL_UPDATE = "UPDATE ranking SET idVoluntario = :idVoluntario2, idTarea = :idTarea2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE ranking SET porcentaje = :porcentaje2, id_voluntario = :id_voluntario2, id_tarea = :id_tarea2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
-                .addParameter("idTarea2", ranking.getIdTarea())
-                .addParameter("idVoluntario2", ranking.getIdVoluntario())
+                .addParameter("porcentaje2", ranking.getPorcentaje())
+                .addParameter("id_voluntario2", ranking.getId_voluntario())
+                .addParameter("id_tarea2", ranking.getId_tarea())
                 .addParameter("id2", ranking.getId())
                 .executeUpdate();
                 
@@ -117,6 +156,7 @@ public class RankingRepositoryImp implements RankingRepository{
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar el Ranking\n");
         }
     }
+    /* 
     @Override
     public void addNumberToRanking(Ranking ranking){
         List<TareaHabilidad> listaTH = new ArrayList<TareaHabilidad>();
@@ -222,4 +262,5 @@ public class RankingRepositoryImp implements RankingRepository{
             return null;
         }
     }
+    */
 }

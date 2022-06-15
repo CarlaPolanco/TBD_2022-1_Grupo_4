@@ -4,18 +4,21 @@ import cl.tbd.backendayni.models.Voluntario;
 import org.sql2o.Sql2o;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
-import org.sql2o.Query;
 
 
 @Repository
 public class VoluntarioRepositoryImp implements VoluntarioRepository {
     
-    @Autowired(required = false)
+    @Autowired
     private Sql2o sql2o;
 
+    /**
+     * @return {@value} int cantidad de voluntarios
+     * @throws Exception si no se puede obtener la cantidad de voluntarios
+     * @see cl.tbd.backendayni.repositories.VoluntarioRepository#countVoluntarios()
+     */
     @Override
     public int countVoluntarios(){
         int total = 0;
@@ -26,7 +29,11 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
-
+    /**
+     * @return {@value} int nuevo id
+     * @throws Exception si no se puede obtener el id
+     * @see cl.tbd.backendayni.repositories.VoluntarioRepository#newId()
+     */
     @Override
     public int newId(){
         int id = 0;
@@ -37,7 +44,11 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
-    
+    /**
+     * @return {@value} List<Voluntario> lista de voluntarios
+     * @throws Exception si no se puede obtener la lista de voluntarios
+     * @see cl.tbd.backendayni.repositories.VoluntarioRepository#getAll()
+     */
     @Override
     public List<Voluntario> getAll() {
         try(Connection conn = sql2o.open()){
@@ -49,7 +60,12 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
-
+    /**
+     * @param id {@value} int id del voluntario
+     * @return {@value} Voluntario voluntario
+     * @throws Exception si no se puede obtener el voluntario
+     * @see cl.tbd.backendayni.repositories.VoluntarioRepository#showVoluntarioById(int id)
+     */
     @Override
     public List<Voluntario> showVoluntarioById(long id){
         try(Connection conn = sql2o.open()){
@@ -62,13 +78,20 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     } 
     
+    /**
+     * @param nombre {@value} String nombre del voluntario
+     * @param password {@value} String password del voluntario
+     * @return {@value} List<Voluntario> lista de voluntarios
+     * @throws Exception si no se puede obtener la lista de voluntarios
+     * @see cl.tbd.backendayni.repositories.VoluntarioRepository#getVoluntarioLogin(String nombre, String password)
+     */
     @Override
     public List<Voluntario> getVoluntarioLogin(String nombre,String password){
         try(Connection conn = sql2o.open())
         {
-            return conn.createQuery("SELECT * FROM voluntario WHERE nombreUsuario = :nombreUsuario2 AND contrasena = :contrasena2")
-                .addParameter("nombreUsuario2",nombre)
-                .addParameter("contrasena2",password)
+            return conn.createQuery("SELECT * FROM voluntario WHERE usuario = :usuario2 AND password = :password2")
+                .addParameter("usuario2",nombre)
+                .addParameter("password2",password)
                 .executeAndFetch(Voluntario.class);
         } catch(Exception e) {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "Nombre de Usuario o Contrasena incorrectos\n");
@@ -76,23 +99,27 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
     
+    /**
+     * @param voluntario {@value} Voluntario voluntario
+     * @return {@value} Voluntario voluntario
+     * @throws Exception si no se puede crear el voluntario
+     * @see cl.tbd.backendayni.repositories.VoluntarioRepository#createVoluntario(Voluntario voluntario)
+     */
     @Override
     public Voluntario createVoluntario(Voluntario voluntario){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO voluntario(correo, nombreUsuario, contrasena, atributos)" + 
-                            "VALUES(:correo2, :nombreUsuario2, :contrasena2, :atributos2)";
+        String SQL_INSERT = "INSERT INTO voluntario(correo, usuario, password, atributos)" + 
+                            "VALUES(:correo2, :usuario2, :password2, :atributos2)";
 
         try{
-
             conn.createQuery(SQL_INSERT)
-                .addParameter("correo2", voluntario.getCorreo())
-                .addParameter("nombreUsuario2", voluntario.getNombreusuario())
-                .addParameter("contrasena2", voluntario.getContrasena())
-                .addParameter("atributos2", voluntario.getAtributos())
+                .addParameter("correo2",voluntario.getCorreo())
+                .addParameter("usuario2",voluntario.getUsuario())
+                .addParameter("password2",voluntario.getPassword())
+                .addParameter("atributos2",voluntario.getAtributos())
                 .executeUpdate();
 
             voluntario.setId(newId());
-
             return voluntario;
 
         } catch(Exception e) {
@@ -101,7 +128,10 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
-
+    /**
+     * @param id {@value} int id del voluntario
+     * @return void
+     */
     @Override 
     public void deleteVoluntarioById(long id){
         Connection conn = sql2o.open();
@@ -115,20 +145,22 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
         }
     }
 
-
+    /**
+     * @param voluntario {@value} Voluntario voluntario
+     * @return void
+     */
     @Override
     public void updateVoluntario(Voluntario voluntario){
 
-        String SQL_UPDATE = "UPDATE voluntario SET correo = :correo2, nombreUsuario = :nombreUsuario2, contrasena = :contrasena2, atributos = :atributos2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE voluntario SET correo = :correo2, usuario = :usuario2, password = :password2, atributos = :atributos2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
-
             conn.createQuery(SQL_UPDATE)
-                .addParameter("correo2", voluntario.getCorreo())
-                .addParameter("nombreUsuario2", voluntario.getNombreusuario())
-                .addParameter("contrasena2", voluntario.getContrasena())
-                .addParameter("atributos2", voluntario.getAtributos())
-                .addParameter("id2", voluntario.getId())
+                .addParameter("correo2",voluntario.getCorreo())
+                .addParameter("usuario2",voluntario.getUsuario())
+                .addParameter("password2",voluntario.getPassword())
+                .addParameter("atributos2",voluntario.getAtributos())
+                .addParameter("id2",voluntario.getId())
                 .executeUpdate();
 
         } catch(Exception e) {

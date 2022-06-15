@@ -2,8 +2,6 @@ package cl.tbd.backendayni.services;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,10 +18,16 @@ import cl.tbd.backendayni.repositories.EstadoRepository;
 public class EstadoService {
     private final EstadoRepository estadoRepository;
 
+    /**
+     * @param estadoRepository
+     */
     EstadoService(EstadoRepository estadoRepository){
         this.estadoRepository = estadoRepository;
     }
 
+    /**
+     * @return {@value} List<Estado> lista de estados
+     */
     @GetMapping("/estado")
     public List<Estado> getAllEstados(){
         System.out.println(estadoRepository.getAll());
@@ -31,12 +35,19 @@ public class EstadoService {
     }
 
 
+    /**
+     * @param id id de estado
+     * @return {@value} Estado estado
+     */
     @GetMapping("/estado/getById/{id}")
     public List<Estado> getEstadoById(@PathVariable long id){
         return estadoRepository.showEstadoById(id);
     }
 
-
+    /**
+     * @param estado
+     * @return {@value} Estado estado
+     */
     @GetMapping("/estado/count")
     public String countEstado(){
         int total = estadoRepository.countEstados();
@@ -44,6 +55,10 @@ public class EstadoService {
     }
 
 
+    /**
+     * @param estado
+     * @return {@value} Estado estado
+     */
     @PostMapping("/estado/create")
     @ResponseBody
     public Estado createEstado(@RequestBody Estado estado){
@@ -51,12 +66,19 @@ public class EstadoService {
         return newEstado;
     }
     
-
+    /**
+     * @param estado
+     * @return void
+     */
     @RequestMapping(value = "/estado/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
     public void deleteEstado(@PathVariable long id){
         estadoRepository.deleteEstadoById(id);
     }
 
+    /**
+     * @param estado
+     * @return void
+     */
     @RequestMapping(value = "/estado/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
     public void updateEstado(@RequestBody Estado estado){
         estadoRepository.updateEstado(estado);

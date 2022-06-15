@@ -2,8 +2,6 @@ package cl.tbd.backendayni.services;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,17 +17,28 @@ import cl.tbd.backendayni.repositories.EmergenciaRepository;
 @RestController
 public class EmergenciaService {
 
+    
     private final EmergenciaRepository emergenciaRepository;
 
+    /**
+     * @param emergenciaRepository
+     */
     EmergenciaService(EmergenciaRepository emergenciaRepository) {
         this.emergenciaRepository = emergenciaRepository;
     }
 
+    /**
+     * @return {@value} List<Emergencia> lista de emergencias
+     */
     @GetMapping("/emergencia")
     public List<Emergencia> getAll() {
         return emergenciaRepository.getAll();
     }
 
+    /**
+     * @param emergencia
+     * @return {@value} Emergencia emergencia
+     */
     @PostMapping("/emergencia/create")
     @ResponseBody
     public Emergencia createEmergencia(@RequestBody Emergencia emergencia){
@@ -37,22 +46,37 @@ public class EmergenciaService {
         return newEmergencia;
     }
 
+    /**
+     * @return String cantidad de emergencias
+     */
     @GetMapping("/emergencia/count")
     public String countEmergencia(){
         int total = emergenciaRepository.countEmergencias();
         return String.format("Se tienen %s emergencias.", total);
     }
 
+    /**
+     * @param id id de emergencia
+     * @return void
+     */
     @RequestMapping(value = "/emergencia/deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteEmergencia(@PathVariable long id) {
         emergenciaRepository.deleteEmergenciaById(id);
     }
 
+    /**
+     * @param emergencia
+     * @return void
+     */
     @RequestMapping(value = "/emergencia/updateById/{id}", method = RequestMethod.PUT)
     public void updateEmergencia(@RequestBody Emergencia emergencia) {
         emergenciaRepository.updateEmergencia(emergencia);
     }
 
+    /**
+     * @param id id de emergencia
+     * @return {@value} <List>Emergencia lista de emergencias
+     */
     @RequestMapping(value = "/emergencia/getById/{id}", method = RequestMethod.GET)
     public List<Emergencia> getEmergenciaById(@PathVariable long id) {
         return emergenciaRepository.showEmergenciaById(id);

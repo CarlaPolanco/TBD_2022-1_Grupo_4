@@ -1,9 +1,11 @@
 package cl.tbd.backendayni.repositories;
 
 import cl.tbd.backendayni.models.Voluntario;
-import java.util.*;
+import java.util.List;
 
-
+/**
+ * Interface para VoluntarioRepository
+ */
 public interface VoluntarioRepository {
     
     public int countVoluntarios();

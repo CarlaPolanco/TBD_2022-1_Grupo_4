@@ -3,6 +3,9 @@ package cl.tbd.backendayni.repositories;
 import cl.tbd.backendayni.models.Estado;
 import java.util.*;
 
+/**
+ * Interface para EstadoRepository
+ */
 public interface EstadoRepository {
     
     public int countEstados();

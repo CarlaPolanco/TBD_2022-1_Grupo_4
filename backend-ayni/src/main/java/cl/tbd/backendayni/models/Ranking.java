@@ -1,7 +1,6 @@
 package cl.tbd.backendayni.models;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import java.util.List;
 
 @EntityScan
 public class Ranking {

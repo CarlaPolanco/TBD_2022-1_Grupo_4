@@ -1,6 +1,5 @@
 package cl.tbd.backendayni.models;
 
-import java.util.ArrayList;
 import java.sql.Date;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 

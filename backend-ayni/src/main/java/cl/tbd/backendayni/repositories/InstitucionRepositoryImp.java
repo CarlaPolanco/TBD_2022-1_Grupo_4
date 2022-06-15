@@ -4,7 +4,6 @@ import org.springframework.stereotype.Repository;
 import cl.tbd.backendayni.models.Institucion;
 import org.sql2o.Sql2o;
 import org.sql2o.Connection;
-import org.sql2o.Query;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,9 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Repository
 public class InstitucionRepositoryImp implements InstitucionRepository {
 
-    @Autowired(required = false)
+    @Autowired
     private Sql2o sql2o;
 
+    /**
+     * @return {@value} int cantidad de instituciones
+     * @throws Exception si no se puede obtener la cantidad de instituciones
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#countInstituciones()
+     */
     @Override
     public int countInstituciones(){
         int total = 0;
@@ -25,7 +29,11 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
-
+    /**
+     * @return {@value} int nuevo id
+     * @throws Exception si no se puede obtener el id
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#newId()
+     */
     @Override
     public int newId(){
         int id = 0;
@@ -36,7 +44,11 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
-
+    /**
+     * @return {@value} List<Institucion> lista de instituciones
+     * @throws Exception si no se puede obtener la lista de instituciones
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#getAll()
+     */
     @Override
     public List<Institucion> getAll() {
         try(Connection conn = sql2o.open()){
@@ -48,7 +60,12 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
-
+    /**
+     * @param id {@value} int id de la institucion
+     * @return {@value} Institucion institucion
+     * @throws Exception si no se puede obtener la institucion
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#getById(int)
+     */
     @Override
     public List<Institucion> showInstitucionById(long id){
         try(Connection conn = sql2o.open()){
@@ -61,22 +78,29 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     } 
     
-
+    /**
+     * @param nombre {@value} String nombre de la institucion
+     * @return {@value} List<Institucion> lista de instituciones
+     * @throws Exception si no se puede obtener la lista de instituciones
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#getByNombre(String)
+     */
     @Override
     public Institucion createInstitucion(Institucion institucion){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO institucion (id, nombre, correo, numero) VALUES (:id2, :nombre2, :correo2, :numero2)";
+        String SQL_INSERT = "INSERT INTO institucion (id, nombre, usuario, password, correo, numero) VALUES (:id2, :nombre2, :usuario2, password2, :correo2, :numero2)";
 
         try{
 
             conn.createQuery(SQL_INSERT)
-                .addParameter("id2", institucion.getInstitucionid())
-                .addParameter("nombre2", institucion.getInstitucionNombre())
-                .addParameter("correo2", institucion.getInstitucionCorreo())
-                .addParameter("numero2", institucion.getInstitucionCorreo())
+                .addParameter("id2", institucion.getId())
+                .addParameter("nombre2", institucion.getNombre())
+                .addParameter("usuario2",institucion.getUsuario())
+                .addParameter("password2",institucion.getPassword())
+                .addParameter("correo2", institucion.getCorreo())
+                .addParameter("numero2", institucion.getNumero())
                 .executeUpdate();
 
-            institucion.setInstitucionId(newId());
+            institucion.setId(newId());
             return institucion;
 
         } catch(Exception e) {
@@ -85,11 +109,16 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
     
-
+    /**
+     * @param institucion {@value} Institucion institucion
+     * @return {@value} Institucion institucion
+     * @throws Exception si no se puede actualizar la institucion
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#updateInstitucion(Institucion)
+     */
     @Override 
     public void deleteInstitucionById(long id){
         Connection conn = sql2o.open();
-        String SQL_DELETE = "DELETE FROM intitucion WHERE institucion.id = :id";
+        String SQL_DELETE = "DELETE FROM institucion WHERE institucion.id = :id";
 
         try{
             conn.createQuery(SQL_DELETE).addParameter("id", id).executeUpdate();
@@ -99,20 +128,27 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         }
     }
 
-
+    /**
+     * @param institucion {@value} Institucion institucion
+     * @return {@value} Institucion institucion
+     * @throws Exception si no se puede actualizar la institucion
+     * @see cl.tbd.backendayni.repositories.InstitucionRepository#updateInstitucion(Institucion)
+     */
     @Override
     public void updateInstitucion(Institucion institucion){
 
-        String SQL_UPDATE = "UPDATE institucion SET institucion.nombre = :nombre2, institucion.correo = :correo2, institucion.numero = :numero2 WHERE institucion.id = :id2";
+        String SQL_UPDATE = "UPDATE institucion SET nombre = :nombre2, usuario = :usuario2, password = :password2, correo = :correo2, numero = :numero2 WHERE institucion.id = :id2";
 
         
         try(Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
-                .addParameter("id2", institucion.getInstitucionid())
-                .addParameter("nombre2", institucion.getInstitucionNombre())
-                .addParameter("correo2", institucion.getInstitucionCorreo())
-                .addParameter("numero2", institucion.getInstitucionCorreo())
+                .addParameter("id2", institucion.getId())
+                .addParameter("nombre2", institucion.getNombre())
+                .addParameter("usuario2", institucion.getUsuario())
+                .addParameter("password2", institucion.getPassword())
+                .addParameter("correo2", institucion.getCorreo())
+                .addParameter("numero2", institucion.getNumero())
                 .executeUpdate();
 
         } catch(Exception e) {

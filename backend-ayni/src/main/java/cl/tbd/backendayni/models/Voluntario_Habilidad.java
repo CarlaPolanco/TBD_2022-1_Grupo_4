@@ -1,30 +1,30 @@
 package cl.tbd.backendayni.models;
 
-public class VoluntarioHabilidad {
+public class Voluntario_Habilidad {
 
     /**
-     * ATRIBUTOS DE VoluntarioHabilidad
-     * @param id de la VoluntarioHabilidad
-     * @param id_voluntario de la VoluntarioHabilidad
-     * @param id_habilidad de la VoluntarioHabilidad
+     * ATRIBUTOS DE Voluntario_Habilidad
+     * @param id de la Voluntario_Habilidad
+     * @param id_voluntario de la Voluntario_Habilidad
+     * @param id_habilidad de la Voluntario_Habilidad
      */
     
     private long id;
     private long id_voluntario;
     private long id_habilidad;
 
-    //CONSTRUCTOR VoluntarioHabilidad
-    public VoluntarioHabilidad(){
+    //CONSTRUCTOR Voluntario_Habilidad
+    public Voluntario_Habilidad(){
     }
 
-    //CONSTRUCTOR VoluntarioHabilidad
-    public VoluntarioHabilidad(long id, long id_voluntario, long id_habilidad){
+    //CONSTRUCTOR Voluntario_Habilidad
+    public Voluntario_Habilidad(long id, long id_voluntario, long id_habilidad){
         this.id = id;
         this.id_voluntario = id_voluntario;
         this.id_habilidad = id_habilidad;
     }
 
-    //GETTERS VoluntarioHabilidad
+    //GETTERS Voluntario_Habilidad
 
     /**
      * @return id
@@ -47,37 +47,37 @@ public class VoluntarioHabilidad {
         return id_habilidad;
     }
 
-    //SETTERS VoluntarioHabilidad
+    //SETTERS Voluntario_Habilidad
 
     /**
-     * @param id de la VoluntarioHabilidad
+     * @param id de la Voluntario_Habilidad
      */
     public void setId(long id) {
         this.id = id;
     }
 
     /**
-     * @param id_voluntario de la VoluntarioHabilidad
+     * @param id_voluntario de la Voluntario_Habilidad
      */
     public void setId_voluntario(long id_voluntario) {
         this.id_voluntario = id_voluntario;
     }
 
     /**
-     * @param id_habilidad de la VoluntarioHabilidad
+     * @param id_habilidad de la Voluntario_Habilidad
      */
     public void setId_habilidad(long id_habilidad) {
         this.id_habilidad = id_habilidad;
     }
 
-    //TOSTRING VoluntarioHabilidad
+    //TOSTRING Voluntario_Habilidad
 
     /**
-     * @return String con los atributos de la VoluntarioHabilidad
+     * @return String con los atributos de la Voluntario_Habilidad
      */
     @Override
     public String toString() {
-        return "VoluntarioHabilidad{" +
+        return "Voluntario_Habilidad{" +
                 "id=" + id +
                 ", id_voluntario=" + id_voluntario +
                 ", id_habilidad=" + id_habilidad +

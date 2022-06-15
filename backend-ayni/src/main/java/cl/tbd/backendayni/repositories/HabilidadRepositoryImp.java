@@ -5,12 +5,8 @@ import org.springframework.stereotype.Repository;
 import cl.tbd.backendayni.models.Habilidad;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.sql2o.Connection;
-import org.sql2o.Query;
 import org.sql2o.Sql2o;
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Repository
 public class HabilidadRepositoryImp implements HabilidadRepository {
@@ -18,6 +14,11 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
     @Autowired
     private Sql2o sql2o;
 
+    /**
+     * @return {@value} int cantidad de habilidades
+     * @throws Exception si no se puede obtener la cantidad de habilidades
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#countHabilidades()
+     */
     @Override
     public int countHabilidades(){
         int total = 0;
@@ -28,7 +29,11 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
         }
     }
 
-
+    /**
+     * @return {@value} int nuevo id
+     * @throws Exception si no se puede obtener el id
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#newId()
+     */
     @Override
     public int newId(){
         int id = 0;
@@ -39,7 +44,11 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
         }
     }
 
-
+    /**
+     * @return {@value} List<Habilidad> lista de habilidades
+     * @throws Exception si no se puede obtener la lista de habilidades
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#getAll()
+     */
     @Override
     public List<Habilidad> getAll() {
         try(Connection conn = sql2o.open()){
@@ -51,7 +60,12 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
         }
     }
     
-
+    /**
+     * @param {@value} int id
+     * @return {@value} Habilidad habilidad
+     * @throws Exception si no se puede obtener la habilidad
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#getById(int)
+     */
     @Override
     public List<Habilidad> showHabilidadById(long id){
         try(Connection conn = sql2o.open()){
@@ -64,16 +78,21 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
         }
     }
 
-
+    /**
+     * @param {@value} Habilidad habilidad
+     * @return {@value} Habilidad habilidad
+     * @throws Exception si no se puede crear la habilidad
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#create(Habilidad)
+     */
     @Override
     public Habilidad createHabilidad(Habilidad habilidad){
         Connection conn = sql2o.open();
 
-        String SQL_INSERT = "INSERT INTO habilidad(habilidad)" + "VALUES (:habilidad2)";
+        String SQL_INSERT = "INSERT INTO habilidad(nombre)" + "VALUES (:nombre2)";
 
         try{
             conn.createQuery(SQL_INSERT,true)
-                .addParameter("habilidad2", habilidad.getHabilidad())
+                .addParameter("nombre2", habilidad.getNombre())
                 .executeUpdate();
             habilidad.setId(newId());
             return habilidad;
@@ -85,7 +104,12 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
 
     }
 
-
+    /**
+     * @param {@value} int id
+     * @return void
+     * @throws Exception si no se puede eliminar la habilidad
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#deleteById(int)
+     */
     @Override 
     public void deleteHabilidadById(long id){
         Connection conn = sql2o.open();
@@ -99,16 +123,21 @@ public class HabilidadRepositoryImp implements HabilidadRepository {
         }
     }
 
-
+    /**
+     * @param {@value} Habilidad habilidad
+     * @return void
+     * @throws Exception si no se puede actualizar la habilidad
+     * @see cl.tbd.backendayni.repositories.HabilidadRepository#update(Habilidad)
+     */
     @Override
     public void updateHabilidad(Habilidad habilidad){
 
-        String SQL_UPDATE = "UPDATE habilidad SET habilidad = :habilidad2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE habilidad SET nombre = :nombre2 WHERE id = :id2";
 
         try(Connection conn = sql2o.open()) {
 
             conn.createQuery(SQL_UPDATE)
-                .addParameter("habilidad2", habilidad.getHabilidad())
+                .addParameter("nombre2", habilidad.getNombre())
                 .addParameter("id2", habilidad.getId())
                 .executeUpdate();
 

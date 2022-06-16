@@ -87,10 +87,10 @@ export default {
   },  
   
   proxy: {
-    "/emergencia": 'http://localhost:8081',
-    "/tarea": 'http://localhost:8081',
-    "/ranking/getVoluntarioById": 'http://localhost:8081',
-    "/tarea/getAlltareasId":'http://localhost:8081',
+    "/emergencia": 'http://localhost:3000',
+    "/tarea": 'http://localhost:3000',
+    "/ranking/getRankingByIdTarea": 'http://localhost:3000',
+    "/tarea/getTareaByIdEmergencia":'http://localhost:3000',
   },
 
   

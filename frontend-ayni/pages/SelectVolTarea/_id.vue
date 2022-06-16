@@ -44,8 +44,8 @@
                                         </button>
                                     </a>
                                 </td>
-                                <td name="NombreVoluntario"> {{item.nombreusuario}} </td>
-                                <td name="Ranking">{{item.ranking}}</td>
+                                <td name="Voluntario"> {{item.usuario}} </td>
+                                <td name="Ranking">{{item.porcentaje}}</td>
                                 <td>
                                     <input type="checkbox" id="one_checkbox" name="one_checkbox">
                                 </td>
@@ -96,7 +96,7 @@ export default {
         },
         getData2: async function(){
             try {
-                let response2 = await this.$axios.get("/ranking/getVoluntarioById/"+this.$route.params.id);
+                let response2 = await this.$axios.get("/ranking/getRankingByIdTarea/"+this.$route.params.id);
                 this.items_ranking = response2.data;
                 console.log(response2);
             } catch (error) {

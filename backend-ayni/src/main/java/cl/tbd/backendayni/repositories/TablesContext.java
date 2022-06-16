@@ -1,7 +1,6 @@
 package cl.tbd.backendayni.repositories;
 
 import org.sql2o.Connection;
-import org.sql2o.Sql2o;
 
 public class TablesContext {
     public Connection con;
@@ -13,7 +12,7 @@ public class TablesContext {
     public void crearTablas() {
 
         // CREACION DE TABLAS
-        System.out.println("Se crearon las tablas");
+        System.out.println("| Creando las tablas de la Base de datos ayni|");
 
         con.createQuery("create table IF NOT EXISTS emergencia"
                 + "(id serial primary key, nombre text, descripcion text unique, fecha date, reqs_grupales text, reqs_individuales text,longitude NUMERIC(5,3), latitude NUMERIC(5,3)) ")

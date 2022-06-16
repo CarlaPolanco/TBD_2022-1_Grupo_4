@@ -1,8 +1,11 @@
 package cl.tbd.backendayni.repositories;
 
 import cl.tbd.backendayni.models.Ranking;
+import cl.tbd.backendayni.models.Ranking_Voluntario;
+
 //import cl.tbd.backendayni.models.RankingVoluntario;
 import java.util.List;
+
 
 /*Interface para RankingRepository*/
 public interface RankingRepository {
@@ -14,8 +17,7 @@ public interface RankingRepository {
     public List<Ranking> showRankingById(long id);
     public void deleteRankingById(long id);
     public void updateRanking(Ranking ranking);
-    //public void addNumberToRanking(Ranking ranking);
-    //public List<Ranking> getAllByTarea(long id);
-    //public List<RankingVoluntario> getAllVoluntariosByRanking(long id);
-    //public Ranking createPercent(long id1,long id2);
+    public List<Ranking_Voluntario> getRankingByIdTarea(long id);
+    //public void createRankingByIdTarea(long id);
+
 }

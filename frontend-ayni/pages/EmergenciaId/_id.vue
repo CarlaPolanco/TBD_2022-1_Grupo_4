@@ -93,7 +93,7 @@ export default {
                 let response = await this.$axios.get("/emergencia/getById/"+this.$route.params.id);
                 this.items_emergencia  = response.data;
                 console.log(response);
-                let response2 = await this.$axios.get("/tarea/getAlltareasId/"+this.$route.params.id);
+                let response2 = await this.$axios.get("/tarea/getTareaByIdEmergencia/"+this.$route.params.id);
                 this.items_tarea = response2.data;
                 console.log(response2);
             } catch (error) {

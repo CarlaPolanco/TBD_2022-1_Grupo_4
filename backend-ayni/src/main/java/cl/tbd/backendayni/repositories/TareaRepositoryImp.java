@@ -173,4 +173,28 @@ public class TareaRepositoryImp implements TareaRepository {
             System.out.println(e.getMessage() + e.getLocalizedMessage() + "No se pudo actualizar la tarea\n");
         }
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //COMPLEMENTARIOS    
+
+    /**
+     * @param id {@value} long id de la emergencia
+     * @return {@value} List<Tarea> lista de tareas
+     * @throws Exception si no se puede obtener la lista de tareas
+     * @see cl.tbd.backendayni.repositories.TareaRepository#showTareaByIdEmergencia(long id)
+     */
+    @Override
+    public List<Tarea> getTareaByIdEmergencia(long id){
+        String SQL_SELECT = "SELECT * FROM tarea WHERE tarea.id_emergencia = :id";
+        try(Connection conn = sql2o.open()){
+            return conn.createQuery(SQL_SELECT)
+                    .addParameter("id", id)
+                    .executeAndFetch(Tarea.class);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 }

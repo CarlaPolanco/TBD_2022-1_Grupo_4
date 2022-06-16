@@ -15,6 +15,7 @@ import cl.tbd.backendayni.repositories.TareaRepository;
 
 
 @RestController
+@RequestMapping("/tarea")
 public class TareaService {
     private final TareaRepository tareaRepository;
 
@@ -22,35 +23,35 @@ public class TareaService {
         this.tareaRepository = tareaRepository;
     }
 
-    @GetMapping("/tarea")
+    @GetMapping
     public List<Tarea> getAll() {
         return tareaRepository.getAll();
     }
 
-    @PostMapping("/tarea/create")
+    @PostMapping("/create")
     @ResponseBody
     public Tarea createTarea(@RequestBody Tarea tarea){
         Tarea newTarea = tareaRepository.createTarea(tarea);
         return newTarea;
     }
 
-    @GetMapping("/tarea/count")
+    @GetMapping("/count")
     public String countTarea(){
         int total = tareaRepository.countTareas();
         return String.format("Se tienen %s tareas.", total);
     }
 
-    @RequestMapping(value = "/tarea/deleteById/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteTarea(@PathVariable long id) {
         tareaRepository.deleteTareaById(id);
     }
 
-    @RequestMapping(value = "/tarea/updateById/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateById/{id}", method = RequestMethod.PUT)
     public void updateTarea(@RequestBody Tarea tarea) {
         tareaRepository.updateTarea(tarea);
     }
 
-    @RequestMapping(value = "/tarea/getById/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
     public List<Tarea> getTareaById(@PathVariable long id) {
         return tareaRepository.showTareaById(id);
     }  

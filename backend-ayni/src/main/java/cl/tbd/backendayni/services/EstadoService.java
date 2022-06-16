@@ -15,6 +15,7 @@ import cl.tbd.backendayni.repositories.EstadoRepository;
 
 
 @RestController
+@RequestMapping("/estado")
 public class EstadoService {
     private final EstadoRepository estadoRepository;
 
@@ -28,7 +29,8 @@ public class EstadoService {
     /**
      * @return {@value} List<Estado> lista de estados
      */
-    @GetMapping("/estado")
+    
+    @GetMapping
     public List<Estado> getAllEstados(){
         System.out.println(estadoRepository.getAll());
         return estadoRepository.getAll();
@@ -39,7 +41,7 @@ public class EstadoService {
      * @param id id de estado
      * @return {@value} Estado estado
      */
-    @GetMapping("/estado/getById/{id}")
+    @GetMapping("/getById/{id}")
     public List<Estado> getEstadoById(@PathVariable long id){
         return estadoRepository.showEstadoById(id);
     }
@@ -48,7 +50,7 @@ public class EstadoService {
      * @param estado
      * @return {@value} Estado estado
      */
-    @GetMapping("/estado/count")
+    @GetMapping("/count")
     public String countEstado(){
         int total = estadoRepository.countEstados();
         return String.format("Se tienen %s estados.", total);
@@ -59,7 +61,7 @@ public class EstadoService {
      * @param estado
      * @return {@value} Estado estado
      */
-    @PostMapping("/estado/create")
+    @PostMapping("/create")
     @ResponseBody
     public Estado createEstado(@RequestBody Estado estado){
         Estado newEstado = estadoRepository.createEstado(estado);
@@ -70,7 +72,7 @@ public class EstadoService {
      * @param estado
      * @return void
      */
-    @RequestMapping(value = "/estado/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
+    @RequestMapping(value = "/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
     public void deleteEstado(@PathVariable long id){
         estadoRepository.deleteEstadoById(id);
     }
@@ -79,7 +81,7 @@ public class EstadoService {
      * @param estado
      * @return void
      */
-    @RequestMapping(value = "/estado/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
+    @RequestMapping(value = "/updateById/{id}", method = {RequestMethod.PUT})
     public void updateEstado(@RequestBody Estado estado){
         estadoRepository.updateEstado(estado);
     }

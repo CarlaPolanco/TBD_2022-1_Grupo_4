@@ -75,7 +75,7 @@ public class RankingRepositoryImp implements RankingRepository{
         String sql = "SELECT MAX(id) FROM ranking";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 

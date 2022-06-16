@@ -39,7 +39,7 @@ public class Estado_TareaRepositoryImp implements Estado_TareaRepository{
         String sql = "SELECT MAX(id) FROM estado_tarea";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 

@@ -41,7 +41,7 @@ public class Emergencia_HabilidadRepositoryImp implements Emergencia_HabilidadRe
         String sql = "SELECT MAX(id) FROM emergencia_habilidad";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 

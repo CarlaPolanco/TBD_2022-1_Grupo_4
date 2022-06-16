@@ -15,6 +15,7 @@ import cl.tbd.backendayni.repositories.HabilidadRepository;
 
 
 @RestController
+@RequestMapping("/habilidad")
 public class HabilidadService {
 
     private final HabilidadRepository habilidadRepository;
@@ -29,7 +30,7 @@ public class HabilidadService {
     /**
      * @return {@value} List<Habilidad> lista de habilidades
      */
-    @GetMapping("/habilidad")
+    @GetMapping
     public List<Habilidad> getAll() {
         return habilidadRepository.getAll();
     }
@@ -38,7 +39,7 @@ public class HabilidadService {
      * @param id id de habilidad
      * @return {@value} Habilidad habilidad
      */
-    @PostMapping("/habilidad/create")
+    @PostMapping("/create")
     @ResponseBody
     public Habilidad createHabilidad(@RequestBody Habilidad habilidad){
         Habilidad newHabilidad = habilidadRepository.createHabilidad(habilidad);
@@ -49,7 +50,7 @@ public class HabilidadService {
      * @param id id de habilidad
      * @return String cantidad de habilidades
      */
-    @GetMapping("/habilidad/count")
+    @GetMapping("/count")
     public String countHabilidad(){
         int total = habilidadRepository.countHabilidades();
         return String.format("Se tienen %s habilidades.", total);
@@ -59,7 +60,7 @@ public class HabilidadService {
      * @param id id de habilidad
      * @return void
      */
-    @RequestMapping(value = "/habilidad/deleteById/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/deleteById/{id}", method = RequestMethod.DELETE)
     public void deleteHabilidad(@PathVariable long id) {
         habilidadRepository.deleteHabilidadById(id);
     }
@@ -68,7 +69,7 @@ public class HabilidadService {
      * @param id id de habilidad
      * @return void
      */
-    @RequestMapping(value = "/habilidad/updateById/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateById/{id}", method = RequestMethod.PUT)
     public void updateHabilidad(@RequestBody Habilidad habilidad) {
         habilidadRepository.updateHabilidad(habilidad);
     }
@@ -77,7 +78,7 @@ public class HabilidadService {
      * @param id id de habilidad
      * @return void
      */
-    @RequestMapping(value = "/habilidad/getById/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
     public List<Habilidad> getHabilidadById(@PathVariable long id) {
         return habilidadRepository.showHabilidadById(id);
     }

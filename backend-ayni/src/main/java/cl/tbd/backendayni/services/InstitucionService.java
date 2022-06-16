@@ -14,6 +14,7 @@ import cl.tbd.backendayni.models.Institucion;
 import cl.tbd.backendayni.repositories.InstitucionRepository;
 
 @RestController
+@RequestMapping("/institucion")
 public class InstitucionService {
     private final InstitucionRepository institucionRepository;
 
@@ -27,7 +28,7 @@ public class InstitucionService {
     /**
      * @return {@value} List<Institucion> lista de instituciones
      */
-    @GetMapping("/institucion")
+    @GetMapping
     public List<Institucion> getAllInstitucions(){
         System.out.println(institucionRepository.getAll());
         return institucionRepository.getAll();
@@ -37,7 +38,7 @@ public class InstitucionService {
      * @param id id de institucion
      * @return {@value} Institucion institucion
      */
-    @GetMapping("/institucion/getById/{id}")
+    @GetMapping("/getById/{id}")
     public List<Institucion> getInstitucionById(@PathVariable long id){
         return institucionRepository.showInstitucionById(id);
     }
@@ -45,7 +46,7 @@ public class InstitucionService {
     /**
      * @return String cantidad de instituciones
      */
-    @GetMapping("/institucion/count")
+    @GetMapping("/count")
     public String countInstitucion(){
         int total = institucionRepository.countInstituciones();
         return String.format("Se tienen %s instituciones.", total);
@@ -55,7 +56,7 @@ public class InstitucionService {
      * @param institucion
      * @return {@value} Institucion institucion
      */
-    @PostMapping("/institucion/create")
+    @PostMapping("/create")
     @ResponseBody
     public Institucion createInstitucion(@RequestBody Institucion institucion){
         Institucion newInstitucion = institucionRepository.createInstitucion(institucion);
@@ -66,7 +67,7 @@ public class InstitucionService {
      * @param id id de institucion
      * @return {@value} Institucion institucion
      */
-    @RequestMapping(value = "/institucion/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
+    @RequestMapping(value = "/deleteById/{id}", produces = "application/json", method = {RequestMethod.GET, RequestMethod.DELETE})
     public void deleteInstitucion(@PathVariable long id){
         institucionRepository.deleteInstitucionById(id);
     }
@@ -75,7 +76,7 @@ public class InstitucionService {
      * @param institucion
      * @return {@value} Institucion institucion
      */
-    @RequestMapping(value = "/institucion/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
+    @RequestMapping(value = "/updateById/{id}", produces = "application/json", method = {RequestMethod.PUT})
     public void updateInstitucion(@RequestBody Institucion institucion){
         institucionRepository.updateInstitucion(institucion);
     }    

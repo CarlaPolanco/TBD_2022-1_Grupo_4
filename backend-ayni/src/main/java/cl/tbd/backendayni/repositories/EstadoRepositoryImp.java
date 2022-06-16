@@ -40,7 +40,7 @@ public class EstadoRepositoryImp implements EstadoRepository {
         String sql = "SELECT MAX(id) FROM estado";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 
@@ -93,7 +93,6 @@ public class EstadoRepositoryImp implements EstadoRepository {
             conn.createQuery(SQL_INSERT,true)
                 .addParameter("nombre2", estado.getNombre())
                 .executeUpdate();
-
             estado.setId(newId());
             return estado;
 

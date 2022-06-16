@@ -19,6 +19,7 @@ import cl.tbd.backendayni.repositories.RankingRepository;
 
 
 @RestController
+@RequestMapping("/ranking")
 public class RankingService {
     private final RankingRepository rankingRepository;
 
@@ -26,7 +27,7 @@ public class RankingService {
         this.rankingRepository = rankingRepository;
     }
 
-    @GetMapping("/ranking")
+    @GetMapping
     public List<Ranking> getAll() {
         return rankingRepository.getAll();
     }

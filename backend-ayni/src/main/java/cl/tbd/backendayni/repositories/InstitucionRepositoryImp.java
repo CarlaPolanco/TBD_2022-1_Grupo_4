@@ -40,7 +40,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
         String sql = "SELECT MAX(id) FROM institucion";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 
@@ -87,12 +87,11 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     @Override
     public Institucion createInstitucion(Institucion institucion){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO institucion (id, nombre, usuario, password, correo, numero) VALUES (:id2, :nombre2, :usuario2, password2, :correo2, :numero2)";
+        String SQL_INSERT = "INSERT INTO institucion ( nombre, usuario, password, correo, numero) VALUES ( :nombre2, :usuario2, :password2, :correo2, :numero2)";
 
         try{
 
             conn.createQuery(SQL_INSERT)
-                .addParameter("id2", institucion.getId())
                 .addParameter("nombre2", institucion.getNombre())
                 .addParameter("usuario2",institucion.getUsuario())
                 .addParameter("password2",institucion.getPassword())
@@ -137,7 +136,7 @@ public class InstitucionRepositoryImp implements InstitucionRepository {
     @Override
     public void updateInstitucion(Institucion institucion){
 
-        String SQL_UPDATE = "UPDATE institucion SET nombre = :nombre2, usuario = :usuario2, password = :password2, correo = :correo2, numero = :numero2 WHERE institucion.id = :id2";
+        String SQL_UPDATE = "UPDATE institucion SET nombre = :nombre2, usuario = :usuario2, password = :password2, correo = :correo2, numero = :numero2 WHERE id = :id2";
 
         
         try(Connection conn = sql2o.open()) {

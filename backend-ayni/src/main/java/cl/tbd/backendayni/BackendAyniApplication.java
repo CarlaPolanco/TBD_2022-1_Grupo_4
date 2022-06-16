@@ -23,6 +23,8 @@ public class BackendAyniApplication {
 			try{
 				tablas.crearTablas();
 				System.out.println("| Se creo las Tablas de la Base de datos de Ayni |");
+				tablas.dump();
+				System.out.println("| Se ingresaron los datos de la Base de datos de Ayni |");
 			}catch(Sql2oException e)
 			{
 				System.out.println("| Ya se crearon las Tablas de la Base de datos de Ayni |");

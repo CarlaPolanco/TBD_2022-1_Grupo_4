@@ -39,7 +39,7 @@ public class TareaRepositoryImp implements TareaRepository {
         String sql = "SELECT MAX(id) FROM tarea";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 
@@ -154,7 +154,7 @@ public class TareaRepositoryImp implements TareaRepository {
     @Override
     public void updateTarea(Tarea tarea){
 
-        String SQL_UPDATE = "UPDATE tarea SET id_emergencia = :id_emergencia2, nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, requirimientos = :requirimientos2, longitude = :longitude2, latitude = :latitude, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE tarea SET id_emergencia = :id_emergencia2, nombre = :nombre2, descripcion = :descripcion2, fecha = :fecha2, requerimientos = :requerimientos2, longitude = :longitude2, latitude = :latitude2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
 
@@ -163,7 +163,7 @@ public class TareaRepositoryImp implements TareaRepository {
                 .addParameter("nombre2", tarea.getNombre())
                 .addParameter("descripcion2", tarea.getDescripcion())
                 .addParameter("fecha2", tarea.getFecha())
-                .addParameter("requirimientos2", tarea.getRequerimientos())
+                .addParameter("requerimientos2", tarea.getRequerimientos())
                 .addParameter("longitude2", tarea.getLongitude())
                 .addParameter("latitude2", tarea.getLatitude())
                 .addParameter("id2", tarea.getId())

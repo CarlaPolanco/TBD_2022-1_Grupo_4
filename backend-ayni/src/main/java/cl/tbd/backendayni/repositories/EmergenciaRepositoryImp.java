@@ -40,7 +40,7 @@ public class EmergenciaRepositoryImp implements EmergenciaRepository {
         String sql = "SELECT MAX(id) FROM emergencia";
         try (Connection conn = sql2o.open()) {
             id = conn.createQuery(sql).executeScalar(Integer.class);
-            return id+1;
+            return id;
         }
     }
 

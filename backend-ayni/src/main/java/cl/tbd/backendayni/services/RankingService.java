@@ -93,4 +93,11 @@ public class RankingService {
         return rankingRepository.getRankingByIdTarea(id);
     }
 
+    @PostMapping("/createRankingByIdTarea/{id}")
+    public List<Ranking> createRankingByIdTarea(@PathVariable long id) {
+        List<Ranking> newRanking = rankingRepository.createRankingByIdTarea(id);
+        return newRanking;
+    }
+
+
 }

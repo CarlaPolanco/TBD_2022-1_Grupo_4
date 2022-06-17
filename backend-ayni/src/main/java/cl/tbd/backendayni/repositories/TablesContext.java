@@ -7,18 +7,21 @@ public class TablesContext {
 
     public TablesContext(Connection con) {
         this.con = con;
+        
+        
     }
 
     public void crearTablas() {
 
         // CREACION DE TABLAS
         System.out.println("| Creando las tablas de la Base de datos ayni|");
+        
 
         con.createQuery("create table IF NOT EXISTS emergencia"
                 + "(id serial primary key, nombre text, descripcion text unique, fecha date, reqs_grupales text, reqs_individuales text,longitude NUMERIC(5,3), latitude NUMERIC(5,3)) ")
                 .executeUpdate();
         con.createQuery("create table IF NOT EXISTS voluntario"
-                + "(id serial primary key, correo text unique, usuario text, password text, atributos text) ")
+                + "(id serial primary key, correo text unique, usuario text, nombre text, password text, atributos text) ")
                 .executeUpdate();
         con.createQuery("create table IF NOT EXISTS tarea"
                 + "(id serial primary key, id_emergencia serial, nombre text, descripcion text, fecha date, requerimientos text, longitude NUMERIC(5,3), latitude numeric(5,3)) ")
@@ -33,6 +36,7 @@ public class TablesContext {
         con.createQuery("create table IF NOT EXISTS ranking"
                 + "(id serial primary key, porcentaje real, id_tarea serial, id_voluntario serial) ")
                 .executeUpdate();
+        
         /*
          * Tablas intermedias
          */
@@ -112,23 +116,23 @@ public class TablesContext {
         // Insertar valores en tabla voluntario
 
         con.createQuery(
-                "insert into voluntario (correo, usuario, password, atributos) values ('michaelRThomas@gmail.com', 'Hatter','baebe2jei1Oh','Responsable, Esforzado')")
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('michaelRThomas@gmail.com', 'Hatter','Michael Thomas', 'baebe2jei1Oh','Responsable, Esforzado')")
                 .executeUpdate();
 
         con.createQuery(
-                "insert into voluntario (correo, usuario, password, atributos) values ('kyleFDulac@gmail.com', 'Hinceeng49','jeeFi7ae','Eficiente, Acertivo')")
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('kyleFDulac@gmail.com', 'Hinceeng49', 'Kyle Dulac', 'jeeFi7ae','Eficiente, Acertivo')")
                 .executeUpdate();
         con.createQuery(
-                "insert into voluntario (correo, usuario, password, atributos) values ('susanBTaylor@gmail.com', 'Beeked','oahee9AeNg5','Flojo, Certero')")
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('susanBTaylor@gmail.com', 'Beeked', 'Susan Taylor', 'oahee9AeNg5','Flojo, Certero')")
                 .executeUpdate();
         con.createQuery(
-                "insert into voluntario (correo, usuario, password, atributos) values ('maryDWisniewski@gmail.com', 'Dialt1937','Aeveip5xu2','Honesto, Insoportable')")
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('maryDWisniewski@gmail.com', 'Dialt1937','Mary DWisneiwski','Aeveip5xu2','Honesto, Insoportable')")
                 .executeUpdate();
         con.createQuery(
-                "insert into voluntario (correo, usuario, password, atributos) values ('kennethRSegura@gmail.com', 'Prearknot91','aZaeTh9oh','Inquieto, Hiperactivo')")
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('kennethRSegura@gmail.com', 'Prearknot91','Kenneth Segura','aZaeTh9oh','Inquieto, Hiperactivo')")
                 .executeUpdate();
         con.createQuery(
-                "insert into voluntario (correo, usuario, password, atributos) values ('Dumbdlore@gmail.com', 'Lentand','OoZ4baek2ch','Magia, Dominio de Miradas')")
+                "insert into voluntario (correo, usuario, nombre, password, atributos) values ('Dumbdlore@gmail.com', 'Merlin','Percival Dumbdlore','OoZ4baek2ch','Magia, Dominio de Miradas')")
                 .executeUpdate();
 
         // Insertar valores en tabla tarea

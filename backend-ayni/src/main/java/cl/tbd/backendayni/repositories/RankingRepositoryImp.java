@@ -3,17 +3,13 @@ package cl.tbd.backendayni.repositories;
 import cl.tbd.backendayni.models.Ranking;
 import cl.tbd.backendayni.models.Ranking_Voluntario;
 
-/* import cl.tbd.backendayni.models.RankingVoluntario;
-import cl.tbd.backendayni.models.Tarea;
-import cl.tbd.backendayni.models.TareaHabilidad;
-import cl.tbd.backendayni.models.VoluntarioHabilidad;
-import cl.tbd.backendayni.models.Voluntario;
-*/
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import org.sql2o.data.Table;
 
 @Repository
 public class RankingRepositoryImp implements RankingRepository{
@@ -166,7 +162,7 @@ public class RankingRepositoryImp implements RankingRepository{
     @Override
     public List<Ranking_Voluntario> getRankingByIdTarea(long id){
         try(Connection conn = sql2o.open()){
-            return conn.createQuery("SELECT t1.id_voluntario, t1.porcentaje, t2.usuario FROM ranking t1, voluntario t2 WHERE t1.id_tarea = :id AND t1.id_voluntario = t2.id AND t1.porcentaje > 0 ORDER BY t1.porcentaje DESC;")
+            return conn.createQuery("SELECT t1.id_voluntario, t1.porcentaje, t2.nombre FROM ranking t1, voluntario t2 WHERE t1.id_tarea = :id AND t1.id_voluntario = t2.id AND t1.porcentaje > 0 ORDER BY t1.porcentaje DESC;")
                     .addParameter("id", id)
                     .executeAndFetch(Ranking_Voluntario.class);
         } catch (Exception e) {
@@ -175,25 +171,35 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
-    /* 
+    
     @Override
-    public void createRankingByIdTarea(long id){
-         
-        int total = 0;
-        String sql = "SELECT COUNT(*) FROM ranking";
+    public List<Ranking> createRankingByIdTarea(long id){
+        int cantidad = 0;
+        String sql_existe = "SELECT COUNT(*) FROM ranking WHERE id_tarea = :id"; 
+        String sql = "SELECT ROUND(COUNT(t2.id_voluntario)/(SELECT COUNT(*)*1.0 FROM tarea_habilidad WHERE id_tarea = :id)*100), t1.id_tarea,t2.id_voluntario  FROM tarea_habilidad t1, voluntario_habilidad t2 WHERE t1.id_tarea = :id AND t1.id_habilidad = t2.id_habilidad GROUP BY t2.id_voluntario, t1.id_tarea";
+        List<Ranking> rankings = new ArrayList<>();
         try (Connection conn = sql2o.open()) {
-            total = conn.createQuery(sql).executeScalar(Integer.class);
-            return total;
+            cantidad = conn.createQuery(sql_existe).addParameter("id", id).executeScalar(Integer.class);
+            if(cantidad == 0){
+                Table tabla = conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchTable();
+                tabla.rows().forEach(action -> {
+                    Ranking ranking = new Ranking();
+                    ranking.setPorcentaje(action.getInteger(0));
+                    ranking.setId_tarea(action.getLong(1));
+                    ranking.setId_voluntario(action.getLong(2));
+                    ranking.setId(newID());
+                    createRanking(ranking);
+                    rankings.add(ranking);
+                });
+                return rankings;
+            }
+            return null;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
-
-        int total_habilidades_tarea = 0;
-        
-        String SQL_TOTAL_HT = "SELECT COUNT(*) FROM tarea_habilidad WHERE id_tarea = :id";
-        SELECT COUNT(*)*1.0 FROM tarea_habilidad WHERE id_tarea = 1;
-        --SELECT t1.id_tarea,t2.id_voluntario, COUNT(t2.id_voluntario) FROM tarea_habilidad t1, voluntario_habilidad t2 WHERE t1.id_tarea = 1 AND t1.id_habilidad = t2.id_habilidad
-        --GROUP BY t2.id_voluntario, t1.id_tarea; 
-
-        SELECT ROUND(COUNT(t2.id_voluntario)/(SELECT COUNT(*)*1.0 FROM tarea_habilidad WHERE id_tarea = 1)*100), t1.id_tarea,t2.id_voluntario  FROM tarea_habilidad t1, voluntario_habilidad t2 WHERE t1.id_tarea = 1 AND t1.id_habilidad = t2.id_habilidad
-        GROUP BY t2.id_voluntario, t1.id_tarea; 
-    }*/
+       
+    }
 }

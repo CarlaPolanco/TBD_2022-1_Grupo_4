@@ -9,6 +9,7 @@ public class Voluntario {
     * @param  id
     * @param correo 
     * @param usuario
+    * @param nombre
     * @param password
     * @param atributos 
     */
@@ -16,6 +17,7 @@ public class Voluntario {
     private long id;
     private String correo;
     private String usuario;
+    private String nombre;
     private String password;
     private String atributos;
 
@@ -24,10 +26,11 @@ public class Voluntario {
     }
 
     //CONSTRUCTOR Voluntario
-    public Voluntario(long id, String correo, String usuario, String password, String atributos){
+    public Voluntario(long id, String correo, String usuario, String nombre, String password, String atributos){
         this.id = id;
         this.correo = correo;
         this.usuario = usuario;
+        this.nombre = nombre;
         this.password = password;
         this.atributos = atributos;
     }
@@ -53,6 +56,13 @@ public class Voluntario {
      */
     public String getUsuario() {
         return usuario;
+    }
+
+    /**
+     * @return nombre
+     */
+    public String getNombre() {
+        return nombre;
     }
 
     /**
@@ -93,6 +103,13 @@ public class Voluntario {
     }
 
     /**
+     * @param nombre nombre a setear
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
      * @param password password a setear
      */
     public void setPassword(String password) {
@@ -117,6 +134,7 @@ public class Voluntario {
                 "id=" + id +
                 ", correo='" + correo + '\'' +
                 ", usuario='" + usuario + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", password='" + "******" + '\'' +
                 ", atributos='" + atributos + '\'' +
                 '}';

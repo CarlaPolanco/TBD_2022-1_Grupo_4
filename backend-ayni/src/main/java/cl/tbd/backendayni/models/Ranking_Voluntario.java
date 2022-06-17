@@ -8,21 +8,21 @@ public class Ranking_Voluntario {
     /**
      * ATRIBUTOS DE Ranking_Voluntario
      * @param id_voluntario de rannking_voluntario
-     * @param usuario de ranking_voluntario
+     * @param nombre de ranking_voluntario
      * @param porcentaje de ranking_voluntario
      */
 
     private long id_voluntario;
-    private String usuario;
+    private String nombre;
     private float porcentaje;
  
     public Ranking_Voluntario() {
     }
 
     //CONSTRUCTOR Ranking_Voluntario
-    public Ranking_Voluntario(long id_voluntario, String usuario, float porcentaje) {
+    public Ranking_Voluntario(long id_voluntario, String nombre, float porcentaje) {
         this.id_voluntario = id_voluntario;
-        this.usuario = usuario;
+        this.nombre = nombre;
         this.porcentaje = porcentaje;
     }
 
@@ -36,10 +36,10 @@ public class Ranking_Voluntario {
     }
 
     /**
-     * @return usuario
+     * @return nombre
      */
-    public String getUsuario() {
-        return usuario;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
@@ -60,10 +60,10 @@ public class Ranking_Voluntario {
     }
 
     /**
-     * @param usuario usuario a setear
+     * @param nombre nombre a setear
      */
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**
@@ -80,7 +80,7 @@ public class Ranking_Voluntario {
      */
     @Override
     public String toString() {
-        return "Ranking_Voluntario [id_voluntario=" + id_voluntario + ", usuario=" + usuario + ", porcentaje=" + porcentaje + "]";
+        return "Ranking_Voluntario [id_voluntario=" + id_voluntario + ", nombre=" + nombre + ", porcentaje=" + porcentaje + "]";
     }
     
 }

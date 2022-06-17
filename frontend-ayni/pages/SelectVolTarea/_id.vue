@@ -44,7 +44,7 @@
                                         </button>
                                     </a>
                                 </td>
-                                <td name="Voluntario"> {{item.usuario}} </td>
+                                <td name="Voluntario"> {{item.nombre}} </td>
                                 <td name="Ranking">{{item.porcentaje}}</td>
                                 <td>
                                     <input type="checkbox" id="one_checkbox" name="one_checkbox">

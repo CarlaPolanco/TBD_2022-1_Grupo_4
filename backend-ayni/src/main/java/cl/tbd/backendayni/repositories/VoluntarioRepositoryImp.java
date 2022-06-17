@@ -108,13 +108,14 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public Voluntario createVoluntario(Voluntario voluntario){
         Connection conn = sql2o.open();
-        String SQL_INSERT = "INSERT INTO voluntario(correo, usuario, password, atributos)" + 
-                            "VALUES(:correo2, :usuario2, :password2, :atributos2)";
+        String SQL_INSERT = "INSERT INTO voluntario(correo, usuario, nombre, password, atributos)" + 
+                            "VALUES(:correo2, :usuario2, :nombre2, :password2, :atributos2)";
 
         try{
             conn.createQuery(SQL_INSERT)
                 .addParameter("correo2",voluntario.getCorreo())
                 .addParameter("usuario2",voluntario.getUsuario())
+                .addParameter("nombre2",voluntario.getNombre())
                 .addParameter("password2",voluntario.getPassword())
                 .addParameter("atributos2",voluntario.getAtributos())
                 .executeUpdate();
@@ -152,12 +153,13 @@ public class VoluntarioRepositoryImp implements VoluntarioRepository {
     @Override
     public void updateVoluntario(Voluntario voluntario){
 
-        String SQL_UPDATE = "UPDATE voluntario SET correo = :correo2, usuario = :usuario2, password = :password2, atributos = :atributos2, id = :id2 WHERE id = :id2";
+        String SQL_UPDATE = "UPDATE voluntario SET correo = :correo2, usuario = :usuario2, nombre = :nombre2, password = :password2, atributos = :atributos2, id = :id2 WHERE id = :id2";
         
         try(Connection conn = sql2o.open()) {
             conn.createQuery(SQL_UPDATE)
                 .addParameter("correo2",voluntario.getCorreo())
                 .addParameter("usuario2",voluntario.getUsuario())
+                .addParameter("nombre2",voluntario.getNombre())
                 .addParameter("password2",voluntario.getPassword())
                 .addParameter("atributos2",voluntario.getAtributos())
                 .addParameter("id2",voluntario.getId())

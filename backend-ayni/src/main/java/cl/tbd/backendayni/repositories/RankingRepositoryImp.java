@@ -159,6 +159,12 @@ public class RankingRepositoryImp implements RankingRepository{
 
     //COMPLEMENTARIOS
 
+    /**
+     * @param id {@value} long id de la tarea a obtener
+     * @return {@value} List<Ranking> rankings de la tarea
+     * @throws Exception si no se puede obtener los rankings
+     * @see cl.tbd.backendayni.repositories.RankingRepository#showRankingByTaskId(long)
+     */
     @Override
     public List<Ranking_Voluntario> getRankingByIdTarea(long id){
         try(Connection conn = sql2o.open()){
@@ -171,9 +177,16 @@ public class RankingRepositoryImp implements RankingRepository{
         }
     }
 
-    
+    /**
+     * @param id {@value} long id de la tarea para crear ranking
+     * @return {@value} List<Ranking> rankings del voluntario
+     * @throws Exception si no se puede obtener los rankings
+     * @see cl.tbd.backendayni.repositories.RankingRepository#showRankingByVoluntarioId(long)
+     */
     @Override
     public List<Ranking> createRankingByIdTarea(long id){
+        //Se asume que esta funcion se llamaria para crear un ranking para una tarea dada
+        //De esta manera, surge por cada nueva tarea y esta haria este ranking con los voluntarios que estan en la base de datos
         int cantidad = 0;
         String sql_existe = "SELECT COUNT(*) FROM ranking WHERE id_tarea = :id"; 
         String sql = "SELECT ROUND(COUNT(t2.id_voluntario)/(SELECT COUNT(*)*1.0 FROM tarea_habilidad WHERE id_tarea = :id)*100), t1.id_tarea,t2.id_voluntario  FROM tarea_habilidad t1, voluntario_habilidad t2 WHERE t1.id_tarea = :id AND t1.id_habilidad = t2.id_habilidad GROUP BY t2.id_voluntario, t1.id_tarea";
@@ -202,4 +215,37 @@ public class RankingRepositoryImp implements RankingRepository{
         }
        
     }
+
+    /**
+     * @param id {@value} long id del voluntario para crear ranking para todas las tareas
+     * @return {@value} List<Ranking> rankings del voluntario
+     * @throws Exception si no se puede obtener los rankings
+     * @see cl.tbd.backendayni.repositories.RankingRepository#showRankingByVoluntarioId(long)
+     */
+    @Override
+    public List<Ranking> createRankingByIdVoluntario(long id){
+        //Se crea esta funcion para crear un ranking para todas las tareas de un voluntario
+        //De esta manera, surge por cada nuevo voluntario y esta haria este ranking con las tareas que estan en la base de datos
+        String sql = "SELECT vh.id_tarea, ROUND((vh.porcentaje/th.porcentaje)*100)  FROM (SELECT id_tarea, COUNT(t1.id_habilidad)*1.0 AS porcentaje FROM voluntario_habilidad t1, tarea_habilidad t2 WHERE t1.id_voluntario = :id AND t1.id_habilidad = t2.id_habilidad GROUP BY id_tarea) vh, (SELECT id_tarea, COUNT(id_habilidad)*1.0 AS porcentaje FROM tarea_habilidad GROUP BY id_tarea) th WHERE vh.id_tarea = th.id_tarea";
+        List<Ranking> rankings = new ArrayList<>();
+        try (Connection conn = sql2o.open()) {
+            Table tabla = conn.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchTable();
+            tabla.rows().forEach(action -> {
+                Ranking ranking = new Ranking();
+                ranking.setPorcentaje(action.getInteger(1));
+                ranking.setId_tarea(action.getLong(0));
+                ranking.setId_voluntario(id);
+                ranking.setId(newID());
+                createRanking(ranking);
+                rankings.add(ranking);
+            });
+            return rankings;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+        
 }

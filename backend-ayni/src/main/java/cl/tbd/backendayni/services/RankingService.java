@@ -93,11 +93,26 @@ public class RankingService {
         return rankingRepository.getRankingByIdTarea(id);
     }
 
+    /**
+     * @param id id de tarea
+     * @return {@value} <List>Ranking ranking
+     */
     @PostMapping("/createRankingByIdTarea/{id}")
     public List<Ranking> createRankingByIdTarea(@PathVariable long id) {
         List<Ranking> newRanking = rankingRepository.createRankingByIdTarea(id);
         return newRanking;
     }
+
+    /**
+     * @param id id de voluntario
+     * @return {@value} <List>Ranking ranking
+     */
+    @PostMapping("/createRankingByIdVoluntario/{id}")
+    public List<Ranking> createRankingByIdVoluntario(@PathVariable long id) {
+        List<Ranking> newRanking = rankingRepository.createRankingByIdVoluntario(id);
+        return newRanking;
+    }
+
 
 
 }

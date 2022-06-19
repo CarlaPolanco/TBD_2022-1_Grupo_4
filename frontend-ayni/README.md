@@ -1,3 +1,32 @@
+-------------------------------------- Readme Proyecto ----------------------------------------
+# TBD_2022-1_Grupo_4
+
+Laboratorio numero 1 de Taller de Base de Datos 2022-1
+
+# LABORATORIO 1 - AYNI
+
+La estructura del codigo se presenta de la siguiente manera:
+```
+---------------------------------------------------------------------------------------------------------------
+TBD_2022-1_Grupo_4 -> - frontend-ayni -> - assets 
+                                         - components
+                                         - pages 
+                                         - static
+                                         - store 
+                                         - BACKEND_URL.env
+                                         - nuxt.config.js
+---------------------------------------------------------------------------------------------------------------
+```
+
+# INSTRUCCIONES DE USO - Solo Frontend
+
+  - **Se debe tener levantado el Backend de antemano para una mejor demostración de uso**
+  - Nos posicionamos dentro de la carpeta del frontend (ejemplo: "TBD_2022-1_Grupo_4\frontend-ayni") con el terminal o linea de comandos de preferencia.
+  - Luego de estar dentro frontend-ayni debemos levantar la parte del frontend del proyecto, de esta manera, ingresando "npm install" se instalaran las dependencias necesarias para correr el proyecto, luego de que las dependencias se instalen, se ingresa "npm run dev" esto levantara el frontend en el puerto 8080 en el localhost(http://localhost:8080), en caso de errores de que falte un modulo, por ejemplo: "axios", debera correr "npm install nombre_modulo", en este caso, "npm install axios".
+  - Ya realizzndo estos pasos podra interactuar con la aplicacion web de Ayni en el la pagina http://localhost:8080.
+
+-------------------------------------- Readme Tecnico ----------------------------------------
+
 # frontend-ayni
 
 ## Build Setup
